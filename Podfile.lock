@@ -1,0 +1,57 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - GSKStretchyHeaderView (0.12.2)
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - NXTSegmentedControl (1.0.7)
+  - RongCloudIM/IMKit (2.8.3):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.8.3)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - TBActionSheet (1.4.4)
+  - UITableView+FDTemplateLayoutCell (1.5.beta)
+  - YBPopupMenu (0.1.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - GSKStretchyHeaderView
+  - Masonry
+  - MBProgressHUD
+  - NXTSegmentedControl
+  - RongCloudIM/IMKit (= 2.8.3)
+  - SDWebImage
+  - TBActionSheet
+  - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
+  - YBPopupMenu
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  NXTSegmentedControl: 1ffc9fb3e7b85dec254fd44ee709c24194339d8c
+  RongCloudIM: 33c6ba0880116d992b527c054903f683b014f0c2
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  TBActionSheet: 735d34cd1016c79a5f5adebcf60029e2beab5d3b
+  UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
+  YBPopupMenu: f081ab289c4c72483b940594e4976314157fc727
+
+PODFILE CHECKSUM: 92f836d476c459f018bea1d8521073c87214fb51
+
+COCOAPODS: 1.2.0.beta.1
