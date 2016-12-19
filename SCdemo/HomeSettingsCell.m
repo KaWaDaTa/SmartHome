@@ -10,7 +10,8 @@
 #import "VideoPlayerView.h"
 #import "GradientSlider.h"
 #import "HomeSettingView.h"
-#import "ScrollView.h"
+//#import "ScrollView.h"
+#import "ScrollViewContainer.h"
 
 @interface HomeSettingsCell ()
 
@@ -23,14 +24,21 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.homeSettingModels = models;
-        ScrollView *scroll = [[ScrollView alloc] init];
+//        ScrollView *scroll = [[ScrollView alloc] init];
+        ScrollViewContainer *scrollContainer = [[ScrollViewContainer alloc] init];
+        [self.contentView addSubview:scrollContainer];
+        [scrollContainer makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.contentView);
+        }];
+        
+        ScrollView *scroll = scrollContainer.scrollView;
         scroll.pagingEnabled = YES;
         scroll.showsHorizontalScrollIndicator = NO;
-        [self.contentView addSubview:scroll];
-        [scroll makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).offset(UIEdgeInsetsMake(10, 0, 0, 0));
-            make.height.equalTo(@253);
-        }];
+//        [self.contentView addSubview:scroll];
+//        [scroll makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(self.contentView).offset(UIEdgeInsetsMake(10, 0, 0, 0));
+//            make.height.equalTo(@200);
+//        }];
         
         UIView* contentView = [[UIView alloc] init];
         [scroll addSubview:contentView];
@@ -41,7 +49,7 @@
         }];
         
         UIView *lastView;
-        CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+        CGFloat width = [UIScreen mainScreen].bounds.size.width - 40;
         
         for (int i = 0; i < models.count; i++) {
             HomeSettingView *view = [HomeSettingView homeSettingViewWithModel:models[i]];
@@ -66,8 +74,9 @@
             width += 0;
             lastView = view;
             
+            [scroll.ignoreSlideViews addObjectsFromArray:view.controls];
             if (view.sliderContainer) {
-                [scroll.sliderContainers addObject:view.sliderContainer];
+                [scroll.ignoreSlideViews addObject:view.sliderContainer];
             }
         }
         

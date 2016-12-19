@@ -62,20 +62,23 @@
             
             ViewController *vc = [[ViewController alloc] init];
             UINavigationController *homeNavc = [[UINavigationController alloc] initWithRootViewController:vc];
-            homeNavc.navigationBar.hidden = YES;
-            homeNavc.tabBarItem.title = NSLocalizedString(@"Home", nil);
+            homeNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:@"首页"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"首页-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            [homeNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
             
             ConversationListViewController *chatVC1 = [[ConversationListViewController alloc] init];
             UINavigationController *naVC1 = [[UINavigationController alloc] initWithRootViewController:chatVC1];
-            naVC1.tabBarItem.title = NSLocalizedString(@"Conversation", nil);
+            naVC1.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:@"消息"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"消息-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            [naVC1.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
 
             ContactViewController *contactVC = [[ContactViewController alloc] init];
             UINavigationController *contactNavc = [[UINavigationController alloc] initWithRootViewController:contactVC];
-            contactNavc.tabBarItem.title = NSLocalizedString(@"Contact", nil);
+            contactNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:@"通讯"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"通讯-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            [contactNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
             
             MineViewController *mineVC = [[MineViewController alloc] init];
             UINavigationController *mineNavc = [[UINavigationController alloc] initWithRootViewController:mineVC];
-            mineNavc.tabBarItem.title = NSLocalizedString(@"Mine", nil);
+            mineNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:@"我的"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            [mineNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
             
             UITabBarController *tabVC = [[UITabBarController alloc] init];
             tabVC.tabBar.backgroundColor = [UIColor whiteColor];

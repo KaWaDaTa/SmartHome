@@ -159,7 +159,7 @@
     self.contentView.layer.mask = maskLayer;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [self.contentView addGestureRecognizer:tapGesture];
+    [_info addGestureRecognizer:tapGesture];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [_info addGestureRecognizer:panGesture];
@@ -227,7 +227,6 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
-    return;
     if (self.delegate && [self.delegate respondsToSelector:@selector(tapSecurity)]) {
         [self.delegate tapSecurity];
     }

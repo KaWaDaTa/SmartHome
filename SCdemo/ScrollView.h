@@ -10,6 +10,6 @@
 
 @interface ScrollView : UIScrollView
 
-@property (nonatomic, copy) NSMutableArray<UIView *> *sliderContainers;
+@property (nonatomic, copy) NSMutableArray<UIView *> *ignoreSlideViews;
 
 @end

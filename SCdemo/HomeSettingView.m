@@ -17,6 +17,14 @@
 
 @implementation HomeSettingView
 
+- (NSMutableArray<UIView *> *)controls
+{
+    if (!_controls) {
+        _controls = [[NSMutableArray alloc] init];
+    }
+    return _controls;
+}
+
 + (HomeSettingView *)homeSettingViewWithModel:(HomeSettingModel *)model
 {
     return [[self alloc] initWithModel:model];
@@ -71,6 +79,7 @@
         }];
         
         NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
+        [self.controls addObject:switch1];
         switch1.tintColor = [UIColor whiteColor];
         if (model.homeComponentModels[0].on == YES) {
             switch1.selectedSegmentIndex = 0;
@@ -166,6 +175,7 @@
             }];
             
             NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
+            [self.controls addObject:switch1];
             switch1.tintColor = [UIColor whiteColor];
             if (model.homeComponentModels[i].on == YES) {
                 switch1.selectedSegmentIndex = 0;
@@ -207,6 +217,7 @@
         }];
         
         NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
+        [self.controls addObject:switch1];
         switch1.tintColor = [UIColor whiteColor];
         if (model.homeComponentModels[0].on == YES) {
             switch1.selectedSegmentIndex = 0;
@@ -237,7 +248,7 @@
     self.layer.shadowOffset = CGSizeMake(0, 0);
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOpacity = 0.2;
-    self.layer.shadowRadius = 2;
+    self.layer.shadowRadius = 3;
 }
 
 - (void)layoutSubviews

@@ -14,6 +14,7 @@
 #import "HomeComponentModel.h"
 #import "OptionSliderModel.h"
 #import "HomeDataSourceManager.h"
+#import "ZoneViewController.h"
 
 @interface ViewController ()<GSKStretchyHeaderViewStretchDelegate,StretchyHeaderDelegate,UITableViewDelegate,UITableViewDataSource,VideoPlayDelegate>
 
@@ -46,13 +47,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     _table = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     [_table registerClass:[HomeSettingsCell class] forCellReuseIdentifier:@"HomeSettingsCellId"];
     [_table registerClass:[VideoPlayCell class] forCellReuseIdentifier:@"VideoCell"];
     _table.backgroundColor = [UIColor whiteColor];
     _table.separatorColor = [UIColor clearColor];
-    _table.bounces = NO;
+//    _table.bounces = NO;
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
@@ -71,13 +73,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
     [self.table reloadData];
 }
 
 - (void)tapSecurity
 {
-    SecurityViewController *securityVC = [[SecurityViewController alloc] init];
-    [self.navigationController pushViewController:securityVC animated:YES];
+    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:@[@"1",@"00",@"01",@"2",@"01",@"00"]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)stretchyHeaderView:(GSKStretchyHeaderView *)headerView didChangeStretchFactor:(CGFloat)stretchFactor

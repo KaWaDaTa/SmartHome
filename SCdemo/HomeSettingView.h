@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign) LayoutType type;
 @property (nonatomic, strong) UIView *sliderContainer;
+@property (nonatomic, strong) NSMutableArray<UIView *> *controls;
 
 + (HomeSettingView *)homeSettingViewWithModel:(HomeSettingModel *)model;
 

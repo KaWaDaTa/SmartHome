@@ -153,7 +153,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                               cancelButtonTitle:@"知道了"
                               otherButtonTitles:nil, nil];
         [alert show];
-        ViewController *loginVC = [[ViewController alloc] init];
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
         UINavigationController *_navi =
         [[UINavigationController alloc] initWithRootViewController:loginVC];
         self.window.rootViewController = _navi;

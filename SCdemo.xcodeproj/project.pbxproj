@@ -16,6 +16,109 @@
 		1705AEBE1DF65814000A7743 /* LeftImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1705AEBD1DF65814000A7743 /* LeftImageButton.m */; };
 		1706F2C61DFF7F6C0029AE7C /* SecuritySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1706F2C51DFF7F6C0029AE7C /* SecuritySettingViewController.m */; };
 		1706F2CA1DFF94080029AE7C /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1706F2C91DFF94080029AE7C /* ScrollView.m */; };
+		170FD08C1E077D1F0031A3ED /* 我的-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0841E077D1F0031A3ED /* 我的-1.png */; };
+		170FD08D1E077D1F0031A3ED /* 我的.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0851E077D1F0031A3ED /* 我的.png */; };
+		170FD08E1E077D1F0031A3ED /* 消息-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0861E077D1F0031A3ED /* 消息-1.png */; };
+		170FD08F1E077D1F0031A3ED /* 消息.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0871E077D1F0031A3ED /* 消息.png */; };
+		170FD0901E077D1F0031A3ED /* 通讯-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0881E077D1F0031A3ED /* 通讯-1.png */; };
+		170FD0911E077D1F0031A3ED /* 通讯.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0891E077D1F0031A3ED /* 通讯.png */; };
+		170FD0921E077D1F0031A3ED /* 首页-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD08A1E077D1F0031A3ED /* 首页-1.png */; };
+		170FD0931E077D1F0031A3ED /* 首页.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD08B1E077D1F0031A3ED /* 首页.png */; };
+		170FD0961E0787330031A3ED /* ZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FD0951E0787330031A3ED /* ZoneViewController.m */; };
+		170FD0991E07875B0031A3ED /* ZoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FD0981E07875B0031A3ED /* ZoneTableViewCell.m */; };
+		170FD0F71E0789080031A3ED /* Red bee APP iCon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD09B1E0789080031A3ED /* Red bee APP iCon-1.png */; };
+		170FD0F81E0789080031A3ED /* Red bee APP iCon-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD09C1E0789080031A3ED /* Red bee APP iCon-10.png */; };
+		170FD0F91E0789080031A3ED /* Red bee APP iCon-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD09D1E0789080031A3ED /* Red bee APP iCon-11.png */; };
+		170FD0FA1E0789080031A3ED /* Red bee APP iCon-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD09E1E0789080031A3ED /* Red bee APP iCon-12.png */; };
+		170FD0FB1E0789080031A3ED /* Red bee APP iCon-13.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD09F1E0789080031A3ED /* Red bee APP iCon-13.png */; };
+		170FD0FC1E0789080031A3ED /* Red bee APP iCon-14.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A01E0789080031A3ED /* Red bee APP iCon-14.png */; };
+		170FD0FD1E0789080031A3ED /* Red bee APP iCon-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A11E0789080031A3ED /* Red bee APP iCon-15.png */; };
+		170FD0FE1E0789080031A3ED /* Red bee APP iCon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A21E0789080031A3ED /* Red bee APP iCon-16.png */; };
+		170FD0FF1E0789080031A3ED /* Red bee APP iCon-17.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A31E0789080031A3ED /* Red bee APP iCon-17.png */; };
+		170FD1001E0789080031A3ED /* Red bee APP iCon-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A41E0789080031A3ED /* Red bee APP iCon-18.png */; };
+		170FD1011E0789080031A3ED /* Red bee APP iCon-19.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A51E0789080031A3ED /* Red bee APP iCon-19.png */; };
+		170FD1021E0789080031A3ED /* Red bee APP iCon-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A61E0789080031A3ED /* Red bee APP iCon-2.png */; };
+		170FD1031E0789080031A3ED /* Red bee APP iCon-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A71E0789080031A3ED /* Red bee APP iCon-20.png */; };
+		170FD1041E0789080031A3ED /* Red bee APP iCon-21.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A81E0789080031A3ED /* Red bee APP iCon-21.png */; };
+		170FD1051E0789080031A3ED /* Red bee APP iCon-22.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0A91E0789080031A3ED /* Red bee APP iCon-22.png */; };
+		170FD1061E0789080031A3ED /* Red bee APP iCon-23.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AA1E0789080031A3ED /* Red bee APP iCon-23.png */; };
+		170FD1071E0789080031A3ED /* Red bee APP iCon-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AB1E0789080031A3ED /* Red bee APP iCon-24.png */; };
+		170FD1081E0789080031A3ED /* Red bee APP iCon-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AC1E0789080031A3ED /* Red bee APP iCon-25.png */; };
+		170FD1091E0789080031A3ED /* Red bee APP iCon-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AD1E0789080031A3ED /* Red bee APP iCon-26.png */; };
+		170FD10A1E0789080031A3ED /* Red bee APP iCon-27.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AE1E0789080031A3ED /* Red bee APP iCon-27.png */; };
+		170FD10B1E0789080031A3ED /* Red bee APP iCon-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0AF1E0789080031A3ED /* Red bee APP iCon-28.png */; };
+		170FD10C1E0789080031A3ED /* Red bee APP iCon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B01E0789080031A3ED /* Red bee APP iCon-29.png */; };
+		170FD10D1E0789080031A3ED /* Red bee APP iCon-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B11E0789080031A3ED /* Red bee APP iCon-3.png */; };
+		170FD10E1E0789080031A3ED /* Red bee APP iCon-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B21E0789080031A3ED /* Red bee APP iCon-30.png */; };
+		170FD10F1E0789080031A3ED /* Red bee APP iCon-31.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B31E0789080031A3ED /* Red bee APP iCon-31.png */; };
+		170FD1101E0789080031A3ED /* Red bee APP iCon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B41E0789080031A3ED /* Red bee APP iCon-32.png */; };
+		170FD1111E0789080031A3ED /* Red bee APP iCon-33.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B51E0789080031A3ED /* Red bee APP iCon-33.png */; };
+		170FD1121E0789080031A3ED /* Red bee APP iCon-34.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B61E0789080031A3ED /* Red bee APP iCon-34.png */; };
+		170FD1131E0789080031A3ED /* Red bee APP iCon-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B71E0789080031A3ED /* Red bee APP iCon-35.png */; };
+		170FD1141E0789080031A3ED /* Red bee APP iCon-36.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B81E0789080031A3ED /* Red bee APP iCon-36.png */; };
+		170FD1151E0789080031A3ED /* Red bee APP iCon-37.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0B91E0789080031A3ED /* Red bee APP iCon-37.png */; };
+		170FD1161E0789080031A3ED /* Red bee APP iCon-38.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BA1E0789080031A3ED /* Red bee APP iCon-38.png */; };
+		170FD1171E0789080031A3ED /* Red bee APP iCon-39.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BB1E0789080031A3ED /* Red bee APP iCon-39.png */; };
+		170FD1181E0789080031A3ED /* Red bee APP iCon-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BC1E0789080031A3ED /* Red bee APP iCon-4.png */; };
+		170FD1191E0789080031A3ED /* Red bee APP iCon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BD1E0789080031A3ED /* Red bee APP iCon-40.png */; };
+		170FD11A1E0789080031A3ED /* Red bee APP iCon-41.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BE1E0789080031A3ED /* Red bee APP iCon-41.png */; };
+		170FD11B1E0789080031A3ED /* Red bee APP iCon-42.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0BF1E0789080031A3ED /* Red bee APP iCon-42.png */; };
+		170FD11C1E0789080031A3ED /* Red bee APP iCon-43.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C01E0789080031A3ED /* Red bee APP iCon-43.png */; };
+		170FD11D1E0789080031A3ED /* Red bee APP iCon-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C11E0789080031A3ED /* Red bee APP iCon-44.png */; };
+		170FD11E1E0789080031A3ED /* Red bee APP iCon-45.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C21E0789080031A3ED /* Red bee APP iCon-45.png */; };
+		170FD11F1E0789080031A3ED /* Red bee APP iCon-46.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C31E0789080031A3ED /* Red bee APP iCon-46.png */; };
+		170FD1201E0789080031A3ED /* Red bee APP iCon-47.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C41E0789080031A3ED /* Red bee APP iCon-47.png */; };
+		170FD1211E0789080031A3ED /* Red bee APP iCon-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C51E0789080031A3ED /* Red bee APP iCon-48.png */; };
+		170FD1221E0789080031A3ED /* Red bee APP iCon-49.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C61E0789080031A3ED /* Red bee APP iCon-49.png */; };
+		170FD1231E0789080031A3ED /* Red bee APP iCon-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C71E0789080031A3ED /* Red bee APP iCon-5.png */; };
+		170FD1241E0789080031A3ED /* Red bee APP iCon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C81E0789080031A3ED /* Red bee APP iCon-50.png */; };
+		170FD1251E0789080031A3ED /* Red bee APP iCon-51.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0C91E0789080031A3ED /* Red bee APP iCon-51.png */; };
+		170FD1261E0789080031A3ED /* Red bee APP iCon-52.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CA1E0789080031A3ED /* Red bee APP iCon-52.png */; };
+		170FD1271E0789080031A3ED /* Red bee APP iCon-53.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CB1E0789080031A3ED /* Red bee APP iCon-53.png */; };
+		170FD1281E0789080031A3ED /* Red bee APP iCon-54.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CC1E0789080031A3ED /* Red bee APP iCon-54.png */; };
+		170FD1291E0789080031A3ED /* Red bee APP iCon-55.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CD1E0789080031A3ED /* Red bee APP iCon-55.png */; };
+		170FD12A1E0789080031A3ED /* Red bee APP iCon-56.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CE1E0789080031A3ED /* Red bee APP iCon-56.png */; };
+		170FD12B1E0789080031A3ED /* Red bee APP iCon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0CF1E0789080031A3ED /* Red bee APP iCon-57.png */; };
+		170FD12C1E0789080031A3ED /* Red bee APP iCon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D01E0789080031A3ED /* Red bee APP iCon-58.png */; };
+		170FD12D1E0789080031A3ED /* Red bee APP iCon-59.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D11E0789080031A3ED /* Red bee APP iCon-59.png */; };
+		170FD12E1E0789080031A3ED /* Red bee APP iCon-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D21E0789080031A3ED /* Red bee APP iCon-6.png */; };
+		170FD12F1E0789080031A3ED /* Red bee APP iCon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D31E0789080031A3ED /* Red bee APP iCon-60.png */; };
+		170FD1301E0789080031A3ED /* Red bee APP iCon-61.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D41E0789080031A3ED /* Red bee APP iCon-61.png */; };
+		170FD1311E0789080031A3ED /* Red bee APP iCon-62.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D51E0789080031A3ED /* Red bee APP iCon-62.png */; };
+		170FD1321E0789080031A3ED /* Red bee APP iCon-63.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D61E0789080031A3ED /* Red bee APP iCon-63.png */; };
+		170FD1331E0789080031A3ED /* Red bee APP iCon-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D71E0789080031A3ED /* Red bee APP iCon-64.png */; };
+		170FD1341E0789080031A3ED /* Red bee APP iCon-65.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D81E0789080031A3ED /* Red bee APP iCon-65.png */; };
+		170FD1351E0789080031A3ED /* Red bee APP iCon-66.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0D91E0789080031A3ED /* Red bee APP iCon-66.png */; };
+		170FD1361E0789080031A3ED /* Red bee APP iCon-67.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DA1E0789080031A3ED /* Red bee APP iCon-67.png */; };
+		170FD1371E0789080031A3ED /* Red bee APP iCon-68.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DB1E0789080031A3ED /* Red bee APP iCon-68.png */; };
+		170FD1381E0789080031A3ED /* Red bee APP iCon-69.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DC1E0789080031A3ED /* Red bee APP iCon-69.png */; };
+		170FD1391E0789080031A3ED /* Red bee APP iCon-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DD1E0789080031A3ED /* Red bee APP iCon-7.png */; };
+		170FD13A1E0789080031A3ED /* Red bee APP iCon-70.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DE1E0789080031A3ED /* Red bee APP iCon-70.png */; };
+		170FD13B1E0789080031A3ED /* Red bee APP iCon-71.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0DF1E0789080031A3ED /* Red bee APP iCon-71.png */; };
+		170FD13C1E0789080031A3ED /* Red bee APP iCon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E01E0789080031A3ED /* Red bee APP iCon-72.png */; };
+		170FD13D1E0789080031A3ED /* Red bee APP iCon-73.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E11E0789080031A3ED /* Red bee APP iCon-73.png */; };
+		170FD13E1E0789080031A3ED /* Red bee APP iCon-74.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E21E0789080031A3ED /* Red bee APP iCon-74.png */; };
+		170FD13F1E0789080031A3ED /* Red bee APP iCon-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E31E0789080031A3ED /* Red bee APP iCon-8.png */; };
+		170FD1401E0789080031A3ED /* Red bee APP iCon-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E41E0789080031A3ED /* Red bee APP iCon-9.png */; };
+		170FD1411E0789080031A3ED /* Red bee APP iCon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E51E0789080031A3ED /* Red bee APP iCon.png */; };
+		170FD1421E0789080031A3ED /* Red bee APP logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E61E0789080031A3ED /* Red bee APP logo.png */; };
+		170FD1431E0789080031A3ED /* Red bee APP 背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E71E0789080031A3ED /* Red bee APP 背景.png */; };
+		170FD1441E0789080031A3ED /* 书房.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E81E0789080031A3ED /* 书房.png */; };
+		170FD1451E0789080031A3ED /* 关灯.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0E91E0789080031A3ED /* 关灯.png */; };
+		170FD1461E0789080031A3ED /* 卧室.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0EA1E0789080031A3ED /* 卧室.png */; };
+		170FD1471E0789080031A3ED /* 卫生间.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0EB1E0789080031A3ED /* 卫生间.png */; };
+		170FD1481E0789080031A3ED /* 厨房.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0EC1E0789080031A3ED /* 厨房.png */; };
+		170FD1491E0789080031A3ED /* 客厅.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0ED1E0789080031A3ED /* 客厅.png */; };
+		170FD14A1E0789080031A3ED /* 底1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0EE1E0789080031A3ED /* 底1.png */; };
+		170FD14B1E0789080031A3ED /* 底2.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0EF1E0789080031A3ED /* 底2.png */; };
+		170FD14C1E0789080031A3ED /* 底3.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F01E0789080031A3ED /* 底3.png */; };
+		170FD14D1E0789080031A3ED /* 底4.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F11E0789080031A3ED /* 底4.png */; };
+		170FD14E1E0789080031A3ED /* 底5.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F21E0789080031A3ED /* 底5.png */; };
+		170FD14F1E0789080031A3ED /* 底6.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F31E0789080031A3ED /* 底6.png */; };
+		170FD1501E0789080031A3ED /* 底7.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F41E0789080031A3ED /* 底7.png */; };
+		170FD1511E0789080031A3ED /* 开灯.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F51E0789080031A3ED /* 开灯.png */; };
+		170FD1521E0789080031A3ED /* 餐厅.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FD0F61E0789080031A3ED /* 餐厅.png */; };
+		170FD1551E07ADFF0031A3ED /* ScrollViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FD1541E07ADFF0031A3ED /* ScrollViewContainer.m */; };
 		171385221DF682F100CD4833 /* 二维码.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385031DF682F100CD4833 /* 二维码.png */; };
 		171385231DF682F100CD4833 /* 名称.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385041DF682F100CD4833 /* 名称.png */; };
 		171385241DF682F100CD4833 /* 图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385051DF682F100CD4833 /* 图片.png */; };
@@ -148,6 +251,112 @@
 		1706F2C51DFF7F6C0029AE7C /* SecuritySettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecuritySettingViewController.m; sourceTree = "<group>"; };
 		1706F2C81DFF94080029AE7C /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
 		1706F2C91DFF94080029AE7C /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
+		170FD0841E077D1F0031A3ED /* 我的-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的-1.png"; sourceTree = "<group>"; };
+		170FD0851E077D1F0031A3ED /* 我的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的.png"; sourceTree = "<group>"; };
+		170FD0861E077D1F0031A3ED /* 消息-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息-1.png"; sourceTree = "<group>"; };
+		170FD0871E077D1F0031A3ED /* 消息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息.png"; sourceTree = "<group>"; };
+		170FD0881E077D1F0031A3ED /* 通讯-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "通讯-1.png"; sourceTree = "<group>"; };
+		170FD0891E077D1F0031A3ED /* 通讯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "通讯.png"; sourceTree = "<group>"; };
+		170FD08A1E077D1F0031A3ED /* 首页-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-1.png"; sourceTree = "<group>"; };
+		170FD08B1E077D1F0031A3ED /* 首页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页.png"; sourceTree = "<group>"; };
+		170FD0941E0787330031A3ED /* ZoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneViewController.h; sourceTree = "<group>"; };
+		170FD0951E0787330031A3ED /* ZoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneViewController.m; sourceTree = "<group>"; };
+		170FD0971E07875B0031A3ED /* ZoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneTableViewCell.h; sourceTree = "<group>"; };
+		170FD0981E07875B0031A3ED /* ZoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoneTableViewCell.m; sourceTree = "<group>"; };
+		170FD09B1E0789080031A3ED /* Red bee APP iCon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-1.png"; sourceTree = "<group>"; };
+		170FD09C1E0789080031A3ED /* Red bee APP iCon-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-10.png"; sourceTree = "<group>"; };
+		170FD09D1E0789080031A3ED /* Red bee APP iCon-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-11.png"; sourceTree = "<group>"; };
+		170FD09E1E0789080031A3ED /* Red bee APP iCon-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-12.png"; sourceTree = "<group>"; };
+		170FD09F1E0789080031A3ED /* Red bee APP iCon-13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-13.png"; sourceTree = "<group>"; };
+		170FD0A01E0789080031A3ED /* Red bee APP iCon-14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-14.png"; sourceTree = "<group>"; };
+		170FD0A11E0789080031A3ED /* Red bee APP iCon-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-15.png"; sourceTree = "<group>"; };
+		170FD0A21E0789080031A3ED /* Red bee APP iCon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-16.png"; sourceTree = "<group>"; };
+		170FD0A31E0789080031A3ED /* Red bee APP iCon-17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-17.png"; sourceTree = "<group>"; };
+		170FD0A41E0789080031A3ED /* Red bee APP iCon-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-18.png"; sourceTree = "<group>"; };
+		170FD0A51E0789080031A3ED /* Red bee APP iCon-19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-19.png"; sourceTree = "<group>"; };
+		170FD0A61E0789080031A3ED /* Red bee APP iCon-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-2.png"; sourceTree = "<group>"; };
+		170FD0A71E0789080031A3ED /* Red bee APP iCon-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-20.png"; sourceTree = "<group>"; };
+		170FD0A81E0789080031A3ED /* Red bee APP iCon-21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-21.png"; sourceTree = "<group>"; };
+		170FD0A91E0789080031A3ED /* Red bee APP iCon-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-22.png"; sourceTree = "<group>"; };
+		170FD0AA1E0789080031A3ED /* Red bee APP iCon-23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-23.png"; sourceTree = "<group>"; };
+		170FD0AB1E0789080031A3ED /* Red bee APP iCon-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-24.png"; sourceTree = "<group>"; };
+		170FD0AC1E0789080031A3ED /* Red bee APP iCon-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-25.png"; sourceTree = "<group>"; };
+		170FD0AD1E0789080031A3ED /* Red bee APP iCon-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-26.png"; sourceTree = "<group>"; };
+		170FD0AE1E0789080031A3ED /* Red bee APP iCon-27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-27.png"; sourceTree = "<group>"; };
+		170FD0AF1E0789080031A3ED /* Red bee APP iCon-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-28.png"; sourceTree = "<group>"; };
+		170FD0B01E0789080031A3ED /* Red bee APP iCon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-29.png"; sourceTree = "<group>"; };
+		170FD0B11E0789080031A3ED /* Red bee APP iCon-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-3.png"; sourceTree = "<group>"; };
+		170FD0B21E0789080031A3ED /* Red bee APP iCon-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-30.png"; sourceTree = "<group>"; };
+		170FD0B31E0789080031A3ED /* Red bee APP iCon-31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-31.png"; sourceTree = "<group>"; };
+		170FD0B41E0789080031A3ED /* Red bee APP iCon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-32.png"; sourceTree = "<group>"; };
+		170FD0B51E0789080031A3ED /* Red bee APP iCon-33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-33.png"; sourceTree = "<group>"; };
+		170FD0B61E0789080031A3ED /* Red bee APP iCon-34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-34.png"; sourceTree = "<group>"; };
+		170FD0B71E0789080031A3ED /* Red bee APP iCon-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-35.png"; sourceTree = "<group>"; };
+		170FD0B81E0789080031A3ED /* Red bee APP iCon-36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-36.png"; sourceTree = "<group>"; };
+		170FD0B91E0789080031A3ED /* Red bee APP iCon-37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-37.png"; sourceTree = "<group>"; };
+		170FD0BA1E0789080031A3ED /* Red bee APP iCon-38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-38.png"; sourceTree = "<group>"; };
+		170FD0BB1E0789080031A3ED /* Red bee APP iCon-39.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-39.png"; sourceTree = "<group>"; };
+		170FD0BC1E0789080031A3ED /* Red bee APP iCon-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-4.png"; sourceTree = "<group>"; };
+		170FD0BD1E0789080031A3ED /* Red bee APP iCon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-40.png"; sourceTree = "<group>"; };
+		170FD0BE1E0789080031A3ED /* Red bee APP iCon-41.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-41.png"; sourceTree = "<group>"; };
+		170FD0BF1E0789080031A3ED /* Red bee APP iCon-42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-42.png"; sourceTree = "<group>"; };
+		170FD0C01E0789080031A3ED /* Red bee APP iCon-43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-43.png"; sourceTree = "<group>"; };
+		170FD0C11E0789080031A3ED /* Red bee APP iCon-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-44.png"; sourceTree = "<group>"; };
+		170FD0C21E0789080031A3ED /* Red bee APP iCon-45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-45.png"; sourceTree = "<group>"; };
+		170FD0C31E0789080031A3ED /* Red bee APP iCon-46.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-46.png"; sourceTree = "<group>"; };
+		170FD0C41E0789080031A3ED /* Red bee APP iCon-47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-47.png"; sourceTree = "<group>"; };
+		170FD0C51E0789080031A3ED /* Red bee APP iCon-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-48.png"; sourceTree = "<group>"; };
+		170FD0C61E0789080031A3ED /* Red bee APP iCon-49.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-49.png"; sourceTree = "<group>"; };
+		170FD0C71E0789080031A3ED /* Red bee APP iCon-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-5.png"; sourceTree = "<group>"; };
+		170FD0C81E0789080031A3ED /* Red bee APP iCon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-50.png"; sourceTree = "<group>"; };
+		170FD0C91E0789080031A3ED /* Red bee APP iCon-51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-51.png"; sourceTree = "<group>"; };
+		170FD0CA1E0789080031A3ED /* Red bee APP iCon-52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-52.png"; sourceTree = "<group>"; };
+		170FD0CB1E0789080031A3ED /* Red bee APP iCon-53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-53.png"; sourceTree = "<group>"; };
+		170FD0CC1E0789080031A3ED /* Red bee APP iCon-54.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-54.png"; sourceTree = "<group>"; };
+		170FD0CD1E0789080031A3ED /* Red bee APP iCon-55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-55.png"; sourceTree = "<group>"; };
+		170FD0CE1E0789080031A3ED /* Red bee APP iCon-56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-56.png"; sourceTree = "<group>"; };
+		170FD0CF1E0789080031A3ED /* Red bee APP iCon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-57.png"; sourceTree = "<group>"; };
+		170FD0D01E0789080031A3ED /* Red bee APP iCon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-58.png"; sourceTree = "<group>"; };
+		170FD0D11E0789080031A3ED /* Red bee APP iCon-59.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-59.png"; sourceTree = "<group>"; };
+		170FD0D21E0789080031A3ED /* Red bee APP iCon-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-6.png"; sourceTree = "<group>"; };
+		170FD0D31E0789080031A3ED /* Red bee APP iCon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-60.png"; sourceTree = "<group>"; };
+		170FD0D41E0789080031A3ED /* Red bee APP iCon-61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-61.png"; sourceTree = "<group>"; };
+		170FD0D51E0789080031A3ED /* Red bee APP iCon-62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-62.png"; sourceTree = "<group>"; };
+		170FD0D61E0789080031A3ED /* Red bee APP iCon-63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-63.png"; sourceTree = "<group>"; };
+		170FD0D71E0789080031A3ED /* Red bee APP iCon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-64.png"; sourceTree = "<group>"; };
+		170FD0D81E0789080031A3ED /* Red bee APP iCon-65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-65.png"; sourceTree = "<group>"; };
+		170FD0D91E0789080031A3ED /* Red bee APP iCon-66.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-66.png"; sourceTree = "<group>"; };
+		170FD0DA1E0789080031A3ED /* Red bee APP iCon-67.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-67.png"; sourceTree = "<group>"; };
+		170FD0DB1E0789080031A3ED /* Red bee APP iCon-68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-68.png"; sourceTree = "<group>"; };
+		170FD0DC1E0789080031A3ED /* Red bee APP iCon-69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-69.png"; sourceTree = "<group>"; };
+		170FD0DD1E0789080031A3ED /* Red bee APP iCon-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-7.png"; sourceTree = "<group>"; };
+		170FD0DE1E0789080031A3ED /* Red bee APP iCon-70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-70.png"; sourceTree = "<group>"; };
+		170FD0DF1E0789080031A3ED /* Red bee APP iCon-71.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-71.png"; sourceTree = "<group>"; };
+		170FD0E01E0789080031A3ED /* Red bee APP iCon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-72.png"; sourceTree = "<group>"; };
+		170FD0E11E0789080031A3ED /* Red bee APP iCon-73.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-73.png"; sourceTree = "<group>"; };
+		170FD0E21E0789080031A3ED /* Red bee APP iCon-74.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-74.png"; sourceTree = "<group>"; };
+		170FD0E31E0789080031A3ED /* Red bee APP iCon-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-8.png"; sourceTree = "<group>"; };
+		170FD0E41E0789080031A3ED /* Red bee APP iCon-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon-9.png"; sourceTree = "<group>"; };
+		170FD0E51E0789080031A3ED /* Red bee APP iCon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP iCon.png"; sourceTree = "<group>"; };
+		170FD0E61E0789080031A3ED /* Red bee APP logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP logo.png"; sourceTree = "<group>"; };
+		170FD0E71E0789080031A3ED /* Red bee APP 背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red bee APP 背景.png"; sourceTree = "<group>"; };
+		170FD0E81E0789080031A3ED /* 书房.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "书房.png"; sourceTree = "<group>"; };
+		170FD0E91E0789080031A3ED /* 关灯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关灯.png"; sourceTree = "<group>"; };
+		170FD0EA1E0789080031A3ED /* 卧室.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卧室.png"; sourceTree = "<group>"; };
+		170FD0EB1E0789080031A3ED /* 卫生间.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卫生间.png"; sourceTree = "<group>"; };
+		170FD0EC1E0789080031A3ED /* 厨房.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "厨房.png"; sourceTree = "<group>"; };
+		170FD0ED1E0789080031A3ED /* 客厅.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "客厅.png"; sourceTree = "<group>"; };
+		170FD0EE1E0789080031A3ED /* 底1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底1.png"; sourceTree = "<group>"; };
+		170FD0EF1E0789080031A3ED /* 底2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底2.png"; sourceTree = "<group>"; };
+		170FD0F01E0789080031A3ED /* 底3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底3.png"; sourceTree = "<group>"; };
+		170FD0F11E0789080031A3ED /* 底4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底4.png"; sourceTree = "<group>"; };
+		170FD0F21E0789080031A3ED /* 底5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底5.png"; sourceTree = "<group>"; };
+		170FD0F31E0789080031A3ED /* 底6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底6.png"; sourceTree = "<group>"; };
+		170FD0F41E0789080031A3ED /* 底7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "底7.png"; sourceTree = "<group>"; };
+		170FD0F51E0789080031A3ED /* 开灯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开灯.png"; sourceTree = "<group>"; };
+		170FD0F61E0789080031A3ED /* 餐厅.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "餐厅.png"; sourceTree = "<group>"; };
+		170FD1531E07ADFF0031A3ED /* ScrollViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewContainer.h; sourceTree = "<group>"; };
+		170FD1541E07ADFF0031A3ED /* ScrollViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewContainer.m; sourceTree = "<group>"; };
 		171385031DF682F100CD4833 /* 二维码.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码.png"; sourceTree = "<group>"; };
 		171385041DF682F100CD4833 /* 名称.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "名称.png"; sourceTree = "<group>"; };
 		171385051DF682F100CD4833 /* 图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片.png"; sourceTree = "<group>"; };
@@ -336,11 +545,11 @@
 		17033DDE1DC32AA400AA1848 /* SCdemo */ = {
 			isa = PBXGroup;
 			children = (
+				17CEB31E1DF5418F00DE65FC /* Login */,
 				1751A54D1DFA400100B26A3E /* Home */,
-				17F71A971DF7EF590062046A /* Mine */,
 				1705AE891DF64A24000A7743 /* Security */,
 				17CEB33E1DF56BDB00DE65FC /* IM */,
-				17CEB31E1DF5418F00DE65FC /* Login */,
+				17F71A971DF7EF590062046A /* Mine */,
 				172B91241DCAD29100B39B57 /* Tool */,
 				17033DE21DC32AA400AA1848 /* AppDelegate.h */,
 				17033DE31DC32AA400AA1848 /* AppDelegate.m */,
@@ -381,6 +590,8 @@
 			children = (
 				1705AEBC1DF65814000A7743 /* LeftImageButton.h */,
 				1705AEBD1DF65814000A7743 /* LeftImageButton.m */,
+				170FD0971E07875B0031A3ED /* ZoneTableViewCell.h */,
+				170FD0981E07875B0031A3ED /* ZoneTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -401,6 +612,8 @@
 				1705AE8B1DF64A67000A7743 /* SecurityViewController.m */,
 				1706F2C41DFF7F6C0029AE7C /* SecuritySettingViewController.h */,
 				1706F2C51DFF7F6C0029AE7C /* SecuritySettingViewController.m */,
+				170FD0941E0787330031A3ED /* ZoneViewController.h */,
+				170FD0951E0787330031A3ED /* ZoneViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -422,6 +635,120 @@
 				1750B1C21DF9051600FAC1B3 /* PerfectInfoViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		170FD0831E077D1F0031A3ED /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				170FD0841E077D1F0031A3ED /* 我的-1.png */,
+				170FD0851E077D1F0031A3ED /* 我的.png */,
+				170FD0861E077D1F0031A3ED /* 消息-1.png */,
+				170FD0871E077D1F0031A3ED /* 消息.png */,
+				170FD0881E077D1F0031A3ED /* 通讯-1.png */,
+				170FD0891E077D1F0031A3ED /* 通讯.png */,
+				170FD08A1E077D1F0031A3ED /* 首页-1.png */,
+				170FD08B1E077D1F0031A3ED /* 首页.png */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+		170FD09A1E0789080031A3ED /* Zone */ = {
+			isa = PBXGroup;
+			children = (
+				170FD09B1E0789080031A3ED /* Red bee APP iCon-1.png */,
+				170FD09C1E0789080031A3ED /* Red bee APP iCon-10.png */,
+				170FD09D1E0789080031A3ED /* Red bee APP iCon-11.png */,
+				170FD09E1E0789080031A3ED /* Red bee APP iCon-12.png */,
+				170FD09F1E0789080031A3ED /* Red bee APP iCon-13.png */,
+				170FD0A01E0789080031A3ED /* Red bee APP iCon-14.png */,
+				170FD0A11E0789080031A3ED /* Red bee APP iCon-15.png */,
+				170FD0A21E0789080031A3ED /* Red bee APP iCon-16.png */,
+				170FD0A31E0789080031A3ED /* Red bee APP iCon-17.png */,
+				170FD0A41E0789080031A3ED /* Red bee APP iCon-18.png */,
+				170FD0A51E0789080031A3ED /* Red bee APP iCon-19.png */,
+				170FD0A61E0789080031A3ED /* Red bee APP iCon-2.png */,
+				170FD0A71E0789080031A3ED /* Red bee APP iCon-20.png */,
+				170FD0A81E0789080031A3ED /* Red bee APP iCon-21.png */,
+				170FD0A91E0789080031A3ED /* Red bee APP iCon-22.png */,
+				170FD0AA1E0789080031A3ED /* Red bee APP iCon-23.png */,
+				170FD0AB1E0789080031A3ED /* Red bee APP iCon-24.png */,
+				170FD0AC1E0789080031A3ED /* Red bee APP iCon-25.png */,
+				170FD0AD1E0789080031A3ED /* Red bee APP iCon-26.png */,
+				170FD0AE1E0789080031A3ED /* Red bee APP iCon-27.png */,
+				170FD0AF1E0789080031A3ED /* Red bee APP iCon-28.png */,
+				170FD0B01E0789080031A3ED /* Red bee APP iCon-29.png */,
+				170FD0B11E0789080031A3ED /* Red bee APP iCon-3.png */,
+				170FD0B21E0789080031A3ED /* Red bee APP iCon-30.png */,
+				170FD0B31E0789080031A3ED /* Red bee APP iCon-31.png */,
+				170FD0B41E0789080031A3ED /* Red bee APP iCon-32.png */,
+				170FD0B51E0789080031A3ED /* Red bee APP iCon-33.png */,
+				170FD0B61E0789080031A3ED /* Red bee APP iCon-34.png */,
+				170FD0B71E0789080031A3ED /* Red bee APP iCon-35.png */,
+				170FD0B81E0789080031A3ED /* Red bee APP iCon-36.png */,
+				170FD0B91E0789080031A3ED /* Red bee APP iCon-37.png */,
+				170FD0BA1E0789080031A3ED /* Red bee APP iCon-38.png */,
+				170FD0BB1E0789080031A3ED /* Red bee APP iCon-39.png */,
+				170FD0BC1E0789080031A3ED /* Red bee APP iCon-4.png */,
+				170FD0BD1E0789080031A3ED /* Red bee APP iCon-40.png */,
+				170FD0BE1E0789080031A3ED /* Red bee APP iCon-41.png */,
+				170FD0BF1E0789080031A3ED /* Red bee APP iCon-42.png */,
+				170FD0C01E0789080031A3ED /* Red bee APP iCon-43.png */,
+				170FD0C11E0789080031A3ED /* Red bee APP iCon-44.png */,
+				170FD0C21E0789080031A3ED /* Red bee APP iCon-45.png */,
+				170FD0C31E0789080031A3ED /* Red bee APP iCon-46.png */,
+				170FD0C41E0789080031A3ED /* Red bee APP iCon-47.png */,
+				170FD0C51E0789080031A3ED /* Red bee APP iCon-48.png */,
+				170FD0C61E0789080031A3ED /* Red bee APP iCon-49.png */,
+				170FD0C71E0789080031A3ED /* Red bee APP iCon-5.png */,
+				170FD0C81E0789080031A3ED /* Red bee APP iCon-50.png */,
+				170FD0C91E0789080031A3ED /* Red bee APP iCon-51.png */,
+				170FD0CA1E0789080031A3ED /* Red bee APP iCon-52.png */,
+				170FD0CB1E0789080031A3ED /* Red bee APP iCon-53.png */,
+				170FD0CC1E0789080031A3ED /* Red bee APP iCon-54.png */,
+				170FD0CD1E0789080031A3ED /* Red bee APP iCon-55.png */,
+				170FD0CE1E0789080031A3ED /* Red bee APP iCon-56.png */,
+				170FD0CF1E0789080031A3ED /* Red bee APP iCon-57.png */,
+				170FD0D01E0789080031A3ED /* Red bee APP iCon-58.png */,
+				170FD0D11E0789080031A3ED /* Red bee APP iCon-59.png */,
+				170FD0D21E0789080031A3ED /* Red bee APP iCon-6.png */,
+				170FD0D31E0789080031A3ED /* Red bee APP iCon-60.png */,
+				170FD0D41E0789080031A3ED /* Red bee APP iCon-61.png */,
+				170FD0D51E0789080031A3ED /* Red bee APP iCon-62.png */,
+				170FD0D61E0789080031A3ED /* Red bee APP iCon-63.png */,
+				170FD0D71E0789080031A3ED /* Red bee APP iCon-64.png */,
+				170FD0D81E0789080031A3ED /* Red bee APP iCon-65.png */,
+				170FD0D91E0789080031A3ED /* Red bee APP iCon-66.png */,
+				170FD0DA1E0789080031A3ED /* Red bee APP iCon-67.png */,
+				170FD0DB1E0789080031A3ED /* Red bee APP iCon-68.png */,
+				170FD0DC1E0789080031A3ED /* Red bee APP iCon-69.png */,
+				170FD0DD1E0789080031A3ED /* Red bee APP iCon-7.png */,
+				170FD0DE1E0789080031A3ED /* Red bee APP iCon-70.png */,
+				170FD0DF1E0789080031A3ED /* Red bee APP iCon-71.png */,
+				170FD0E01E0789080031A3ED /* Red bee APP iCon-72.png */,
+				170FD0E11E0789080031A3ED /* Red bee APP iCon-73.png */,
+				170FD0E21E0789080031A3ED /* Red bee APP iCon-74.png */,
+				170FD0E31E0789080031A3ED /* Red bee APP iCon-8.png */,
+				170FD0E41E0789080031A3ED /* Red bee APP iCon-9.png */,
+				170FD0E51E0789080031A3ED /* Red bee APP iCon.png */,
+				170FD0E61E0789080031A3ED /* Red bee APP logo.png */,
+				170FD0E71E0789080031A3ED /* Red bee APP 背景.png */,
+				170FD0E81E0789080031A3ED /* 书房.png */,
+				170FD0E91E0789080031A3ED /* 关灯.png */,
+				170FD0EA1E0789080031A3ED /* 卧室.png */,
+				170FD0EB1E0789080031A3ED /* 卫生间.png */,
+				170FD0EC1E0789080031A3ED /* 厨房.png */,
+				170FD0ED1E0789080031A3ED /* 客厅.png */,
+				170FD0EE1E0789080031A3ED /* 底1.png */,
+				170FD0EF1E0789080031A3ED /* 底2.png */,
+				170FD0F01E0789080031A3ED /* 底3.png */,
+				170FD0F11E0789080031A3ED /* 底4.png */,
+				170FD0F21E0789080031A3ED /* 底5.png */,
+				170FD0F31E0789080031A3ED /* 底6.png */,
+				170FD0F41E0789080031A3ED /* 底7.png */,
+				170FD0F51E0789080031A3ED /* 开灯.png */,
+				170FD0F61E0789080031A3ED /* 餐厅.png */,
+			);
+			path = Zone;
 			sourceTree = "<group>";
 		};
 		171385021DF682F100CD4833 /* 聊天界面 */ = {
@@ -551,6 +878,8 @@
 				1720E3CF1DF797CF00533D86 /* SegSlider.m */,
 				1706F2C81DFF94080029AE7C /* ScrollView.h */,
 				1706F2C91DFF94080029AE7C /* ScrollView.m */,
+				170FD1531E07ADFF0031A3ED /* ScrollViewContainer.h */,
+				170FD1541E07ADFF0031A3ED /* ScrollViewContainer.m */,
 				17DBA03C1DC3383100FB05F2 /* StretchyHeaderView.h */,
 				17DBA03D1DC3383100FB05F2 /* StretchyHeaderView.m */,
 				17DBA03F1DC33C2F00FB05F2 /* HomeSettingsCell.h */,
@@ -594,6 +923,8 @@
 		17CEB3251DF54C6100DE65FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				170FD09A1E0789080031A3ED /* Zone */,
+				170FD0831E077D1F0031A3ED /* tabbar */,
 				171385801DF6AA9200CD4833 /* 首页icon */,
 				1713856B1DF6A5F500CD4833 /* 注册登录 */,
 				171385021DF682F100CD4833 /* 聊天界面 */,
@@ -751,7 +1082,7 @@
 					17033DDB1DC32AA400AA1848 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7G2868MDGZ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -783,7 +1114,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170FD10D1E0789080031A3ED /* Red bee APP iCon-3.png in Resources */,
 				171385AF1DF6AA9200CD4833 /* 监控.png in Resources */,
+				170FD13D1E0789080031A3ED /* Red bee APP iCon-73.png in Resources */,
 				1713857C1DF6A5F500CD4833 /* 眼睛.png in Resources */,
 				1713853D1DF682F100CD4833 /* voice.png in Resources */,
 				171385791DF6A5F500CD4833 /* 密码.png in Resources */,
@@ -791,72 +1124,170 @@
 				1713859F1DF6AA9200CD4833 /* disarmed-xiao.png in Resources */,
 				1713853B1DF682F100CD4833 /* 评论.png in Resources */,
 				17033DEF1DC32AA400AA1848 /* LaunchScreen.storyboard in Resources */,
+				170FD1191E0789080031A3ED /* Red bee APP iCon-40.png in Resources */,
 				171385AE1DF6AA9200CD4833 /* 灯.png in Resources */,
+				170FD1311E0789080031A3ED /* Red bee APP iCon-62.png in Resources */,
+				170FD0FF1E0789080031A3ED /* Red bee APP iCon-17.png in Resources */,
 				171385B81DF6AA9200CD4833 /* 风扇.png in Resources */,
+				170FD0931E077D1F0031A3ED /* 首页.png in Resources */,
+				170FD1161E0789080031A3ED /* Red bee APP iCon-38.png in Resources */,
 				171385391DF682F100CD4833 /* 视频.png in Resources */,
+				170FD10A1E0789080031A3ED /* Red bee APP iCon-27.png in Resources */,
 				1713853F1DF682F100CD4833 /* 选中.png in Resources */,
 				171385251DF682F100CD4833 /* 填写.png in Resources */,
+				170FD13E1E0789080031A3ED /* Red bee APP iCon-74.png in Resources */,
+				170FD1201E0789080031A3ED /* Red bee APP iCon-47.png in Resources */,
 				171385761DF6A5F500CD4833 /* 取消.png in Resources */,
 				1713857E1DF6A5F500CD4833 /* 账号.png in Resources */,
+				170FD1331E0789080031A3ED /* Red bee APP iCon-64.png in Resources */,
 				1713857B1DF6A5F500CD4833 /* 男.png in Resources */,
 				171385291DF682F100CD4833 /* 扫一扫.png in Resources */,
+				170FD1421E0789080031A3ED /* Red bee APP logo.png in Resources */,
+				170FD11E1E0789080031A3ED /* Red bee APP iCon-45.png in Resources */,
+				170FD1441E0789080031A3ED /* 书房.png in Resources */,
 				171385A61DF6AA9200CD4833 /* tv-首页.png in Resources */,
 				171385A01DF6AA9200CD4833 /* disarmed.png in Resources */,
+				170FD12B1E0789080031A3ED /* Red bee APP iCon-57.png in Resources */,
+				170FD1031E0789080031A3ED /* Red bee APP iCon-20.png in Resources */,
 				171385271DF682F100CD4833 /* 展开.png in Resources */,
 				171385A11DF6AA9200CD4833 /* stay-小.png in Resources */,
 				171385B01DF6AA9200CD4833 /* 监控放大.png in Resources */,
+				170FD11A1E0789080031A3ED /* Red bee APP iCon-41.png in Resources */,
+				170FD14D1E0789080031A3ED /* 底4.png in Resources */,
+				170FD0FE1E0789080031A3ED /* Red bee APP iCon-16.png in Resources */,
+				170FD1211E0789080031A3ED /* Red bee APP iCon-48.png in Resources */,
 				17FCCD471E011656006BA06B /* brand_expand@2x.png in Resources */,
 				171385301DF682F100CD4833 /* 朋友圈.png in Resources */,
 				171385371DF682F100CD4833 /* 群聊.png in Resources */,
+				170FD14E1E0789080031A3ED /* 底5.png in Resources */,
+				170FD1261E0789080031A3ED /* Red bee APP iCon-52.png in Resources */,
+				170FD08C1E077D1F0031A3ED /* 我的-1.png in Resources */,
+				170FD08F1E077D1F0031A3ED /* 消息.png in Resources */,
 				171385781DF6A5F500CD4833 /* 女.png in Resources */,
 				171385B41DF6AA9200CD4833 /* 秒表.png in Resources */,
+				170FD11F1E0789080031A3ED /* Red bee APP iCon-46.png in Resources */,
 				171385771DF6A5F500CD4833 /* 头像.png in Resources */,
 				171385331DF682F100CD4833 /* 添加新朋友.png in Resources */,
 				17033DEC1DC32AA400AA1848 /* Assets.xcassets in Resources */,
+				170FD1241E0789080031A3ED /* Red bee APP iCon-50.png in Resources */,
 				1713853E1DF682F100CD4833 /* 返回.png in Resources */,
+				170FD14F1E0789080031A3ED /* 底6.png in Resources */,
+				170FD14A1E0789080031A3ED /* 底1.png in Resources */,
+				170FD1171E0789080031A3ED /* Red bee APP iCon-39.png in Resources */,
+				170FD0921E077D1F0031A3ED /* 首页-1.png in Resources */,
 				171385A91DF6AA9200CD4833 /* 咖啡机.png in Resources */,
 				1713852A1DF682F100CD4833 /* 扫一扫图片.png in Resources */,
+				170FD0FD1E0789080031A3ED /* Red bee APP iCon-15.png in Resources */,
+				170FD0FC1E0789080031A3ED /* Red bee APP iCon-14.png in Resources */,
+				170FD10B1E0789080031A3ED /* Red bee APP iCon-28.png in Resources */,
+				170FD10F1E0789080031A3ED /* Red bee APP iCon-31.png in Resources */,
+				170FD13A1E0789080031A3ED /* Red bee APP iCon-70.png in Resources */,
 				171385A71DF6AA9200CD4833 /* tv.png in Resources */,
+				170FD1041E0789080031A3ED /* Red bee APP iCon-21.png in Resources */,
+				170FD1251E0789080031A3ED /* Red bee APP iCon-51.png in Resources */,
+				170FD1451E0789080031A3ED /* 关灯.png in Resources */,
 				1713852C1DF682F100CD4833 /* 摇一摇.png in Resources */,
+				170FD12C1E0789080031A3ED /* Red bee APP iCon-58.png in Resources */,
+				170FD1491E0789080031A3ED /* 客厅.png in Resources */,
+				170FD1061E0789080031A3ED /* Red bee APP iCon-23.png in Resources */,
+				170FD1051E0789080031A3ED /* Red bee APP iCon-22.png in Resources */,
+				170FD1111E0789080031A3ED /* Red bee APP iCon-33.png in Resources */,
+				170FD11B1E0789080031A3ED /* Red bee APP iCon-42.png in Resources */,
 				1713852E1DF682F100CD4833 /* 更多.png in Resources */,
 				171385AA1DF6AA9200CD4833 /* 天气.png in Resources */,
+				170FD13B1E0789080031A3ED /* Red bee APP iCon-71.png in Resources */,
+				170FD1321E0789080031A3ED /* Red bee APP iCon-63.png in Resources */,
+				170FD1221E0789080031A3ED /* Red bee APP iCon-49.png in Resources */,
+				170FD14C1E0789080031A3ED /* 底3.png in Resources */,
+				170FD12E1E0789080031A3ED /* Red bee APP iCon-6.png in Resources */,
 				17FCCD481E011656006BA06B /* brand_expand@3x.png in Resources */,
+				170FD1371E0789080031A3ED /* Red bee APP iCon-68.png in Resources */,
 				171385361DF682F100CD4833 /* 红包.png in Resources */,
+				170FD1351E0789080031A3ED /* Red bee APP iCon-66.png in Resources */,
+				170FD0F91E0789080031A3ED /* Red bee APP iCon-11.png in Resources */,
+				170FD1071E0789080031A3ED /* Red bee APP iCon-24.png in Resources */,
+				170FD1381E0789080031A3ED /* Red bee APP iCon-69.png in Resources */,
+				170FD1471E0789080031A3ED /* 卫生间.png in Resources */,
+				170FD11C1E0789080031A3ED /* Red bee APP iCon-43.png in Resources */,
+				170FD0F71E0789080031A3ED /* Red bee APP iCon-1.png in Resources */,
+				170FD1521E0789080031A3ED /* 餐厅.png in Resources */,
+				170FD0901E077D1F0031A3ED /* 通讯-1.png in Resources */,
 				171385B71DF6AA9200CD4833 /* 语音.png in Resources */,
+				170FD1481E0789080031A3ED /* 厨房.png in Resources */,
 				171385A81DF6AA9200CD4833 /* 冰箱.png in Resources */,
+				170FD12F1E0789080031A3ED /* Red bee APP iCon-60.png in Resources */,
+				170FD1341E0789080031A3ED /* Red bee APP iCon-65.png in Resources */,
+				170FD08D1E077D1F0031A3ED /* 我的.png in Resources */,
 				1713857D1DF6A5F500CD4833 /* 眼睛睁开.png in Resources */,
+				170FD1411E0789080031A3ED /* Red bee APP iCon.png in Resources */,
 				171385281DF682F100CD4833 /* 建立群聊.png in Resources */,
 				171385A51DF6AA9200CD4833 /* tv-静音.png in Resources */,
 				1713857F1DF6A5F500CD4833 /* 选中.png in Resources */,
+				170FD1001E0789080031A3ED /* Red bee APP iCon-18.png in Resources */,
+				170FD0FB1E0789080031A3ED /* Red bee APP iCon-13.png in Resources */,
+				170FD08E1E077D1F0031A3ED /* 消息-1.png in Resources */,
+				170FD0911E077D1F0031A3ED /* 通讯.png in Resources */,
+				170FD1511E0789080031A3ED /* 开灯.png in Resources */,
 				171385261DF682F100CD4833 /* 定位.png in Resources */,
 				1713859E1DF6AA9200CD4833 /* away.png in Resources */,
+				170FD1131E0789080031A3ED /* Red bee APP iCon-35.png in Resources */,
 				1713857A1DF6A5F500CD4833 /* 指纹.png in Resources */,
+				170FD14B1E0789080031A3ED /* 底2.png in Resources */,
 				1713852B1DF682F100CD4833 /* 搜索.png in Resources */,
 				171385A41DF6AA9200CD4833 /* tv-返回.png in Resources */,
+				170FD1431E0789080031A3ED /* Red bee APP 背景.png in Resources */,
+				170FD1301E0789080031A3ED /* Red bee APP iCon-61.png in Resources */,
+				170FD1081E0789080031A3ED /* Red bee APP iCon-25.png in Resources */,
 				171385B31DF6AA9200CD4833 /* 监控静音.jpg in Resources */,
 				1713852F1DF682F100CD4833 /* 更大-视频.png in Resources */,
+				170FD1291E0789080031A3ED /* Red bee APP iCon-55.png in Resources */,
 				171385231DF682F100CD4833 /* 名称.png in Resources */,
 				171385351DF682F100CD4833 /* 点赞.png in Resources */,
+				170FD1461E0789080031A3ED /* 卧室.png in Resources */,
 				171385AB1DF6AA9200CD4833 /* 按钮阴影.jpg in Resources */,
 				171385A31DF6AA9200CD4833 /* tv-菜单.png in Resources */,
+				170FD0F81E0789080031A3ED /* Red bee APP iCon-10.png in Resources */,
 				171385B51DF6AA9200CD4833 /* 空调.png in Resources */,
+				170FD10E1E0789080031A3ED /* Red bee APP iCon-30.png in Resources */,
 				171385311DF682F100CD4833 /* 消息.png in Resources */,
 				171385221DF682F100CD4833 /* 二维码.png in Resources */,
+				170FD1181E0789080031A3ED /* Red bee APP iCon-4.png in Resources */,
 				171385241DF682F100CD4833 /* 图片.png in Resources */,
+				170FD1091E0789080031A3ED /* Red bee APP iCon-26.png in Resources */,
+				170FD1011E0789080031A3ED /* Red bee APP iCon-19.png in Resources */,
+				170FD1151E0789080031A3ED /* Red bee APP iCon-37.png in Resources */,
+				170FD13F1E0789080031A3ED /* Red bee APP iCon-8.png in Resources */,
+				170FD1391E0789080031A3ED /* Red bee APP iCon-7.png in Resources */,
+				170FD12A1E0789080031A3ED /* Red bee APP iCon-56.png in Resources */,
 				171385341DF682F100CD4833 /* 添加朋友.png in Resources */,
 				171385B21DF6AA9200CD4833 /* 监控菜单.png in Resources */,
 				171385401DF682F100CD4833 /* 首页添加.png in Resources */,
 				171385A21DF6AA9200CD4833 /* stay.png in Resources */,
+				170FD1401E0789080031A3ED /* Red bee APP iCon-9.png in Resources */,
 				171385381DF682F100CD4833 /* 表情.png in Resources */,
+				170FD1361E0789080031A3ED /* Red bee APP iCon-67.png in Resources */,
+				170FD1141E0789080031A3ED /* Red bee APP iCon-36.png in Resources */,
 				1713853C1DF682F100CD4833 /* 详细信息.png in Resources */,
 				171385B61DF6AA9200CD4833 /* 窗帘.png in Resources */,
+				170FD1501E0789080031A3ED /* 底7.png in Resources */,
+				170FD1101E0789080031A3ED /* Red bee APP iCon-32.png in Resources */,
 				1713859D1DF6AA9200CD4833 /* away-小.png in Resources */,
+				170FD1271E0789080031A3ED /* Red bee APP iCon-53.png in Resources */,
+				170FD13C1E0789080031A3ED /* Red bee APP iCon-72.png in Resources */,
+				170FD1231E0789080031A3ED /* Red bee APP iCon-5.png in Resources */,
 				1713853A1DF682F100CD4833 /* 设置.png in Resources */,
 				171385AC1DF6AA9200CD4833 /* 插座.png in Resources */,
+				170FD0FA1E0789080031A3ED /* Red bee APP iCon-12.png in Resources */,
 				171385AD1DF6AA9200CD4833 /* 播放.png in Resources */,
+				170FD10C1E0789080031A3ED /* Red bee APP iCon-29.png in Resources */,
+				170FD1121E0789080031A3ED /* Red bee APP iCon-34.png in Resources */,
 				1713852D1DF682F100CD4833 /* 摇一摇界面.png in Resources */,
+				170FD1021E0789080031A3ED /* Red bee APP iCon-2.png in Resources */,
 				171385321DF682F100CD4833 /* 添加.png in Resources */,
+				170FD1281E0789080031A3ED /* Red bee APP iCon-54.png in Resources */,
+				170FD12D1E0789080031A3ED /* Red bee APP iCon-59.png in Resources */,
 				17478CE51DC87F5D004B3997 /* ball_16.png in Resources */,
+				170FD11D1E0789080031A3ED /* Red bee APP iCon-44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1362,7 @@
 				1706F2CA1DFF94080029AE7C /* ScrollView.m in Sources */,
 				17DBA03E1DC3383100FB05F2 /* StretchyHeaderView.m in Sources */,
 				1751A55F1DFA45F800B26A3E /* OptionSliderModel.m in Sources */,
+				170FD0961E0787330031A3ED /* ZoneViewController.m in Sources */,
 				17FCCD4E1E013049006BA06B /* AddDeviceViewController.m in Sources */,
 				1720E3D01DF797CF00533D86 /* SegSlider.m in Sources */,
 				17CEB33D1DF55A0600DE65FC /* LoginTextField.m in Sources */,
@@ -940,6 +1372,7 @@
 				172B912D1DCB0FF900B39B57 /* GradientSlider.m in Sources */,
 				1706F2C61DFF7F6C0029AE7C /* SecuritySettingViewController.m in Sources */,
 				17F71A891DF7BD980062046A /* AddContactViewController.m in Sources */,
+				170FD0991E07875B0031A3ED /* ZoneTableViewCell.m in Sources */,
 				17FCCD571E014EA3006BA06B /* GroupManagerViewController.m in Sources */,
 				1705AE8C1DF64A67000A7743 /* SecurityViewController.m in Sources */,
 				175CA5111DFA9D9C0084056E /* MineStretchyHeaderView.m in Sources */,
@@ -958,6 +1391,7 @@
 				17F71A8D1DF7DE060062046A /* AddContactTableViewCell.m in Sources */,
 				1751A5621DFA462700B26A3E /* HomeSettingModel.m in Sources */,
 				1792B2751DC73A4F004EB935 /* VideoPlayCell.m in Sources */,
+				170FD1551E07ADFF0031A3ED /* ScrollViewContainer.m in Sources */,
 				1751A5651DFA474A00B26A3E /* HomeSettingView.m in Sources */,
 				17F71A751DF7AFBC0062046A /* QRCodeViewController.m in Sources */,
 			);
@@ -1081,8 +1515,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "da791c3a-6806-47a6-8278-e23903d96562";
+				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Debug;
 		};
@@ -1100,8 +1534,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "da791c3a-6806-47a6-8278-e23903d96562";
+				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Release;
 		};

@@ -18,18 +18,18 @@
 }
 */
 
-- (NSMutableArray<UIView *> *)sliderContainers
+- (NSMutableArray<UIView *> *)ignoreSlideViews
 {
-    if (!_sliderContainers) {
-        _sliderContainers = [[NSMutableArray alloc] init];
+    if (!_ignoreSlideViews) {
+        _ignoreSlideViews = [[NSMutableArray alloc] init];
     }
-    return _sliderContainers;
+    return _ignoreSlideViews;
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     self.scrollEnabled = YES;
-    for (UIView *view in self.sliderContainers) {
+    for (UIView *view in self.ignoreSlideViews) {
         CGRect rect = [view.superview convertRect:view.frame toView:self];
         if (CGRectContainsPoint(rect, point)) {
             self.scrollEnabled = NO;
