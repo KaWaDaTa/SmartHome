@@ -106,7 +106,6 @@
     voice.layer.cornerRadius = 20;
     
     UILabel *userLabel = [[UILabel alloc] init];
-//    userLabel.text = NSLocalizedString(@"Hi , Will!", nil);
     userLabel.text = [NSString stringWithFormat:@"Hi , %@",[RCIM sharedRCIM].currentUserInfo.name];
     userLabel.adjustsFontSizeToFitWidth = YES;
     userLabel.font = [UIFont systemFontOfSize:55];
@@ -122,7 +121,6 @@
     
     _info = [[UIImageView alloc] init];
     _info.userInteractionEnabled = YES;
-//    _info.backgroundColor = [UIColor whiteColor];
     _info.image = [UIImage imageNamed:@"disarmed"];
     [self.contentView addSubview:_info];
     [_info makeConstraints:^(MASConstraintMaker *make) {

@@ -49,7 +49,7 @@
         }];
         
         UIView *lastView;
-        CGFloat width = [UIScreen mainScreen].bounds.size.width - 40;
+        CGFloat width = [UIScreen mainScreen].bounds.size.width - 60;
         
         for (int i = 0; i < models.count; i++) {
             HomeSettingView *view = [HomeSettingView homeSettingViewWithModel:models[i]];
@@ -71,7 +71,7 @@
                 }];
             }
             
-            width += 0;
+//            width += 0;
             lastView = view;
             
             [scroll.ignoreSlideViews addObjectsFromArray:view.controls];

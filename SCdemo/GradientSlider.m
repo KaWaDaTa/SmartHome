@@ -32,7 +32,7 @@
 {
     [super layoutSubviews];
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = CGRectMake(2, 15, self.bounds.size.width, 2);
+    gradient.frame = CGRectMake(2, 15, self.bounds.size.width - 4, 2);
     gradient.startPoint = CGPointMake(0, 0.5);
     gradient.endPoint = CGPointMake(1, 0.5);
     gradient.colors = @[(id)[UIColor redColor].CGColor

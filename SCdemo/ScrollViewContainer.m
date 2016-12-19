@@ -33,9 +33,7 @@
         scroll.clipsToBounds = NO;
         [self addSubview:scroll];
         [scroll makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(10);
-            make.left.bottom.equalTo(self);
-            make.width.equalTo(self).offset(-20);
+            make.edges.equalTo(self).offset(UIEdgeInsetsMake(10, 20, 0, 20));
         }];
         
         scroll;
