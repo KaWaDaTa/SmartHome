@@ -10,7 +10,6 @@
 #import "VideoPlayerView.h"
 #import "GradientSlider.h"
 #import "HomeSettingView.h"
-//#import "ScrollView.h"
 #import "ScrollViewContainer.h"
 
 @interface HomeSettingsCell ()

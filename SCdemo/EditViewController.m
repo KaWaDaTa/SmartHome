@@ -13,8 +13,8 @@
 #import "AddDeviceViewController.h"
 #import "GroupManagerViewController.h"
 
-static NSString *kCellIdentifier = @"UITableViewCell";
-static NSString *kHeaderIdentifier = @"HeaderView";
+static NSString *kCellIdentifier = @"EditTableViewCell";
+static NSString *kHeaderIdentifier = @"EditHeaderView";
 
 @interface EditViewController ()<TBActionSheetDelegate>
 
@@ -27,7 +27,7 @@ static NSString *kHeaderIdentifier = @"HeaderView";
 
 - (NSMutableArray *)sectionDataSources
 {
-    if (_sectionDataSources == nil) {
+    if (!_sectionDataSources) {
         _sectionDataSources = [[NSMutableArray alloc] init];
     }
     _sectionDataSources = [HomeDataSourceManager sharedInstance].dataSource;
@@ -93,6 +93,7 @@ static NSString *kHeaderIdentifier = @"HeaderView";
     }
 }
 
+//纯色图片
 - (UIImage *)ImageFromColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0, 0, 100, 20);
@@ -104,7 +105,6 @@ static NSString *kHeaderIdentifier = @"HeaderView";
     UIGraphicsEndImageContext();
     return img;
 }
-
 
 #pragma mark - Table view data source
 
