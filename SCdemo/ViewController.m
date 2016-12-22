@@ -15,6 +15,7 @@
 #import "OptionSliderModel.h"
 #import "HomeDataSourceManager.h"
 #import "ZoneViewController.h"
+#import "HomeHeaderView.h"
 
 @interface ViewController ()<GSKStretchyHeaderViewStretchDelegate,StretchyHeaderDelegate,UITableViewDelegate,UITableViewDataSource,VideoPlayDelegate>
 
@@ -52,8 +53,8 @@
     _table = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
     [_table registerClass:[HomeSettingsCell class] forCellReuseIdentifier:@"HomeSettingsCellId"];
     [_table registerClass:[VideoPlayCell class] forCellReuseIdentifier:@"VideoCell"];
-    _table.backgroundColor = [UIColor whiteColor];
-    _table.separatorColor = [UIColor clearColor];
+    _table.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
+    _table.separatorColor = [UIColor colorWithHexString:@"#f6f6f6"];
 //    _table.bounces = NO;
     _table.delegate = self;
     _table.dataSource = self;
@@ -62,12 +63,12 @@
         make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
-    CGSize headerSize = CGSizeMake(_table.frame.size.width, 436);
+    CGSize headerSize = CGSizeMake(_table.frame.size.width, 336);
     self.stretchyHeader = [[StretchyHeaderView alloc] initWithFrame:CGRectMake(0, 0, headerSize.width, headerSize.height)];
     self.stretchyHeader.stretchDelegate = self;
     self.stretchyHeader.delegate = self;
     [_table addSubview:self.stretchyHeader];
-    [_table setContentOffset:CGPointMake(0, -436)];
+    [_table setContentOffset:CGPointMake(0, -336)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -185,45 +186,73 @@
 //            
 //        }];
 //    } else {
-        return 253;
+        return 200;
 //    }
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
-//    view.backgroundColor = [UIColor whiteColor];
-//    return view;
-//}
-
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
-        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
-        tableViewHeaderFooterView.textLabel.text = [tableViewHeaderFooterView.textLabel.text capitalizedString];
-        tableViewHeaderFooterView.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-        tableViewHeaderFooterView.textLabel.font = [UIFont systemFontOfSize:22];
+    HomeHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HomeHeaderId"];
+    if (!view) {
+        view = [[HomeHeaderView alloc] initWithReuseIdentifier:@"HomeHeaderId"];
     }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return self.dataSource[section].sectionTitle;
+    view.model = self.dataSource[section];
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 70;
+    return 100;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 2) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 95.5 + 44)];
+        view.backgroundColor = [UIColor clearColor];
+        UIView *redView = [[UIView alloc] init];
+        redView.backgroundColor = [UIColor colorWithHexString:@"#ff5a60"];
+        [view addSubview:redView];
+        [redView makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.equalTo(view);
+            make.height.equalTo(95.5);
+        }];
+        
+        UILabel *label = [[UILabel alloc] init];
+        label.font = [UIFont systemFontOfSize:18];
+        label.text = NSLocalizedString(@"Remember to go out security!", nil);
+        label.textColor = [UIColor colorWithHexString:@"#ffffff"];
+        [redView addSubview:label];
+        [label makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(40);
+            make.centerY.equalTo(redView);
+        }];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setImage:[UIImage imageNamed:@"away"] forState:UIControlStateNormal];
+        [redView addSubview:btn];
+        [btn makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.equalTo(72.5);
+            make.right.equalTo(-14);
+            make.centerY.equalTo(redView);
+        }];
+        
+        return view;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 2) {
+        return 95.5 + 44;
+    }
+    return 0.000001f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataSource.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.000001f;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

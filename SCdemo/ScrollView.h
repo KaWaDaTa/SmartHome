@@ -11,5 +11,6 @@
 @interface ScrollView : UIScrollView
 
 @property (nonatomic, copy) NSMutableArray<UIView *> *ignoreSlideViews;
+@property (nonatomic, strong) UIView *contentView;
 
 @end

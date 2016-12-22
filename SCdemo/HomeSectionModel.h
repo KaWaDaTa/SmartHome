@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "HomeSettingModel.h"
 
+typedef NS_ENUM(NSUInteger, CardType) {
+    CardTypeFavorites,
+    CardTypeZone,
+    CardTypeDevices,
+};
+
 @interface HomeSectionModel : NSObject
 
 @property (nonatomic, copy) NSString *sectionTitle;
+@property (nonatomic, assign) CardType currentType;
 @property (nonatomic, assign) BOOL isExpanded;
 @property (nonatomic, strong) NSMutableArray<HomeSettingModel *> *models;
 

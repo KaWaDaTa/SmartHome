@@ -15,7 +15,7 @@
 @end
 
 typedef NS_ENUM(NSUInteger, ArmStyle) {
-    ArmStyleDisarmed,
+    ArmStyleDisarmed = 100,
     ArmStyleStay,
     ArmStyleAway,
 };
@@ -30,5 +30,6 @@ typedef NS_ENUM(NSUInteger, ArmStyle) {
 @property (nonatomic, retain) UIButton *rightBtn;
 @property (nonatomic, strong) UILabel *rightLabel;
 @property (nonatomic, weak) id<StretchyHeaderDelegate> delegate;
+@property (nonatomic, assign) BOOL hideLeftRight;
 
 @end

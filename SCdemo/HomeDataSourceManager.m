@@ -32,8 +32,9 @@
 
 - (void)setup
 {
-    NSArray *sectionTitles = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"Common", nil),NSLocalizedString(@"Living room", nil),NSLocalizedString(@"Bedroom", nil),NSLocalizedString(@"Camera", nil),NSLocalizedString(@"Scene", nil)]];
-
+    NSArray *sectionTitles = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"Simon's", nil),NSLocalizedString(@"Living room", nil),NSLocalizedString(@"Bedroom", nil),NSLocalizedString(@"Camera", nil),NSLocalizedString(@"Scene", nil)]];
+    NSArray *cardTypes = @[@(CardTypeFavorites),@(CardTypeZone),@(CardTypeZone),@(CardTypeDevices),@(CardTypeZone)];
+    
     NSArray *icons = @[@"灯",@"咖啡机",@"风扇",@"冰箱",@"灯"];
     NSArray *names = @[@"Lights",@"Coffee",@"Fan",@"Fridge",@"Lights1"];
     NSArray *titles = @[@"Color",@"Mode",@"Wind power",@"Temperature",@"Color"];
@@ -43,6 +44,7 @@
         for (NSInteger i = 0; i < 5; i++) {
             HomeSectionModel *sectionModel = [[HomeSectionModel alloc] init];
             sectionModel.sectionTitle = sectionTitles[i];
+            sectionModel.currentType = [cardTypes[i] unsignedIntegerValue];
             NSMutableArray *sectionArray = [[NSMutableArray alloc] init];
             for (NSInteger j = 0; j <5; j++) {
                 if (i == 4 ) {

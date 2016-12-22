@@ -17,6 +17,40 @@
 
 @implementation HomeSettingView
 
+- (void)setIsSelected:(BOOL)isSelected
+{
+    [self layoutIfNeeded];
+    _isSelected = isSelected;
+    if (_isSelected) {
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.frame = self.bounds;
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+        [path addLineToPoint:CGPointMake(0, 9)];
+        [path addLineToPoint:CGPointMake(20, 9)];
+        [path addLineToPoint:CGPointMake(30, 0)];
+        [path addLineToPoint:CGPointMake(40, 9)];
+        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, 9)];
+        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, maskLayer.frame.size.height)];
+        [path addLineToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+        [path closePath];
+        maskLayer.path = path.CGPath;
+        self.layer.mask = maskLayer;
+    } else {
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.frame = self.bounds;
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+        [path addLineToPoint:CGPointMake(0, 9)];
+        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, 9)];
+        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, maskLayer.frame.size.height)];
+        [path addLineToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+        [path closePath];
+        maskLayer.path = path.CGPath;
+        self.layer.mask = maskLayer;
+    }
+}
+
 - (NSMutableArray<UIView *> *)controls
 {
     if (!_controls) {
@@ -43,57 +77,43 @@
 
 - (void)setupUIwithModel:(HomeSettingModel *)model
 {
+    UIView *header = [[UIView alloc] init];
+    header.backgroundColor = [UIColor whiteColor];
+    [self addSubview:header];
+    [header makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self);
+        make.height.equalTo(9);
+    }];
     if (self.type == LayoutTypeNormal) {
         
-        UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [timerBtn setImage:[UIImage imageNamed:@"秒表"] forState:UIControlStateNormal];
-        [self addSubview:timerBtn];
-        [timerBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(10);
-            make.right.equalTo(-10);
-            make.width.equalTo(20);
-            make.height.equalTo(25);
+        UIView *topView = [[UIView alloc] init];
+        topView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:topView];
+        [topView makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).offset(9);
+            make.left.right.equalTo(self);
+            make.height.equalTo(self).multipliedBy(0.4).offset(-9*0.4);
+        }];
+        
+        UILabel *label = [[UILabel alloc] init];
+        label.text = model.homeComponentModels[0].name;
+        [label setTextColor:[UIColor colorWithHexString:@"#313131"]];
+        [topView addSubview:label];
+        [label makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(20);
+            make.centerY.equalTo(topView);
+            make.width.equalTo(topView).multipliedBy(0.5);
         }];
         
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.image = [UIImage imageNamed:model.homeComponentModels[0].icon];
-        [self addSubview:imageView];
+        [topView addSubview:imageView];
         [imageView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(40);
-            make.top.equalTo(self).offset(20);
+            make.right.equalTo(-40);
+            make.centerY.equalTo(label);
             make.width.equalTo(60);
             make.height.equalTo(60);
-        }];
-        
-        UILabel *label = [[UILabel alloc] init];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = model.homeComponentModels[0].name;
-        [label setTextColor:[UIColor colorWithHexString:@"#008ea2"]];
-        [self addSubview:label];
-        [label makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(imageView);
-            make.top.equalTo(imageView.bottom).offset(10);
-            make.width.equalTo(100);
-            make.height.equalTo(20);
-        }];
-        
-        NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
-        [self.controls addObject:switch1];
-        switch1.tintColor = [UIColor whiteColor];
-        if (model.homeComponentModels[0].on == YES) {
-            switch1.selectedSegmentIndex = 0;
-        } else if (model.homeComponentModels[0].on == NO) {
-            switch1.selectedSegmentIndex = 1;
-        }
-        [switch1 setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithHexString:@"#cacaca"] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
-        switch1.thumbColor = [UIColor colorWithHexString:@"#008ea2"];
-        [self addSubview:switch1];
-        [switch1 makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(@40);
-            make.right.equalTo(@(-40));
-            make.width.equalTo(@110);
-            make.height.equalTo(@50);
         }];
         
         self.sliderContainer = ({
@@ -102,7 +122,7 @@
             [self addSubview:sliderContainer];
             [sliderContainer makeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.bottom.equalTo(self);
-                make.height.equalTo(90);
+                make.height.equalTo(self).multipliedBy(0.6).offset(-9*0.6);
             }];
             
             sliderContainer;
@@ -113,8 +133,9 @@
         topView.backgroundColor = [UIColor whiteColor];
         [self addSubview:topView];
         [topView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.equalTo(self);
-            make.height.equalTo(self).multipliedBy(0.5);
+            make.top.equalTo(self).offset(9);
+            make.left.right.equalTo(self);
+            make.height.equalTo(self).multipliedBy(0.5).offset(-9*0.5);
         }];
         
         UIView *botView = [[UIView alloc] init];
@@ -122,14 +143,15 @@
         [self addSubview:botView];
         [botView makeConstraints:^(MASConstraintMaker *make) {
             make.left.bottom.right.equalTo(self);
-            make.height.equalTo(self).multipliedBy(0.5);
+            make.height.equalTo(self).multipliedBy(0.5).offset(-9*0.5);
         }];
         
         UIView *line = [[UIView alloc] init];
         line.backgroundColor = [UIColor colorWithHexString:@"#cacaca" alpha:0.4];
         [self addSubview:line];
         [line makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self);
+            make.centerY.equalTo(self).offset(4.5);
+            make.centerX.equalTo(self);
             make.width.equalTo(self);
             make.height.equalTo(1);
         }];
@@ -141,14 +163,15 @@
             } else if (i == 1) {
                 view = botView;
             }
-            UIButton *timerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [timerBtn setImage:[UIImage imageNamed:@"秒表"] forState:UIControlStateNormal];
-            [view addSubview:timerBtn];
-            [timerBtn makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(10);
-                make.right.equalTo(-10);
-                make.width.equalTo(20);
-                make.height.equalTo(25);
+            
+            UILabel *label = [[UILabel alloc] init];
+            label.text = model.homeComponentModels[i].name;
+            [label setTextColor:[UIColor colorWithHexString:@"#313131"]];
+            [view addSubview:label];
+            [label makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(20);
+                make.centerY.equalTo(view);
+                make.width.equalTo(view).multipliedBy(0.5);
             }];
             
             UIImageView *imageView = [[UIImageView alloc] init];
@@ -156,41 +179,13 @@
             imageView.image = [UIImage imageNamed:model.homeComponentModels[i].icon];
             [view addSubview:imageView];
             [imageView makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(40);
-                make.centerY.equalTo(view).offset(-10);
+                make.right.equalTo(-40);
+                make.centerY.equalTo(label);
                 make.width.equalTo(60);
                 make.height.equalTo(60);
             }];
             
-            UILabel *label = [[UILabel alloc] init];
-            label.textAlignment = NSTextAlignmentCenter;
-            label.text = model.homeComponentModels[i].name;
-            [label setTextColor:[UIColor colorWithHexString:@"#008ea2"]];
-            [view addSubview:label];
-            [label makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(imageView);
-                make.top.equalTo(imageView.bottom).offset(10);
-                make.width.equalTo(100);
-                make.height.equalTo(20);
-            }];
             
-            NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
-            [self.controls addObject:switch1];
-            switch1.tintColor = [UIColor whiteColor];
-            if (model.homeComponentModels[i].on == YES) {
-                switch1.selectedSegmentIndex = 0;
-            } else if (model.homeComponentModels[i].on == NO) {
-                switch1.selectedSegmentIndex = 1;
-            }
-            [switch1 setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithHexString:@"#cacaca"] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
-            switch1.thumbColor = [UIColor colorWithHexString:@"#008ea2"];
-            [view addSubview:switch1];
-            [switch1 makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(view);
-                make.right.equalTo(@(-40));
-                make.width.equalTo(@110);
-                make.height.equalTo(@50);
-            }];
         }
     } else if (self.type == LayoutTypeTV) {
         UIImageView *imageView = [[UIImageView alloc] init];
@@ -215,24 +210,6 @@
             make.width.equalTo(100);
             make.height.equalTo(20);
         }];
-        
-        NXTSegmentedControl *switch1 = [[NXTSegmentedControl alloc] initWithItems:@[@"ON",@"OFF"]];
-        [self.controls addObject:switch1];
-        switch1.tintColor = [UIColor whiteColor];
-        if (model.homeComponentModels[0].on == YES) {
-            switch1.selectedSegmentIndex = 0;
-        } else if (model.homeComponentModels[0].on == NO) {
-            switch1.selectedSegmentIndex = 1;
-        }
-        [switch1 setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithHexString:@"#cacaca"] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
-        switch1.thumbColor = [UIColor colorWithHexString:@"#008ea2"];
-        [self addSubview:switch1];
-        [switch1 makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(@40);
-            make.right.equalTo(@(-40));
-            make.width.equalTo(@110);
-            make.height.equalTo(@50);
-        }];
 
     } else if (self.type == LayoutTypeVideo) {
         VideoPlayerView *player = [[VideoPlayerView alloc] initWithURL:model.url];
@@ -254,7 +231,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
     if (self.type == LayoutTypeNormal) {
         if (self.sliderContainer.subviews.count != 0) {
             return;
@@ -265,9 +241,9 @@
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:CGPointMake(0, maskLayer.frame.size.height)];
         [path addLineToPoint:CGPointMake(0, 5)];
-        [path addLineToPoint:CGPointMake(70, 5)];
-        [path addLineToPoint:CGPointMake(75, 0)];
-        [path addLineToPoint:CGPointMake(80, 5)];
+        [path addLineToPoint:CGPointMake(30, 5)];
+        [path addLineToPoint:CGPointMake(35, 0)];
+        [path addLineToPoint:CGPointMake(40, 5)];
         [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, 5)];
         [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, maskLayer.frame.size.height)];
         [path addLineToPoint:CGPointMake(0, maskLayer.frame.size.height)];
@@ -276,15 +252,15 @@
         self.sliderContainer.layer.mask = maskLayer;
         
         UILabel *option = [[UILabel alloc] init];
+        [option setFont:[UIFont systemFontOfSize:15]];
         option.text = self.homeSettingModel.optionSliderModels[0].title;
         option.textAlignment = NSTextAlignmentCenter;
         [option setTextColor:[UIColor lightGrayColor]];
-        [self addSubview:option];
+        [self.sliderContainer addSubview:option];
         [option makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self).offset(75 - self.frame.size.width / 2);
-            make.bottom.equalTo(self.sliderContainer.top);
-            make.width.equalTo(150);
-            make.height.equalTo(30);
+            make.left.equalTo(self.sliderContainer.left).offset(15);
+            make.top.equalTo(self.sliderContainer.top).offset(15);
+            make.height.equalTo(15);
         }];
         
         if ([self.homeSettingModel.optionSliderModels[0].title isEqualToString:@"Color"]) {
@@ -292,7 +268,7 @@
             [self.sliderContainer addSubview:slider];
             [slider makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(self.sliderContainer);
-                make.centerY.equalTo(self.sliderContainer).offset(5);
+                make.centerY.equalTo(self.sliderContainer).offset(25);
                 make.left.equalTo(30);
                 make.right.equalTo(-30);
             }];
@@ -309,7 +285,7 @@
             [self.sliderContainer addSubview:slider];
             [slider makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(self.sliderContainer);
-                make.centerY.equalTo(self.sliderContainer).offset(5);
+                make.centerY.equalTo(self.sliderContainer).offset(25);
                 make.left.equalTo(30);
                 make.right.equalTo(-30);
             }];
@@ -318,7 +294,7 @@
             NSArray *options = self.homeSettingModel.optionSliderModels[0].options;
             for (NSInteger i = 0; i< options.count; i++) {
                 UILabel *label = [[UILabel alloc] init];
-                label.font = [UIFont systemFontOfSize:13];
+                label.font = [UIFont systemFontOfSize:10];
                 label.text = options[i];
                 label.textColor = [UIColor colorWithHexString:@"#008ea2"];
                 label.textAlignment = NSTextAlignmentCenter;
@@ -332,6 +308,7 @@
             }];
         }
     }
+    self.isSelected = NO;
 }
 
 @end

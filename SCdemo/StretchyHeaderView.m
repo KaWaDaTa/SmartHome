@@ -23,8 +23,10 @@
                 self.info.image = [UIImage imageNamed:@"disarmed"];
                 self.infoLabel.text = NSLocalizedString(@"Disarmed", nil);
                 [self.leftBtn setImage:[UIImage imageNamed:@"stay-小"] forState:UIControlStateNormal];
+                self.leftBtn.tag = ArmStyleStay;
                 self.leftLabel.text = NSLocalizedString(@"Stay", nil);
                 [self.rightBtn setImage:[UIImage imageNamed:@"away-小"] forState:UIControlStateNormal];
+                self.rightBtn.tag = ArmStyleAway;
                 self.rightLabel.text = NSLocalizedString(@"Away", nil);
                 self.contentView.backgroundColor = [UIColor colorWithHexString:@"#00c8e3"];
                 break;
@@ -32,8 +34,10 @@
                 self.info.image = [UIImage imageNamed:@"stay"];
                 self.infoLabel.text = NSLocalizedString(@"Stay", nil);
                 [self.leftBtn setImage:[UIImage imageNamed:@"away-小"] forState:UIControlStateNormal];
+                self.leftBtn.tag = ArmStyleAway;
                 self.leftLabel.text = NSLocalizedString(@"Away", nil);
                 [self.rightBtn setImage:[UIImage imageNamed:@"disarmed-xiao"] forState:UIControlStateNormal];
+                self.rightBtn.tag = ArmStyleDisarmed;
                 self.rightLabel.text = NSLocalizedString(@"Disarmed", nil);
                 self.contentView.backgroundColor = [UIColor colorWithHexString:@"#ffc658"];
                 break;
@@ -41,14 +45,33 @@
                 self.infoLabel.text = NSLocalizedString(@"Away", nil);
                 self.info.image = [UIImage imageNamed:@"away"];
                 [self.leftBtn setImage:[UIImage imageNamed:@"stay-小"] forState:UIControlStateNormal];
+                self.leftBtn.tag = ArmStyleStay;
                 self.leftLabel.text = NSLocalizedString(@"Stay", nil);
                 [self.rightBtn setImage:[UIImage imageNamed:@"disarmed-xiao"] forState:UIControlStateNormal];
+                self.rightBtn.tag = ArmStyleDisarmed;
                 self.rightLabel.text = NSLocalizedString(@"Disarmed", nil);
                 self.contentView.backgroundColor = [UIColor colorWithHexString:@"#ff5a60"];
                 break;
             default:
                 break;
         }
+    }
+}
+
+- (void)setHideLeftRight:(BOOL)hideLeftRight
+{
+    _hideLeftRight = hideLeftRight;
+    if (_hideLeftRight) {
+        _leftBtn.hidden = YES;
+        _leftLabel.hidden = YES;
+        _rightBtn.hidden = YES;
+        _rightLabel.hidden = YES;
+        
+    } else {
+        _leftBtn.hidden = NO;
+        _leftLabel.hidden = NO;
+        _rightBtn.hidden = NO;
+        _rightLabel.hidden = NO;
     }
 }
 
@@ -63,7 +86,7 @@
         
         // You can change the minimum and maximum content heights
         self.minimumContentHeight = 64; // you can replace the navigation bar with a stretchy header view
-        self.maximumContentHeight = 436;
+        self.maximumContentHeight = 336;
         
         // You can specify if the content expands when the table view bounces, and if it shrinks if contentView.height < maximumContentHeight. This is specially convenient if you use auto layout inside the stretchy header view
         self.contentShrinks = NO;
@@ -80,30 +103,11 @@
 
 - (void)updateUI
 {
+    self.hideLeftRight = YES;
     self.contentView.backgroundColor = [UIColor colorWithHexString:@"#00c8e3"];
     [self.contentView makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
     }];
-    
-//    UILabel *timeLabel = [[UILabel alloc] init];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy.MM.dd"];
-//    NSString *dateNowStr = [dateFormatter stringFromDate:[NSDate date]];
-//    timeLabel.text = dateNowStr;
-//    [self.contentView addSubview:timeLabel];
-//    [timeLabel makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.contentView);
-//    }];
-    UIButton *voice = [UIButton buttonWithType:UIButtonTypeCustom];
-    [voice setImage:[UIImage imageNamed:@"语音"] forState:UIControlStateNormal];
-    voice.backgroundColor = [UIColor lightTextColor];
-    [self.contentView addSubview:voice];
-    [voice makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@40);
-        make.left.equalTo(@10);
-        make.top.equalTo(@22);
-    }];
-    voice.layer.cornerRadius = 20;
     
     UILabel *userLabel = [[UILabel alloc] init];
     userLabel.text = [NSString stringWithFormat:@"Hi , %@",[RCIM sharedRCIM].currentUserInfo.name];
@@ -112,12 +116,11 @@
     userLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
     [self.contentView addSubview:userLabel];
     [userLabel makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(@95);
-        make.left.equalTo(@15);
-        make.height.equalTo(@48);
+        make.top.equalTo(64);
+        make.left.equalTo(20);
+        make.height.equalTo(@40);
         make.width.equalTo(@300);
     }];
-    userLabel.preferredMaxLayoutWidth = 300;
     
     _info = [[UIImageView alloc] init];
     _info.userInteractionEnabled = YES;
@@ -125,7 +128,7 @@
     [self.contentView addSubview:_info];
     [_info makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.contentView).centerOffset(CGPointMake(0, 10));
-        make.width.height.equalTo(@115);
+        make.width.height.equalTo(@100);
     }];
     _info.layer.cornerRadius = 57.5;
     
@@ -138,7 +141,7 @@
         [label makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView);
             make.width.equalTo(_info);
-            make.top.equalTo(_info.bottom).offset(20);
+            make.top.equalTo(_info.bottom).offset(22.5);
             make.height.equalTo(30);
         }];
         
@@ -159,20 +162,23 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_info addGestureRecognizer:tapGesture];
     
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [_info addGestureRecognizer:panGesture];
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//    [_info addGestureRecognizer:panGesture];
     
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_leftBtn addTarget:self action:@selector(leftRightClick:) forControlEvents:UIControlEventTouchUpInside];
     [_leftBtn setImage:[UIImage imageNamed:@"stay-小"] forState:UIControlStateNormal];
     _leftBtn.backgroundColor = [UIColor colorWithHexString:@"#ffc658"];
     [self.contentView addSubview:_leftBtn];
     [_leftBtn makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@70);
-        make.top.equalTo(_info.bottom);
-        make.left.equalTo(@39);
+        make.top.equalTo(_info.bottom).offset(-30);
+        make.left.equalTo(@50);
     }];
     _leftBtn.layer.cornerRadius = 35;
     _leftBtn.layer.masksToBounds = YES;
+    _leftBtn.hidden = YES;
+    _leftBtn.tag = ArmStyleStay;
     
     self.leftLabel = ({
         UILabel *label = [[UILabel alloc] init];
@@ -186,21 +192,25 @@
             make.top.equalTo(self.leftBtn.bottom).offset(5);
             make.height.equalTo(30);
         }];
+        label.hidden = YES;
         
         label;
     });
     
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_rightBtn addTarget:self action:@selector(leftRightClick:) forControlEvents:UIControlEventTouchUpInside];
     [_rightBtn setImage:[UIImage imageNamed:@"away-小"] forState:UIControlStateNormal];
     _rightBtn.backgroundColor = [UIColor colorWithHexString:@"#ff5a60"];
     [self.contentView addSubview:_rightBtn];
     [_rightBtn makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@70);
-        make.top.equalTo(_info.bottom);
-        make.right.equalTo(@(-39));
+        make.top.equalTo(_info.bottom).offset(-30);
+        make.right.equalTo(@(-50));
     }];
     _rightBtn.layer.cornerRadius = 35;
     _rightBtn.layer.masksToBounds = YES;
+    _rightBtn.hidden = YES;
+    _rightBtn.tag = ArmStyleAway;
     
     self.rightLabel = ({
         UILabel *label = [[UILabel alloc] init];
@@ -215,6 +225,7 @@
             make.top.equalTo(self.rightBtn.bottom).offset(5);
             make.height.equalTo(30);
         }];
+        label.hidden = YES;
         
         label;
     });
@@ -223,11 +234,18 @@
     self.currentArmStyle = ArmStyleDisarmed;
 }
 
+- (void)leftRightClick:(UIButton *)sender
+{
+    self.currentArmStyle = sender.tag;
+    self.hideLeftRight = YES;
+}
+
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSecurity)]) {
-        [self.delegate tapSecurity];
-    }
+    self.hideLeftRight = !self.hideLeftRight;
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSecurity)]) {
+//        [self.delegate tapSecurity];
+//    }
 }
 
 CGFloat distanceBetweenPoint(CGPoint point0,CGPoint point1)

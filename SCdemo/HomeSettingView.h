@@ -11,6 +11,7 @@
 
 @interface HomeSettingView : UIView
 
+@property (nonatomic, assign) BOOL isSelected;
 @property (nonatomic, assign) LayoutType type;
 @property (nonatomic, strong) UIView *sliderContainer;
 @property (nonatomic, strong) NSMutableArray<UIView *> *controls;
