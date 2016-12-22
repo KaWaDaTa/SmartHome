@@ -128,6 +128,65 @@
             sliderContainer;
         });
 
+		UILabel *option = [[UILabel alloc] init];
+		[option setFont:[UIFont systemFontOfSize:15]];
+		option.text = self.homeSettingModel.optionSliderModels[0].title;
+		option.textAlignment = NSTextAlignmentCenter;
+		[option setTextColor:[UIColor lightGrayColor]];
+		[self.sliderContainer addSubview:option];
+		[option makeConstraints:^(MASConstraintMaker *make) {
+			make.left.equalTo(self.sliderContainer.left).offset(15);
+			make.top.equalTo(self.sliderContainer.top).offset(15);
+			make.height.equalTo(15);
+		}];
+		
+		if ([self.homeSettingModel.optionSliderModels[0].title isEqualToString:@"Color"]) {
+			GradientSlider *slider = [[GradientSlider alloc] init];
+			self.slider = slider;
+			[self.sliderContainer addSubview:slider];
+			[slider makeConstraints:^(MASConstraintMaker *make) {
+				make.centerX.equalTo(self.sliderContainer);
+				make.centerY.equalTo(self.sliderContainer).offset(25);
+				make.left.equalTo(30);
+				make.right.equalTo(-30);
+			}];
+		} else {
+			NSMutableArray *numbers = [[NSMutableArray alloc] init];
+			for (NSInteger i = 0 ; i < self.homeSettingModel.optionSliderModels[0].options.count; i++) {
+				NSNumber *number = [NSNumber numberWithInteger:i];
+				[numbers addObject:number];
+			}
+			
+			SegSlider *slider = [[SegSlider alloc] initWithNumbers:numbers];
+			self.slider = slider;
+			slider.maximumTrackTintColor = [UIColor whiteColor];
+			slider.minimumTrackTintColor = [UIColor whiteColor];
+			[self.sliderContainer addSubview:slider];
+			[slider makeConstraints:^(MASConstraintMaker *make) {
+				make.centerX.equalTo(self.sliderContainer);
+				make.centerY.equalTo(self.sliderContainer).offset(25);
+				make.left.equalTo(30);
+				make.right.equalTo(-30);
+			}];
+			
+			NSMutableArray *optionViews = [[NSMutableArray alloc] init];
+			NSArray *options = self.homeSettingModel.optionSliderModels[0].options;
+			for (NSInteger i = 0; i< options.count; i++) {
+				UILabel *label = [[UILabel alloc] init];
+				label.font = [UIFont systemFontOfSize:10];
+				label.text = options[i];
+				label.textColor = [UIColor colorWithHexString:@"#008ea2"];
+				label.textAlignment = NSTextAlignmentCenter;
+				[self.sliderContainer addSubview:label];
+				[optionViews addObject:label];
+			}
+			[optionViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5 leadSpacing:10 tailSpacing:10];
+			[optionViews makeConstraints:^(MASConstraintMaker *make) {
+				make.bottom.equalTo(slider.top);
+				make.height.equalTo(20);
+			}];
+		}
+		
     } else if (self.type == LayoutTypeDouble) {
         UIView *topView = [[UIView alloc] init];
         topView.backgroundColor = [UIColor whiteColor];
@@ -137,7 +196,7 @@
             make.left.right.equalTo(self);
             make.height.equalTo(self).multipliedBy(0.5).offset(-9*0.5);
         }];
-        
+		
         UIView *botView = [[UIView alloc] init];
         botView.backgroundColor = [UIColor whiteColor];
         [self addSubview:botView];
@@ -232,81 +291,23 @@
 {
     [super layoutSubviews];
     if (self.type == LayoutTypeNormal) {
-        if (self.sliderContainer.subviews.count != 0) {
-            return;
-        }
-        
-        CAShapeLayer *maskLayer = [CAShapeLayer layer];
-        maskLayer.frame = self.sliderContainer.bounds;
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(0, maskLayer.frame.size.height)];
-        [path addLineToPoint:CGPointMake(0, 5)];
-        [path addLineToPoint:CGPointMake(30, 5)];
-        [path addLineToPoint:CGPointMake(35, 0)];
-        [path addLineToPoint:CGPointMake(40, 5)];
-        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, 5)];
-        [path addLineToPoint:CGPointMake(maskLayer.frame.size.width, maskLayer.frame.size.height)];
-        [path addLineToPoint:CGPointMake(0, maskLayer.frame.size.height)];
-        [path closePath];
-        maskLayer.path = path.CGPath;
-        self.sliderContainer.layer.mask = maskLayer;
-        
-        UILabel *option = [[UILabel alloc] init];
-        [option setFont:[UIFont systemFontOfSize:15]];
-        option.text = self.homeSettingModel.optionSliderModels[0].title;
-        option.textAlignment = NSTextAlignmentCenter;
-        [option setTextColor:[UIColor lightGrayColor]];
-        [self.sliderContainer addSubview:option];
-        [option makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.sliderContainer.left).offset(15);
-            make.top.equalTo(self.sliderContainer.top).offset(15);
-            make.height.equalTo(15);
-        }];
-        
-        if ([self.homeSettingModel.optionSliderModels[0].title isEqualToString:@"Color"]) {
-            GradientSlider *slider = [[GradientSlider alloc] init];
-            [self.sliderContainer addSubview:slider];
-            [slider makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(self.sliderContainer);
-                make.centerY.equalTo(self.sliderContainer).offset(25);
-                make.left.equalTo(30);
-                make.right.equalTo(-30);
-            }];
-        } else {
-            NSMutableArray *numbers = [[NSMutableArray alloc] init];
-            for (NSInteger i = 0 ; i < self.homeSettingModel.optionSliderModels[0].options.count; i++) {
-                NSNumber *number = [NSNumber numberWithInteger:i];
-                [numbers addObject:number];
-            }
-            
-            SegSlider *slider = [[SegSlider alloc] initWithNumbers:numbers];
-            slider.maximumTrackTintColor = [UIColor whiteColor];
-            slider.minimumTrackTintColor = [UIColor whiteColor];
-            [self.sliderContainer addSubview:slider];
-            [slider makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(self.sliderContainer);
-                make.centerY.equalTo(self.sliderContainer).offset(25);
-                make.left.equalTo(30);
-                make.right.equalTo(-30);
-            }];
-            
-            NSMutableArray *optionViews = [[NSMutableArray alloc] init];
-            NSArray *options = self.homeSettingModel.optionSliderModels[0].options;
-            for (NSInteger i = 0; i< options.count; i++) {
-                UILabel *label = [[UILabel alloc] init];
-                label.font = [UIFont systemFontOfSize:10];
-                label.text = options[i];
-                label.textColor = [UIColor colorWithHexString:@"#008ea2"];
-                label.textAlignment = NSTextAlignmentCenter;
-                [self.sliderContainer addSubview:label];
-                [optionViews addObject:label];
-            }
-            [optionViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:5 leadSpacing:10 tailSpacing:10];
-            [optionViews makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(slider.top);
-                make.height.equalTo(20);
-            }];
-        }
+		if (!self.sliderContainer.layer.mask) {
+			CAShapeLayer *maskLayer = [CAShapeLayer layer];
+			maskLayer.frame = self.sliderContainer.bounds;
+			UIBezierPath *path = [UIBezierPath bezierPath];
+			[path moveToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+			[path addLineToPoint:CGPointMake(0, 5)];
+			[path addLineToPoint:CGPointMake(30, 5)];
+			[path addLineToPoint:CGPointMake(35, 0)];
+			[path addLineToPoint:CGPointMake(40, 5)];
+			[path addLineToPoint:CGPointMake(maskLayer.frame.size.width, 5)];
+			[path addLineToPoint:CGPointMake(maskLayer.frame.size.width, maskLayer.frame.size.height)];
+			[path addLineToPoint:CGPointMake(0, maskLayer.frame.size.height)];
+			[path closePath];
+			maskLayer.path = path.CGPath;
+			self.sliderContainer.layer.mask = maskLayer;
+
+		}
     }
     self.isSelected = NO;
 }

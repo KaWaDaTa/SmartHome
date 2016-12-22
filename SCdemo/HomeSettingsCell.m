@@ -105,9 +105,9 @@
                 lastView = add;
             }
             
-//            if (view.sliderContainer) {
-//                [self.scroll.ignoreSlideViews addObject:view.sliderContainer];
-//            }
+            if (view.sliderContainer) {
+                [self.scroll.ignoreSlideViews addObject:view.slider];
+            }
         }
         
         [contentView makeConstraints:^(MASConstraintMaker *make) {
