@@ -219,6 +219,11 @@
 		17C073D91E0BAA7500E57EDE /* 送风.gif in Resources */ = {isa = PBXBuildFile; fileRef = 17C073CB1E0BAA7500E57EDE /* 送风.gif */; };
 		17C073DC1E0BD5D600E57EDE /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C073DA1E0BD5D600E57EDE /* 返回.png */; };
 		17C073DD1E0BD5D600E57EDE /* 添加卡片.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C073DB1E0BD5D600E57EDE /* 添加卡片.png */; };
+		17C560E71E0CAD960098EF90 /* HomeSettingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C560E61E0CAD960098EF90 /* HomeSettingContainerView.m */; };
+		17C560EA1E0CBDE40098EF90 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C560E91E0CBDE40098EF90 /* NSArray+Sudoku.m */; };
+		17C560ED1E0CC1ED0098EF90 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C560EC1E0CC1ED0098EF90 /* PasswordView.m */; };
+		17C560F01E0CEF1B0098EF90 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C560EF1E0CEF1B0098EF90 /* UIImage+ColorImage.m */; };
+		17C560F61E0D0DFA0098EF90 /* HomeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C560F51E0D0DFA0098EF90 /* HomeFooterView.m */; };
 		17CEB3211DF541B100DE65FC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB3201DF541B100DE65FC /* LoginViewController.m */; };
 		17CEB3241DF5453B00DE65FC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB3231DF5453B00DE65FC /* RegisterViewController.m */; };
 		17CEB33D1DF55A0600DE65FC /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB33C1DF55A0600DE65FC /* LoginTextField.m */; };
@@ -489,6 +494,16 @@
 		17C073CB1E0BAA7500E57EDE /* 送风.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "送风.gif"; sourceTree = "<group>"; };
 		17C073DA1E0BD5D600E57EDE /* 返回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回.png"; sourceTree = "<group>"; };
 		17C073DB1E0BD5D600E57EDE /* 添加卡片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加卡片.png"; sourceTree = "<group>"; };
+		17C560E51E0CAD960098EF90 /* HomeSettingContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSettingContainerView.h; sourceTree = "<group>"; };
+		17C560E61E0CAD960098EF90 /* HomeSettingContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSettingContainerView.m; sourceTree = "<group>"; };
+		17C560E81E0CBDE40098EF90 /* NSArray+Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sudoku.h"; sourceTree = "<group>"; };
+		17C560E91E0CBDE40098EF90 /* NSArray+Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sudoku.m"; sourceTree = "<group>"; };
+		17C560EB1E0CC1ED0098EF90 /* PasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
+		17C560EC1E0CC1ED0098EF90 /* PasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
+		17C560EE1E0CEF1B0098EF90 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		17C560EF1E0CEF1B0098EF90 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
+		17C560F41E0D0DFA0098EF90 /* HomeFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFooterView.h; sourceTree = "<group>"; };
+		17C560F51E0D0DFA0098EF90 /* HomeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFooterView.m; sourceTree = "<group>"; };
 		17CEB31F1DF541B100DE65FC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		17CEB3201DF541B100DE65FC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		17CEB3221DF5453B00DE65FC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -876,6 +891,12 @@
 			children = (
 				172B91281DCAD33C00B39B57 /* UIColor+Hex.h */,
 				172B91291DCAD33C00B39B57 /* UIColor+Hex.m */,
+				17C560EE1E0CEF1B0098EF90 /* UIImage+ColorImage.h */,
+				17C560EF1E0CEF1B0098EF90 /* UIImage+ColorImage.m */,
+				17C560E81E0CBDE40098EF90 /* NSArray+Sudoku.h */,
+				17C560E91E0CBDE40098EF90 /* NSArray+Sudoku.m */,
+				17C560EB1E0CC1ED0098EF90 /* PasswordView.h */,
+				17C560EC1E0CC1ED0098EF90 /* PasswordView.m */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -916,6 +937,10 @@
 				17DBA0401DC33C2F00FB05F2 /* HomeSettingsCell.m */,
 				17C073B41E0B67E900E57EDE /* HomeHeaderView.h */,
 				17C073B51E0B67E900E57EDE /* HomeHeaderView.m */,
+				17C560F41E0D0DFA0098EF90 /* HomeFooterView.h */,
+				17C560F51E0D0DFA0098EF90 /* HomeFooterView.m */,
+				17C560E51E0CAD960098EF90 /* HomeSettingContainerView.h */,
+				17C560E61E0CAD960098EF90 /* HomeSettingContainerView.m */,
 				1751A5631DFA474A00B26A3E /* HomeSettingView.h */,
 				1751A5641DFA474A00B26A3E /* HomeSettingView.m */,
 				1792B26E1DC72C59004EB935 /* VideoPlayerView.h */,
@@ -1422,6 +1447,7 @@
 				17033DE71DC32AA400AA1848 /* ViewController.m in Sources */,
 				17CEB3451DF56C4500DE65FC /* UserInfoDataSource.m in Sources */,
 				1750B1C91DF94BF300FAC1B3 /* ScanView.m in Sources */,
+				17C560ED1E0CC1ED0098EF90 /* PasswordView.m in Sources */,
 				17DBA0411DC33C2F00FB05F2 /* HomeSettingsCell.m in Sources */,
 				17FCCD441E01148D006BA06B /* HeaderView.m in Sources */,
 				17F71A961DF7EC290062046A /* MomentsViewController.m in Sources */,
@@ -1434,9 +1460,12 @@
 				170FD0961E0787330031A3ED /* ZoneViewController.m in Sources */,
 				17FCCD4E1E013049006BA06B /* AddDeviceViewController.m in Sources */,
 				1720E3D01DF797CF00533D86 /* SegSlider.m in Sources */,
+				17C560F61E0D0DFA0098EF90 /* HomeFooterView.m in Sources */,
 				17CEB33D1DF55A0600DE65FC /* LoginTextField.m in Sources */,
+				17C560EA1E0CBDE40098EF90 /* NSArray+Sudoku.m in Sources */,
 				1750B1C01DF9028F00FAC1B3 /* WelcomeViewController.m in Sources */,
 				172B912A1DCAD33C00B39B57 /* UIColor+Hex.m in Sources */,
+				17C560E71E0CAD960098EF90 /* HomeSettingContainerView.m in Sources */,
 				17033DE41DC32AA400AA1848 /* AppDelegate.m in Sources */,
 				172B912D1DCB0FF900B39B57 /* GradientSlider.m in Sources */,
 				1706F2C61DFF7F6C0029AE7C /* SecuritySettingViewController.m in Sources */,
@@ -1464,6 +1493,7 @@
 				170FD1551E07ADFF0031A3ED /* ScrollViewContainer.m in Sources */,
 				1751A5651DFA474A00B26A3E /* HomeSettingView.m in Sources */,
 				17F71A751DF7AFBC0062046A /* QRCodeViewController.m in Sources */,
+				17C560F01E0CEF1B0098EF90 /* UIImage+ColorImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,7 +1615,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da791c3a-6806-47a6-8278-e23903d96562";
+				PROVISIONING_PROFILE = "557b7d7a-ac41-4287-a10c-092c5205f28e";
 				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Debug;
@@ -1604,7 +1634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da791c3a-6806-47a6-8278-e23903d96562";
+				PROVISIONING_PROFILE = "557b7d7a-ac41-4287-a10c-092c5205f28e";
 				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Release;

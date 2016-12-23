@@ -280,11 +280,6 @@
     
     
     self.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-    //set shadow
-    self.layer.shadowOffset = CGSizeMake(0, 0);
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = 0.2;
-    self.layer.shadowRadius = 3;
 }
 
 - (void)layoutSubviews

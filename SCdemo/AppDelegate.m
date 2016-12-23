@@ -20,28 +20,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic;
+    dic = @{
+            //                    @"token" : responseDic[@"Msg"],
+            @"token" : @"dafdasdfasdf",
+            @"username" : @"1",
+            @"password" : @"1"};
+    [defaults setObject:dic forKey:@"user"];
+    [defaults synchronize];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#008ea2"]} forState:UIControlStateSelected];
+    
     [self RCIMsetting];
     
     [self registerRemoteNotification];
-    
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    [UINavigationBar appearance].clipsToBounds = YES;
-    
-//    ViewController *vc = [[ViewController alloc] init];
-//    vc.tabBarItem.title = @"Home";
-//    
-//    ChatListViewController *chatVC1 = [[ChatListViewController alloc] init];
-//    chatVC1.tabBarItem.title = @"Chat1";
-//    chatVC1.view.backgroundColor = [UIColor whiteColor];
-//    ChatListViewController *chatVC2 = [[ChatListViewController alloc] init];
-//    chatVC2.tabBarItem.title = @"Chat2";
-//    chatVC2.view.backgroundColor = [UIColor blueColor];
-//    ChatListViewController *chatVC3 = [[ChatListViewController alloc] init];
-//    chatVC3.tabBarItem.title = @"Chat3";
-//    chatVC3.view.backgroundColor = [UIColor cyanColor];
-//    
-//    UITabBarController *tabVC = [[UITabBarController alloc] init];
-//    tabVC.viewControllers = @[vc,chatVC1,chatVC2,chatVC3];
     
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:loginVC];

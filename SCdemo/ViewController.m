@@ -16,12 +16,17 @@
 #import "HomeDataSourceManager.h"
 #import "ZoneViewController.h"
 #import "HomeHeaderView.h"
+#import "HomeFooterView.h"
 
 @interface ViewController ()<GSKStretchyHeaderViewStretchDelegate,StretchyHeaderDelegate,UITableViewDelegate,UITableViewDataSource,VideoPlayDelegate>
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) StretchyHeaderView *stretchyHeader;
 @property (nonatomic, strong) NSMutableArray<HomeSectionModel *> *dataSource;
+@property (nonatomic, copy) NSArray *zoneArr;
+@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, copy) NSString *in_alarm;
+@property (nonatomic, copy) NSString *alarm_level;
 
 @end
 
@@ -45,9 +50,39 @@
     return _dataSource;
 }
 
+//- (void)setIn_alarm:(NSString *)in_alarm
+//{
+//    if (_in_alarm != in_alarm) {
+//        _in_alarm = [in_alarm copy];
+//        if ([_in_alarm isEqualToString:@"00"]) {
+//            _in_alarm_label.text = NSLocalizedString(@"not in alarming", nil);
+//        } else if ([_in_alarm isEqualToString:@"01"]) {
+//            _in_alarm_label.text = NSLocalizedString(@"in alarming", nil);
+//        }
+//    }
+//}
+
+- (void)setAlarm_level:(NSString *)alarm_level
+{
+    if (_alarm_level != alarm_level) {
+        _alarm_level = [alarm_level copy];
+        if ([_alarm_level isEqualToString:@"01"]) {
+            [self.stretchyHeader setCurrentArmStyle:ArmStyleDisarmed];
+        } else if ([_alarm_level isEqualToString:@"02"]) {
+            [self.stretchyHeader setCurrentArmStyle:ArmStyleStay];
+        } else if ([_alarm_level isEqualToString:@"04"]) {
+            [self.stretchyHeader setCurrentArmStyle:ArmStyleAway];
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    _timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(requestInfo) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     _table = [[UITableView alloc] initWithFrame:CGRectNull style:UITableViewStyleGrouped];
@@ -77,12 +112,110 @@
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
     [self.table reloadData];
+    [_timer setFireDate:[NSDate distantPast]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_timer setFireDate:[NSDate distantFuture]];
 }
 
 - (void)tapSecurity
 {
-    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:@[@"1",@"00",@"01",@"2",@"01",@"00"]];
+//    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:@[@"1",@"00",@"01",@"2",@"01",@"00"]];
+    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)tapSetArm:(UIButton *)sender
+{
+    if ((sender.tag == ArmStyleStay && [_alarm_level isEqualToString:@"04"]) || (sender.tag == ArmStyleAway && [_alarm_level isEqualToString:@"02"])) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(@"you have to disarm first", nil);
+        [hud hideAnimated:YES afterDelay:1];
+        return;
+    }
+    sender.enabled = NO;
+    NSString *url = @"";
+    switch (sender.tag) {
+        case ArmStyleStay:
+            url = @"http://120.77.13.77:8080/AppInterface/appStayGateway";
+            break;
+        case ArmStyleAway:
+            url = @"http://120.77.13.77:8080/AppInterface/appAwayGateway";
+            break;
+        case ArmStyleDisarmed:
+            url = @"http://120.77.13.77:8080/AppInterface/appDisarmGateway";
+            break;
+        default:
+            break;
+    }
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *username = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"username"];
+    NSString *token = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"];
+    NSDictionary *paras = @{@"gatewayId" : username,
+                            @"access_token" : token};
+    [manager POST:url parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        sender.enabled = YES;
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        NSLog(@"alarm response:%@",responseDic);
+        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = responseDic[@"Msg"];
+            [hud hideAnimated:YES afterDelay:1];
+        } else {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"Fail", nil);
+            hud.detailsLabel.text = responseDic[@"Msg"];
+            [hud hideAnimated:YES afterDelay:1];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        sender.enabled = YES;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(@"Fail", nil);
+        [hud hideAnimated:YES afterDelay:1];
+    }];
+}
+
+- (void)requestInfo
+{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *username = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"username"];
+    NSString *token = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"];
+    NSDictionary *paras = @{@"gatewayId" : username,
+                            @"access_token" : token};
+    [manager POST:@"http://120.77.13.77:8080/AppInterface/appGetPanelInfo" parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        NSLog(@"%@",responseDic);
+        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
+            NSString *panel = responseDic[@"Panel"];
+            NSArray *panelArr = [panel componentsSeparatedByString:@","];
+            NSString *pre_inAlarm = panelArr[0];
+            self.in_alarm = panelArr[1];
+            self.alarm_level = panelArr[2];
+            
+            NSString *zone = responseDic[@"Zone"];
+            zone = [zone substringToIndex:zone.length - 1];
+            _zoneArr = [zone componentsSeparatedByString:@","];
+        } else {
+            NSString *errorStr = responseDic[@"Msg"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)stretchyHeaderView:(GSKStretchyHeaderView *)headerView didChangeStretchFactor:(CGFloat)stretchFactor
@@ -97,18 +230,7 @@
     CGFloat factor = stretchFactor / 1;
     info.alpha = factor;
     if (factor == 0) {
-//        info.layer.cornerRadius = 0;
-//        info.alpha = 1;
-//        [info remakeConstraints:^(MASConstraintMaker *make) {
-//            make.height.equalTo(@25);
-//            make.width.equalTo(@100);
-//            make.top.equalTo(headerView.contentView).offset(25);
-//            make.right.equalTo(headerView.contentView).offset(-10);
-//        }];
-        //        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"user" style:UIBarButtonItemStylePlain target:self action:@selector(clickRightBarButtonItem:)];
-        //        self.navigationItem.rightBarButtonItem = item;
     } else {
-        //        self.navigationItem.rightBarButtonItem = nil;
         info.alpha = factor;
         infoLabel.alpha = factor;
         leftBtn.alpha = factor;
@@ -116,22 +238,12 @@
         rightBtn.alpha = factor;
         rightLabel.alpha = factor;
         
-//        info.layer.cornerRadius = 57.5;
-//        [info remakeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(headerView.contentView).centerOffset(CGPointMake(0, 35.5));
-//            make.width.height.equalTo(@115);
-//        }];
     }
     if (factor < 0.95) {
         info.userInteractionEnabled = NO;
     } else {
         info.userInteractionEnabled = YES;
     }
-}
-
-- (void)clickRightBarButtonItem:(UIBarButtonItem *)sender
-{
-    
 }
 
 - (void)doubleTapWithVideoPlayView:(VideoPlayerView *)videoPlayView andSuperView:(UIView *)superView
@@ -208,35 +320,10 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (section == 2) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 95.5 + 44)];
-        view.backgroundColor = [UIColor clearColor];
-        UIView *redView = [[UIView alloc] init];
-        redView.backgroundColor = [UIColor colorWithHexString:@"#ff5a60"];
-        [view addSubview:redView];
-        [redView makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.right.equalTo(view);
-            make.height.equalTo(95.5);
-        }];
-        
-        UILabel *label = [[UILabel alloc] init];
-        label.font = [UIFont systemFontOfSize:18];
-        label.text = NSLocalizedString(@"Remember to go out security!", nil);
-        label.textColor = [UIColor colorWithHexString:@"#ffffff"];
-        [redView addSubview:label];
-        [label makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(40);
-            make.centerY.equalTo(redView);
-        }];
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setImage:[UIImage imageNamed:@"away"] forState:UIControlStateNormal];
-        [redView addSubview:btn];
-        [btn makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.equalTo(72.5);
-            make.right.equalTo(-14);
-            make.centerY.equalTo(redView);
-        }];
-        
+        HomeFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HomeFooterId"];
+        if (!view) {
+            view = [[HomeFooterView alloc] initWithReuseIdentifier:@"HomeFooterId"];
+        }
         return view;
     }
     return nil;

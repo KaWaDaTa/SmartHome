@@ -24,6 +24,19 @@
     self.navigationController.navigationBar.hidden = YES;
     
     [self setupUI];
+    [self checkUserInfo];
+}
+
+- (void)checkUserInfo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic = [defaults dictionaryForKey:@"user"];
+    if (dic) {
+        _userNameField.text = dic[@"username"];
+        if (dic[@"password"]) {
+            _passwordField.text = dic[@"password"];
+        }
+    }
 }
 
 - (void)setupUI
@@ -202,24 +215,68 @@
 
 - (void)loginClick:(UIButton *)sender
 {
-//    ViewController *vc = [[ViewController alloc] init];
-//    vc.tabBarItem.title = @"Home";
-//    
-//    ChatListViewController *chatVC1 = [[ChatListViewController alloc] init];
-//    chatVC1.tabBarItem.title = @"Chat1";
-//    chatVC1.view.backgroundColor = [UIColor whiteColor];
-//    ChatListViewController *chatVC2 = [[ChatListViewController alloc] init];
-//    chatVC2.tabBarItem.title = @"Chat2";
-//    chatVC2.view.backgroundColor = [UIColor blueColor];
-//    ChatListViewController *chatVC3 = [[ChatListViewController alloc] init];
-//    chatVC3.tabBarItem.title = @"Chat3";
-//    chatVC3.view.backgroundColor = [UIColor cyanColor];
-//    
-//    UITabBarController *tabVC = [[UITabBarController alloc] init];
-//    tabVC.viewControllers = @[vc,chatVC1,chatVC2,chatVC3];
-//    
-//    [self.navigationController pushViewController:tabVC animated:YES];
+    [self login433];
     [self RCIMregister];
+}
+
+- (void)login433
+{
+    if ([_userNameField.text isEqualToString:@""]) {
+        [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:NSLocalizedString(@"The username is empty!", nil)];
+        return;
+    }
+    if ([_passwordField.text isEqualToString:@""]) {
+        [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:NSLocalizedString(@"The password is empty!", nil)];
+        return;
+    }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSDictionary *paras = @{@"userName" : _userNameField.text , @"password" : _passwordField.text};
+    [manager POST:@"http://120.77.13.77:8080/AppInterface/appLogin" parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [hud performSelectorOnMainThread:@selector(hide:) withObject:nil waitUntilDone:NO];
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        NSLog(@"%@",responseDic);
+        if ([(NSNumber *)responseDic[@"Result"] intValue] == 1) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *dic;
+            dic = @{
+//                    @"token" : responseDic[@"Msg"],
+                    @"token" : @"dafdasdfasdf",
+                    @"username" : _userNameField.text,
+                    @"password" : _passwordField.text};
+            [defaults setObject:dic forKey:@"user"];
+            [defaults synchronize];
+        } else {
+            [hud performSelectorOnMainThread:@selector(hide:) withObject:nil waitUntilDone:NO];
+            [self showAlertWithTitle:NSLocalizedString(@"Fail to log in", nil) msg:responseDic[@"Msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *dic;
+        dic = @{
+                //                    @"token" : responseDic[@"Msg"],
+                @"token" : @"dafdasdfasdf",
+                @"username" : @"1",
+                @"password" : @"1"};
+        [defaults setObject:dic forKey:@"user"];
+        [defaults synchronize];
+        [hud performSelectorOnMainThread:@selector(hide:) withObject:nil waitUntilDone:NO];
+        [self showAlertWithTitle:NSLocalizedString(@"Fail to log in", nil) msg:nil];
+    }];
+}
+
+- (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg
+{
+    return;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)forgetPasswordClick:(UIButton *)sender

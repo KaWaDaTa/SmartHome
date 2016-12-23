@@ -17,5 +17,6 @@ pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'YBPopupMenu'
 pod 'TBActionSheet'
+pod 'MarqueeLabel'
 
 end

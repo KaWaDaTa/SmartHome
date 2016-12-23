@@ -9,7 +9,7 @@
 #import "HomeSettingsCell.h"
 #import "VideoPlayerView.h"
 #import "GradientSlider.h"
-#import "HomeSettingView.h"
+#import "HomeSettingContainerView.h"
 
 
 @interface HomeSettingsCell ()
@@ -54,7 +54,7 @@
         CGFloat width = 258;
         
         for (int i = 0; i < models.count; i++) {
-            HomeSettingView *view = [HomeSettingView homeSettingViewWithModel:models[i]];
+            HomeSettingContainerView *view = [HomeSettingContainerView homeSettingContainerViewWithModel:models[i]];
             [contentView addSubview:view];
             
             if (i == 0) {
@@ -105,8 +105,8 @@
                 lastView = add;
             }
             
-            if (view.sliderContainer) {
-                [self.scroll.ignoreSlideViews addObject:view.slider];
+            if (view.homeSettingView.sliderContainer) {
+                [self.scroll.ignoreSlideViews addObject:view.homeSettingView.slider];
             }
         }
         
@@ -139,7 +139,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [(HomeSettingView *)self.scroll.contentView.subviews[0] setIsSelected:YES];
+    [((HomeSettingContainerView *)self.scroll.contentView.subviews[0]).homeSettingView setIsSelected:YES];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -153,11 +153,11 @@
     }
     for (NSInteger i = 0; i < self.scroll.contentView.subviews.count; i++) {
         UIView *view = self.scroll.contentView.subviews[i];
-        if ([view isKindOfClass:[HomeSettingView class]]) {
+        if ([view isKindOfClass:[HomeSettingContainerView class]]) {
             if (i == currentPage) {
-                [(HomeSettingView *)view setIsSelected:YES];
+                [((HomeSettingContainerView *)view).homeSettingView setIsSelected:YES];
             } else {
-                [(HomeSettingView *)view setIsSelected:NO];
+                [((HomeSettingContainerView *)view).homeSettingView setIsSelected:NO];
             }
         }
     }

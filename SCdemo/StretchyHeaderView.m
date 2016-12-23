@@ -7,6 +7,7 @@
 //
 
 #import "StretchyHeaderView.h"
+#import "PasswordView.h"
 
 @implementation StretchyHeaderView
 {
@@ -55,6 +56,7 @@
             default:
                 break;
         }
+        self.hideLeftRight = YES;
     }
 }
 
@@ -162,6 +164,9 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [_info addGestureRecognizer:tapGesture];
     
+    UITapGestureRecognizer *securityGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSecurity:)];
+    [self.contentView addGestureRecognizer:securityGesture];
+    
 //    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 //    [_info addGestureRecognizer:panGesture];
     
@@ -236,16 +241,38 @@
 
 - (void)leftRightClick:(UIButton *)sender
 {
-    self.currentArmStyle = sender.tag;
-    self.hideLeftRight = YES;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSetArm:)]) {
+        [self.delegate tapSetArm:sender];
+    }
+    UIColor *color;
+    switch (sender.tag) {
+        case ArmStyleDisarmed:
+            color = [UIColor colorWithHexString:@"#00c8e3"];
+            break;
+        case ArmStyleStay:
+            color = [UIColor colorWithHexString:@"#ffc658"];
+            break;
+        case ArmStyleAway:
+            color = [UIColor colorWithHexString:@"#ff5a60"];
+            break;
+        default:
+            break;
+    }
+//    [PasswordView showWithColor:color];
+//    self.currentArmStyle = sender.tag;
+//    self.hideLeftRight = YES;
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
     self.hideLeftRight = !self.hideLeftRight;
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSecurity)]) {
-//        [self.delegate tapSecurity];
-//    }
+}
+
+- (void)tapSecurity:(UITapGestureRecognizer *)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSecurity)]) {
+        [self.delegate tapSecurity];
+    }
 }
 
 CGFloat distanceBetweenPoint(CGPoint point0,CGPoint point1)

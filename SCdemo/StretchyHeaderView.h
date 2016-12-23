@@ -11,13 +11,14 @@
 @protocol  StretchyHeaderDelegate <NSObject>
 
 - (void)tapSecurity;
+- (void)tapSetArm:(UIButton *)sender;
 
 @end
 
 typedef NS_ENUM(NSUInteger, ArmStyle) {
-    ArmStyleDisarmed = 100,
-    ArmStyleStay,
+    ArmStyleStay = 100,
     ArmStyleAway,
+    ArmStyleDisarmed,
 };
 
 @interface StretchyHeaderView : GSKStretchyHeaderView

@@ -24,6 +24,7 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <TBActionSheet.h>
 #import <TBAlertController.h>
+#import "UIImage+ColorImage.h"
 
 #define kAPPKEY @"3argexb6re1ee"
 #define kAPPSECRET @"HErPzY3sQVgbAl"
