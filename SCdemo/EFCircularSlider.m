@@ -101,12 +101,20 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     //Draw the unfilled circle
-    CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 0, M_PI *2, 0);
-    [_unfilledColor setStroke];
-    CGContextSetLineWidth(ctx, _lineWidth);
-    CGContextSetLineCap(ctx, kCGLineCapButt);
-    CGContextDrawPath(ctx, kCGPathStroke);
-    
+//    CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 0, M_PI *2, 0);
+//    [_unfilledColor setStroke];
+//    CGContextSetLineWidth(ctx, _lineWidth);
+//    CGContextSetLineCap(ctx, kCGLineCapButt);
+//    CGContextDrawPath(ctx, kCGPathStroke);
+	
+	CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 0, M_PI *2, 0);
+	CGContextSetFillColorWithColor(ctx, [UIColor colorWithHexString:@"#e0e0e0"].CGColor);
+	CGContextFillPath(ctx);
+	
+	CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 0, M_PI *2, 0);
+	CGContextSetStrokeColorWithColor(ctx, _unfilledColor.CGColor);
+	CGContextSetLineWidth(ctx, _lineWidth);
+	CGContextStrokePath(ctx);
     
     //Draw the filled circle
     if((_handleType == EFDoubleCircleWithClosedCenter || _handleType == EFDoubleCircleWithOpenCenter) && fixedAngle > 5) {

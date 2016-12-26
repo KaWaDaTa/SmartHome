@@ -26,7 +26,7 @@
 {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
         UIView *redView = [[UIView alloc] init];
         redView.backgroundColor = [UIColor colorWithHexString:@"#ff5a60"];
         [self addSubview:redView];
