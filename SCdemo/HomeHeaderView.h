@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HomeSectionModel.h"
 
-@interface HomeHeaderView : UITableViewHeaderFooterView
+@interface HomeHeaderView : UITableViewHeaderFooterView<UITextFieldDelegate>
 
 @property (nonatomic, strong) HomeSectionModel *model;
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UILabel *typeLabel;
 @property (nonatomic, strong) UIButton *timer;
 

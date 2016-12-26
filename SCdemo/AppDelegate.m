@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "UserInfoDataSource.h"
+#import <IQKeyboardManager.h>
 
 @interface AppDelegate ()<RCIMConnectionStatusDelegate,RCIMReceiveMessageDelegate>
 
@@ -19,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic;
@@ -26,11 +29,13 @@
             //                    @"token" : responseDic[@"Msg"],
             @"token" : @"dafdasdfasdf",
             @"username" : @"1",
-            @"password" : @"1"};
+            @"password" : @"1"
+            };
     [defaults setObject:dic forKey:@"user"];
     [defaults synchronize];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#008ea2"]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -4)];
     
     [self RCIMsetting];
     

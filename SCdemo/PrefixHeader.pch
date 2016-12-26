@@ -25,6 +25,7 @@
 #import <TBActionSheet.h>
 #import <TBAlertController.h>
 #import "UIImage+ColorImage.h"
+#import "UIView+RoundedCorners.h"
 
 #define kAPPKEY @"3argexb6re1ee"
 #define kAPPSECRET @"HErPzY3sQVgbAl"

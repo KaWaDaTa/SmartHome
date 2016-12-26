@@ -77,6 +77,7 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "RongCloudIM/RongCloudIM/RongCloud.bundle"
   install_resource "RongCloudIM/RongCloudIM/en.lproj"
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"
@@ -84,6 +85,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "RongCloudIM/RongCloudIM/RCConfig.plist"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "RongCloudIM/RongCloudIM/RongCloud.bundle"
   install_resource "RongCloudIM/RongCloudIM/en.lproj"
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"

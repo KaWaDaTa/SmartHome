@@ -10,6 +10,7 @@
 #import "SegSlider.h"
 #import "GradientSlider.h"
 #import "VideoPlayerView.h"
+#import "ThermostatView.h"
 
 @interface HomeSettingView ()
 @property (nonatomic, strong) HomeSettingModel *homeSettingModel;
@@ -274,6 +275,12 @@
         VideoPlayerView *player = [[VideoPlayerView alloc] initWithURL:model.url];
         [self addSubview:player];
         [player makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+    } else if (self.type == LayoutTypeThermostat) {
+        ThermostatView *view = [[ThermostatView alloc] init];
+        [self addSubview:view];
+        [view makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
     }

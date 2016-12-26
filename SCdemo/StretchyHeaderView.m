@@ -132,7 +132,7 @@
         make.center.equalTo(self.contentView).centerOffset(CGPointMake(0, 10));
         make.width.height.equalTo(@100);
     }];
-    _info.layer.cornerRadius = 57.5;
+    _info.layer.cornerRadius = 50;
     
     self.infoLabel = ({
         UILabel *label = [[UILabel alloc] init];
@@ -167,8 +167,8 @@
     UITapGestureRecognizer *securityGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSecurity:)];
     [self.contentView addGestureRecognizer:securityGesture];
     
-//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-//    [_info addGestureRecognizer:panGesture];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [_info addGestureRecognizer:panGesture];
     
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_leftBtn addTarget:self action:@selector(leftRightClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -282,6 +282,9 @@ CGFloat distanceBetweenPoint(CGPoint point0,CGPoint point1)
 
 - (void)handlePan:(UIPanGestureRecognizer *)sender
 {
+    if (self.hideLeftRight) {
+        return;
+    }
     if (_checkPoint) {
         _startPoint = sender.view.center;
         _checkPoint = NO;
@@ -291,22 +294,24 @@ CGFloat distanceBetweenPoint(CGPoint point0,CGPoint point1)
     if (sender.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.25 animations:^{
             sender.view.center = _startPoint;
-            if (distanceBetweenPoint(point, self.leftBtn.center) < 92.5) {
-                if (self.currentArmStyle == ArmStyleDisarmed) {
-                    self.currentArmStyle = ArmStyleStay;
-                } else if (self.currentArmStyle == ArmStyleStay) {
-                    self.currentArmStyle = ArmStyleAway;
-                } else if (self.currentArmStyle == ArmStyleAway) {
-                    self.currentArmStyle = ArmStyleStay;
-                }
-            } else if (distanceBetweenPoint(point, self.rightBtn.center) < 92.5) {
-                if (self.currentArmStyle == ArmStyleDisarmed) {
-                    self.currentArmStyle = ArmStyleAway;
-                } else if (self.currentArmStyle == ArmStyleStay) {
-                    self.currentArmStyle = ArmStyleDisarmed;
-                } else if (self.currentArmStyle == ArmStyleAway) {
-                    self.currentArmStyle = ArmStyleDisarmed;
-                }
+            if (distanceBetweenPoint(point, self.leftBtn.center) < 85) {
+//                if (self.currentArmStyle == ArmStyleDisarmed) {
+//                    self.currentArmStyle = ArmStyleStay;
+//                } else if (self.currentArmStyle == ArmStyleStay) {
+//                    self.currentArmStyle = ArmStyleAway;
+//                } else if (self.currentArmStyle == ArmStyleAway) {
+//                    self.currentArmStyle = ArmStyleStay;
+//                }
+                [self leftRightClick:self.leftBtn];
+            } else if (distanceBetweenPoint(point, self.rightBtn.center) < 85) {
+//                if (self.currentArmStyle == ArmStyleDisarmed) {
+//                    self.currentArmStyle = ArmStyleAway;
+//                } else if (self.currentArmStyle == ArmStyleStay) {
+//                    self.currentArmStyle = ArmStyleDisarmed;
+//                } else if (self.currentArmStyle == ArmStyleAway) {
+//                    self.currentArmStyle = ArmStyleDisarmed;
+//                }
+                [self leftRightClick:self.rightBtn];
             }
         }];
     }

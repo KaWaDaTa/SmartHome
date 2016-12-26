@@ -15,16 +15,17 @@
 
 @implementation LoginViewController (RongCloud)
 
-- (void)RCIMregister
+- (void)RCIMregisterWithUserName:(NSString *)userName password:(NSString *)password
 {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     });
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     NSString *urlstr =@"http://api.cn.ronghub.com/user/getToken.json";
-    NSDictionary *dic =@{@"userId":self.userNameField.text,
-                         @"name": [NSString stringWithFormat:@"UserName_%@",self.userNameField.text],
+    NSDictionary *dic =@{@"userId":userName,
+                         @"name": [NSString stringWithFormat:@"UserName_%@",userName],
                          @"portraitUri": @"http://touxiang.qqzhi.com/uploads/2012-11/1111010813715.jpg"
                          };
     
@@ -44,7 +45,7 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self connectWithToken:[(NSDictionary *)responseObject objectForKey:@"token"]];
+        [weakSelf connectWithToken:[(NSDictionary *)responseObject objectForKey:@"token"] userName:userName password:password];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -52,33 +53,29 @@
     }];
 }
 
-- (void)connectWithToken:(NSString *)token
+- (void)connectWithToken:(NSString *)token userName:(NSString *)userName password:(NSString *)password
 {
     [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
-        [RCIM sharedRCIM].currentUserInfo = [[UserInfoDataSource sharedInstance] getUserInfoForUserId:self.userNameField.text];
-        NSLog(@"Login successfully,current ID:%@",userId);
+        [RCIM sharedRCIM].currentUserInfo = [[UserInfoDataSource sharedInstance] getUserInfoForUserId:userName];
+        NSLog(@"Log in successfully,current ID:%@",userId);
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             ViewController *vc = [[ViewController alloc] init];
             UINavigationController *homeNavc = [[UINavigationController alloc] initWithRootViewController:vc];
-            homeNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", nil) image:[[UIImage imageNamed:@"首页"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"首页-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//            [homeNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
+            homeNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", nil) image:[[UIImage imageNamed:@"首页"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"首页1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             
             ConversationListViewController *chatVC1 = [[ConversationListViewController alloc] init];
             UINavigationController *naVC1 = [[UINavigationController alloc] initWithRootViewController:chatVC1];
-            naVC1.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Chat", nil) image:[[UIImage imageNamed:@"消息"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"消息-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//            [naVC1.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
+            naVC1.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Chat", nil) image:[[UIImage imageNamed:@"消息"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"消息1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
             ContactViewController *contactVC = [[ContactViewController alloc] init];
             UINavigationController *contactNavc = [[UINavigationController alloc] initWithRootViewController:contactVC];
-            contactNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Contact", nil) image:[[UIImage imageNamed:@"通讯"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"通讯-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//            [contactNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
+            contactNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Contact", nil) image:[[UIImage imageNamed:@"通讯"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"通讯1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             
             MineViewController *mineVC = [[MineViewController alloc] init];
             UINavigationController *mineNavc = [[UINavigationController alloc] initWithRootViewController:mineVC];
-            mineNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil) image:[[UIImage imageNamed:@"我的"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的-1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//            [mineNavc.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
+            mineNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil) image:[[UIImage imageNamed:@"我的"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             
             UITabBarController *tabVC = [[UITabBarController alloc] init];
             tabVC.tabBar.backgroundColor = [UIColor whiteColor];
@@ -109,6 +106,14 @@
         [output appendFormat:@"%02x", digest[i]];
     
     return output;
+}
+
+- (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg
+{
+    return;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

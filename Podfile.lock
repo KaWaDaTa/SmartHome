@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - GSKStretchyHeaderView (0.12.2)
+  - IQKeyboardManager (4.0.7)
   - MarqueeLabel (3.0.1):
     - MarqueeLabel/ObjC (= 3.0.1)
   - MarqueeLabel/ObjC (3.0.1)
@@ -34,6 +35,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - GSKStretchyHeaderView
+  - IQKeyboardManager
   - MarqueeLabel
   - Masonry
   - MBProgressHUD
@@ -47,6 +49,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   GSKStretchyHeaderView: affdd9f3ae6d6f3cea31dccf604367c617d037ad
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   MarqueeLabel: 80ba85d2b76a9f5fa6c13de337db80bcd94feb1d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -57,6 +60,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
   YBPopupMenu: f081ab289c4c72483b940594e4976314157fc727
 
-PODFILE CHECKSUM: f9b7c9effad48f7eec6c034f0639ef2203a9f9fe
+PODFILE CHECKSUM: 696bc5726be5e1838747a402fdb8fa57f02bf345
 
 COCOAPODS: 1.2.0.beta.1

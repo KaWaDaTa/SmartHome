@@ -9,5 +9,6 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController (RongCloud)
-- (void)RCIMregister;
+- (void)RCIMregisterWithUserName:(NSString *)userName password:(NSString *)password;
+- (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg;
 @end

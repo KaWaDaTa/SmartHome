@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, CardType) {
 
 @interface HomeSectionModel : NSObject
 
+@property (nonatomic, assign) NSUInteger currentSection;
 @property (nonatomic, copy) NSString *sectionTitle;
 @property (nonatomic, assign) CardType currentType;
 @property (nonatomic, assign) BOOL isExpanded;

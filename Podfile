@@ -18,5 +18,6 @@ pod 'MBProgressHUD'
 pod 'YBPopupMenu'
 pod 'TBActionSheet'
 pod 'MarqueeLabel'
+pod 'IQKeyboardManager'
 
 end

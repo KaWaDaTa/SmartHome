@@ -199,8 +199,8 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDic = (NSDictionary *)responseObject;
-        NSLog(@"%@",responseDic);
         if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
+            NSLog(@"%@",responseDic);
             NSString *panel = responseDic[@"Panel"];
             NSArray *panelArr = [panel componentsSeparatedByString:@","];
             NSString *pre_inAlarm = panelArr[0];
@@ -309,6 +309,7 @@
         view = [[HomeHeaderView alloc] initWithReuseIdentifier:@"HomeHeaderId"];
     }
     view.model = self.dataSource[section];
+    view.model.currentSection = section;
     return view;
 }
 

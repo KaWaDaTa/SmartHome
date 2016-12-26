@@ -32,7 +32,7 @@
 
 - (void)setup
 {
-    NSArray *sectionTitles = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"Simon's", nil),NSLocalizedString(@"Living room", nil),NSLocalizedString(@"Bedroom", nil),NSLocalizedString(@"Camera", nil),NSLocalizedString(@"Scene", nil)]];
+    NSArray *sectionTitles = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"Simon's", nil),NSLocalizedString(@"Living room", nil),NSLocalizedString(@"Bedroom", nil),NSLocalizedString(@"Scene", nil),NSLocalizedString(@"Camera", nil)]];
     NSArray *cardTypes = @[@(CardTypeFavorites),@(CardTypeZone),@(CardTypeZone),@(CardTypeDevices),@(CardTypeZone)];
     
     NSArray *icons = @[@"灯",@"咖啡机",@"风扇",@"冰箱",@"灯"];
@@ -70,6 +70,10 @@
                     componentModel1.name = @"Socket";
                     
                     model.homeComponentModels = @[componentModel,componentModel1];
+                    [sectionArray addObject:model];
+                } else if (i == 2 && j == 0) {
+                    HomeSettingModel *model = [[HomeSettingModel alloc] init];
+                    model.type = LayoutTypeThermostat;
                     [sectionArray addObject:model];
                 } else {
                     HomeSettingModel *model = [[HomeSettingModel alloc] init];

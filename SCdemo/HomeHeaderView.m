@@ -7,7 +7,7 @@
 //
 
 #import "HomeHeaderView.h"
-
+#import "HomeDataSourceManager.h"
 
 @implementation HomeHeaderView
 
@@ -23,17 +23,19 @@
 {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        self.titleLabel = ({
-            UILabel *label = [[UILabel alloc] init];
-            [label setTextColor:[UIColor colorWithHexString:@"#3d3d3d"]];
-            [label setFont:[UIFont boldSystemFontOfSize:24]];
-            [self.contentView addSubview:label];
-            [label makeConstraints:^(MASConstraintMaker *make) {
+        self.titleField = ({
+            UITextField *field = [[UITextField alloc] init];
+            field.returnKeyType = UIReturnKeyDone;
+            field.delegate = self;
+            [field setTextColor:[UIColor colorWithHexString:@"#3d3d3d"]];
+            [field setFont:[UIFont boldSystemFontOfSize:24]];
+            [self.contentView addSubview:field];
+            [field makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(44);
                 make.left.equalTo(28);
             }];
             
-            label;
+            field;
         });
         
         self.typeLabel = ({
@@ -41,8 +43,8 @@
             [label setTextColor:[UIColor whiteColor]];
             [self.contentView addSubview:label];
             [label makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.titleLabel).offset(9);
-                make.top.equalTo(self.titleLabel.bottom).offset(4);
+                make.left.equalTo(self.titleField).offset(9);
+                make.top.equalTo(self.titleField.bottom).offset(4);
                 make.height.equalTo(12.5);
             }];
             
@@ -55,7 +57,7 @@
         labelBg.layer.masksToBounds = YES;
         [self.contentView addSubview:labelBg];
         [labelBg makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.titleLabel);
+            make.left.equalTo(self.titleField);
             make.top.equalTo(self.typeLabel).offset(-2.75);
             make.bottom.equalTo(self.typeLabel).offset(2.75);
             make.width.equalTo(self.typeLabel).offset(18);
@@ -83,7 +85,7 @@
     if (_model != model) {
         _model = model;
     }
-    self.titleLabel.text = model.sectionTitle;
+    self.titleField.text = model.sectionTitle;
     switch (model.currentType) {
         case CardTypeFavorites:
             self.typeLabel.text = NSLocalizedString(@"Favorites", nil);
@@ -99,9 +101,23 @@
     }
 }
 
-- (void)layoutSubviews
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    [super layoutSubviews];
+    if (range.location > 15) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [[HomeDataSourceManager sharedInstance].dataSource[self.model.currentSection] setSectionTitle:textField.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

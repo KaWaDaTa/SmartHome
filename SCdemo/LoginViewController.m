@@ -33,9 +33,9 @@
     NSDictionary *dic = [defaults dictionaryForKey:@"user"];
     if (dic) {
         _userNameField.text = dic[@"username"];
-        if (dic[@"password"]) {
-            _passwordField.text = dic[@"password"];
-        }
+//        if (dic[@"password"]) {
+//            _passwordField.text = dic[@"password"];
+//        }
     }
 }
 
@@ -169,7 +169,7 @@
     
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+    if ([[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
         UIButton *fingerprintBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [fingerprintBtn addTarget:self action:@selector(touchIDauthenticate) forControlEvents:UIControlEventTouchUpInside];
         [fingerprintBtn setBackgroundImage:[UIImage imageNamed:@"指纹"] forState:UIControlStateNormal];
@@ -215,25 +215,34 @@
 
 - (void)loginClick:(UIButton *)sender
 {
-    [self login433];
-    [self RCIMregister];
+    [self loginWithUserName:self.userNameField.text password:self.passwordField.text];
 }
 
-- (void)login433
+- (void)loginWithUserName:(NSString *)userName password:(NSString *)password
 {
-    if ([_userNameField.text isEqualToString:@""]) {
+    if (!userName || [userName isEqualToString:@""]) {
         [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:NSLocalizedString(@"The username is empty!", nil)];
         return;
     }
-    if ([_passwordField.text isEqualToString:@""]) {
+    if (!password || [password isEqualToString:@""]) {
         [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:NSLocalizedString(@"The password is empty!", nil)];
         return;
     }
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self login433WithUserName:userName password:password];
+    [self RCIMregisterWithUserName:userName password:password];
+}
+
+- (void)login433WithUserName:(NSString *)userName password:(NSString *)password
+{
+    __block MBProgressHUD *hud;
+    dispatch_async(dispatch_get_main_queue(), ^{
+         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    });
+    
     hud.mode = MBProgressHUDModeIndeterminate;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSDictionary *paras = @{@"userName" : _userNameField.text , @"password" : _passwordField.text};
+    NSDictionary *paras = @{@"userName" : userName , @"password" : password};
     [manager POST:@"http://120.77.13.77:8080/AppInterface/appLogin" parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -247,9 +256,9 @@
             NSDictionary *dic;
             dic = @{
 //                    @"token" : responseDic[@"Msg"],
-                    @"token" : @"dafdasdfasdf",
-                    @"username" : _userNameField.text,
-                    @"password" : _passwordField.text};
+                    @"token" : @"dafdasdfasdf",//fake
+                    @"username" : userName,
+                    @"password" : password};
             [defaults setObject:dic forKey:@"user"];
             [defaults synchronize];
         } else {
@@ -257,26 +266,9 @@
             [self showAlertWithTitle:NSLocalizedString(@"Fail to log in", nil) msg:responseDic[@"Msg"]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *dic;
-        dic = @{
-                //                    @"token" : responseDic[@"Msg"],
-                @"token" : @"dafdasdfasdf",
-                @"username" : @"1",
-                @"password" : @"1"};
-        [defaults setObject:dic forKey:@"user"];
-        [defaults synchronize];
         [hud performSelectorOnMainThread:@selector(hide:) withObject:nil waitUntilDone:NO];
         [self showAlertWithTitle:NSLocalizedString(@"Fail to log in", nil) msg:nil];
     }];
-}
-
-- (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg
-{
-    return;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)forgetPasswordClick:(UIButton *)sender
@@ -287,14 +279,15 @@
 
 - (void)touchIDauthenticate
 {
+    __weak typeof(self) weakSelf = self;
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"reason" reply:^(BOOL success, NSError * _Nullable error) {
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"verification" reply:^(BOOL success, NSError * _Nullable error) {
             if (success) {
-                NSLog(@"success");
+                [weakSelf loginWithUserName:[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"username"] password:[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"]];
             } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title" message:[NSString stringWithFormat:@"error:%@",error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"error:%@",error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                 [self.navigationController presentViewController:alert animated:YES completion:nil];
             }
