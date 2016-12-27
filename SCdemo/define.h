@@ -48,4 +48,5 @@ typedef NS_ENUM(NSUInteger, LayoutType) {
     LayoutTypeDouble,
     LayoutTypeVideo,
     LayoutTypeThermostat,
+    LayoutTypeScene,
 };

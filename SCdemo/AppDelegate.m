@@ -28,7 +28,7 @@
     dic = @{
             //                    @"token" : responseDic[@"Msg"],
             @"token" : @"dafdasdfasdf",
-            @"username" : @"1",
+            @"username" : @"88",
             @"password" : @"1"
             };
     [defaults setObject:dic forKey:@"user"];

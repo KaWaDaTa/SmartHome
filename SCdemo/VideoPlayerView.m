@@ -51,7 +51,9 @@
         self.video_url = URL;
         self.layer.backgroundColor = [UIColor blackColor].CGColor;
         [self setupBar];
-        [self configureLayer];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self configureLayer];
+        });
     }
     return self;
 }
@@ -71,7 +73,6 @@
     [self addObserverToPlayerItem:playerItem];
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
     [self addProgressObserver];
-    
 }
 
 - (void)configureLayer
@@ -221,6 +222,7 @@
         make.width.height.equalTo(@80);
     }];
     
+    return;
     _barView = [[UIView alloc] init];
     _barView.backgroundColor = [UIColor lightGrayColor];
     _barView.alpha = 0.5;

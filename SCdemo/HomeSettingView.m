@@ -11,6 +11,7 @@
 #import "GradientSlider.h"
 #import "VideoPlayerView.h"
 #import "ThermostatView.h"
+#import "SceneView.h"
 
 @interface HomeSettingView ()
 @property (nonatomic, strong) HomeSettingModel *homeSettingModel;
@@ -20,6 +21,9 @@
 
 - (void)setIsSelected:(BOOL)isSelected
 {
+    if (self.homeSettingModel.type == LayoutTypeScene) {
+        return;
+    }
     [self layoutIfNeeded];
     _isSelected = isSelected;
     if (_isSelected) {
@@ -151,7 +155,18 @@
 				make.left.equalTo(30);
 				make.right.equalTo(-30);
 			}];
-		} else {
+        } else if ([self.homeSettingModel.optionSliderModels[0].title isEqualToString:@"Up-down"]) {
+            UISlider *slider = [[UISlider alloc] init];
+            slider.minimumTrackTintColor = [UIColor whiteColor];
+            self.slider = slider;
+            [self.sliderContainer addSubview:slider];
+            [slider makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(self.sliderContainer);
+                make.centerY.equalTo(self.sliderContainer).offset(25);
+                make.left.equalTo(30);
+                make.right.equalTo(-30);
+            }];
+        } else {
 			NSMutableArray *numbers = [[NSMutableArray alloc] init];
 			for (NSInteger i = 0 ; i < self.homeSettingModel.optionSliderModels[0].options.count; i++) {
 				NSNumber *number = [NSNumber numberWithInteger:i];
@@ -279,6 +294,12 @@
         }];
     } else if (self.type == LayoutTypeThermostat) {
         ThermostatView *view = [[ThermostatView alloc] init];
+        [self addSubview:view];
+        [view makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+    } else if (self.type == LayoutTypeScene) {
+        SceneView *view = [[SceneView alloc] initWithHomeSettingModel:model];
         [self addSubview:view];
         [view makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);

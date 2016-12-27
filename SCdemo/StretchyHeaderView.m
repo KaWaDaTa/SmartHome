@@ -113,15 +113,12 @@
     
     UILabel *userLabel = [[UILabel alloc] init];
     userLabel.text = [NSString stringWithFormat:@"Hi , %@",[RCIM sharedRCIM].currentUserInfo.name];
-    userLabel.adjustsFontSizeToFitWidth = YES;
     userLabel.font = [UIFont systemFontOfSize:55];
     userLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
     [self.contentView addSubview:userLabel];
     [userLabel makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(64);
         make.left.equalTo(20);
-        make.height.equalTo(@40);
-        make.width.equalTo(@300);
     }];
     
     _info = [[UIImageView alloc] init];

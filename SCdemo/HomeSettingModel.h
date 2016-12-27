@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSArray<HomeComponentModel *> *homeComponentModels;
 @property (nonatomic, strong) NSArray<OptionSliderModel *> *optionSliderModels;
 @property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSString *imgName;
 
 - (instancetype)initWithTitle:(NSString *)title type:(LayoutType)type homeComponentModels:(NSArray<HomeComponentModel *> *)homeComponentModels optionSliderModels:(NSArray<OptionSliderModel *> *)optionSliderModels url:(NSURL *)url;
 

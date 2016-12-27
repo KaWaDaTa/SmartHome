@@ -27,7 +27,7 @@
         for (NSInteger i = 0; i < 100 ; i++) {
             RCUserInfo *user = [[RCUserInfo alloc] init];
             user.userId = [NSString stringWithFormat:@"%ld",(long)i];
-            user.name = [NSString stringWithFormat:@"Simon"];
+            user.name = [NSString stringWithFormat:@"%ld",i];
             user.portraitUri = @"http://touxiang.qqzhi.com/uploads/2012-11/1111010813715.jpg";
             [_userInfoList addObject:user];
         }

@@ -99,6 +99,9 @@
         default:
             break;
     }
+    if (model.models[0].type == LayoutTypeScene) {
+        self.timer.hidden = YES;
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

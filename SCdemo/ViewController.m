@@ -320,7 +320,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    if (section == 2) {
+    if (section == 3) {
         HomeFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HomeFooterId"];
         if (!view) {
             view = [[HomeFooterView alloc] initWithReuseIdentifier:@"HomeFooterId"];
@@ -332,7 +332,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 2) {
+    if (section == 3) {
         return 95.5 + 44;
     }
     return 0.000001f;
