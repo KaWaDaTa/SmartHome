@@ -110,7 +110,6 @@
 
 - (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg
 {
-    return;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];

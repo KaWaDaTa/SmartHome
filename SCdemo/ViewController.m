@@ -25,8 +25,10 @@
 @property (nonatomic, strong) NSMutableArray<HomeSectionModel *> *dataSource;
 @property (nonatomic, copy) NSArray *zoneArr;
 @property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, retain) NSTimer *onlineTimer;
 @property (nonatomic, copy) NSString *in_alarm;
 @property (nonatomic, copy) NSString *alarm_level;
+@property (nonatomic, copy) NSString *onlineState;
 
 @end
 
@@ -76,12 +78,29 @@
     }
 }
 
+- (void)setOnlineState:(NSString *)onlineState
+{
+    if (_onlineState != onlineState) {
+        _onlineState = [onlineState copy];
+        if ([_onlineState isEqualToString:@"online"]) {
+            self.stretchyHeader.userInteractionEnabled = YES;
+        } else {
+            self.stretchyHeader.userInteractionEnabled = NO;
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.onlineState = @"offline";
+    
     _timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(requestInfo) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    
+    _onlineTimer = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(checkPanelOnline) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_onlineTimer forMode:NSDefaultRunLoopMode];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
@@ -113,19 +132,22 @@
     self.tabBarController.tabBar.hidden = NO;
     [self.table reloadData];
     [_timer setFireDate:[NSDate distantPast]];
+    [_onlineTimer setFireDate:[NSDate distantPast]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [_timer setFireDate:[NSDate distantFuture]];
+    [_onlineTimer setFireDate:[NSDate distantFuture]];
 }
 
 - (void)tapSecurity
 {
-//    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:@[@"1",@"00",@"01",@"2",@"01",@"00"]];
-    ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.zoneArr) {
+        ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)tapSetArm:(UIButton *)sender
@@ -153,10 +175,12 @@
             break;
     }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *username = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"username"];
     NSString *token = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"];
-    NSDictionary *paras = @{@"gatewayId" : username,
-                            @"access_token" : token};
+    NSString *gatewayId = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"gatewayid"];
+    NSDictionary *paras = @{
+                            @"gatewayId" : gatewayId,
+                            @"access_token" : token
+                            };
     [manager POST:url parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -186,13 +210,47 @@
     }];
 }
 
-- (void)requestInfo
+- (void)checkPanelOnline
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *username = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"username"];
+    NSDictionary *paras = @{
+                            @"gatewayId" : [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"gatewayid"],
+                            @"access_token" : [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"]
+                            };
+    [manager GET:@"http://120.77.13.77:8080/AppInterface/appCheckPanelState" parameters:paras progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@",responseObject);
+        NSDictionary *responseDic = (NSDictionary *)responseObject;
+        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {
+            NSString *msg = responseDic[@"Msg"];
+            if ([msg isEqualToString:@"0"]) {
+                self.onlineState = @"offline";
+            } else if ([msg isEqualToString:@"1"]) {
+                self.onlineState = @"connecting";
+            } else if ([msg isEqualToString:@"2"]) {
+                self.onlineState = @"online";
+            }
+        } else {
+            self.onlineState = @"invalid";
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        self.onlineState = @"invalid";
+    }];
+}
+
+- (void)requestInfo
+{
+    if (![self.onlineState isEqualToString:@"online"]) {
+        return;
+    }
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *token = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"];
-    NSDictionary *paras = @{@"gatewayId" : username,
-                            @"access_token" : token};
+    NSString *gatewayId = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"gatewayid"];
+    NSDictionary *paras = @{
+                            @"gatewayId" : gatewayId,
+                            @"access_token" : token
+                            };
     [manager POST:@"http://120.77.13.77:8080/AppInterface/appGetPanelInfo" parameters:paras constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -200,21 +258,28 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
-            NSLog(@"%@",responseDic);
+//            NSLog(@"%@",responseDic);
             NSString *panel = responseDic[@"Panel"];
-            NSArray *panelArr = [panel componentsSeparatedByString:@","];
-            NSString *pre_inAlarm = panelArr[0];
-            self.in_alarm = panelArr[1];
-            self.alarm_level = panelArr[2];
+            if (panel && ![panel isEqualToString:@""]) {
+                NSArray *panelArr = [panel componentsSeparatedByString:@","];
+                NSString *pre_inAlarm = panelArr[0];
+                self.in_alarm = panelArr[1];
+                self.alarm_level = panelArr[2];
+            }
             
             NSString *zone = responseDic[@"Zone"];
-            zone = [zone substringToIndex:zone.length - 1];
-            _zoneArr = [zone componentsSeparatedByString:@","];
+            if (zone && ![zone isEqualToString:@""]) {
+                zone = [zone substringToIndex:zone.length - 1];
+                _zoneArr = [zone componentsSeparatedByString:@","];
+            } else {
+                _zoneArr = nil;
+            }
         } else {
             NSString *errorStr = responseDic[@"Msg"];
+            _zoneArr = nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        _zoneArr = nil;
     }];
 }
 
@@ -293,13 +358,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == 4) {
-//        return [tableView fd_heightForCellWithIdentifier:@"VideoCell" configuration:^(id cell) {
-//            
-//        }];
-//    } else {
-        return 200;
-//    }
+    if ([[HomeDataSourceManager sharedInstance].dataSource[indexPath.section].sectionTitle isEqualToString:NSLocalizedString(@"Scene", nil)]) {
+        return kSceneHeight;
+    }
+    return 200;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

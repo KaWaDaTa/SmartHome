@@ -13,6 +13,7 @@
 @interface RegisterViewController ()
 @property (nonatomic, strong) LoginTextField *userNameField;
 @property (nonatomic, strong) LoginTextField *passwordField;
+@property (nonatomic, strong) UITextField *verifyField;
 @property (nonatomic, strong) UIButton *createBtn;
 @end
 
@@ -90,15 +91,19 @@
         textField;
     });
     
-    UITextField *verifyField = [[UITextField alloc] init];
-    verifyField.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:verifyField];
-    [verifyField makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passwordField.bottom).offset(20);
-        make.left.equalTo(30);
-        make.width.equalTo(self.passwordField).offset(-150);
-        make.height.equalTo(45);
-    }];
+    self.verifyField = ({
+        UITextField *verifyField = [[UITextField alloc] init];
+        verifyField.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:verifyField];
+        [verifyField makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.passwordField.bottom).offset(20);
+            make.left.equalTo(30);
+            make.width.equalTo(self.passwordField).offset(-150);
+            make.height.equalTo(45);
+        }];
+    
+        verifyField;
+    });
     
     UIButton *verifyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     verifyButton.backgroundColor = [UIColor whiteColor];
@@ -117,10 +122,10 @@
     line.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:line];
     [line makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(verifyField.bottom).offset(-1);
+        make.top.equalTo(self.verifyField.bottom).offset(-1);
         make.left.equalTo(30);
         make.height.equalTo(1);
-        make.width.equalTo(verifyField).offset(22);
+        make.width.equalTo(self.verifyField).offset(22);
     }];
     
     self.createBtn = ({
@@ -163,8 +168,33 @@
 
 - (void)create:(UIButton *)sender
 {
-    WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
-    [self.navigationController pushViewController:welcomeVC animated:YES];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *paras = @{
+                            @"userName":self.userNameField.text,
+                            @"password":self.passwordField.text,
+                            @"gatewayId":self.verifyField.text
+                            };
+    [manager GET:@"http://120.77.13.77:8080/AppInterface/appRegister" parameters:paras progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        if ([(NSNumber *)dic[@"Result"] intValue] == 1) {
+            [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:dic[@"Msg"]];
+        } else {
+            [self showAlertWithTitle:NSLocalizedString(@"Message", nil) msg:dic[@"Msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showAlertWithTitle:@"Message" msg:@"Fail"];
+    }];
+//    WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];
+//    [self.navigationController pushViewController:welcomeVC animated:YES];
+}
+
+- (void)showAlertWithTitle:(NSString *)title msg:(NSString *)msg
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

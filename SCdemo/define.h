@@ -50,3 +50,7 @@ typedef NS_ENUM(NSUInteger, LayoutType) {
     LayoutTypeThermostat,
     LayoutTypeScene,
 };
+
+#define kSceneHeight 199
+#define kSceneWidth (177 + 14)
+#define kSceneContentWidth 177

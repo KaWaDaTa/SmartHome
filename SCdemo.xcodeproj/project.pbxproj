@@ -165,7 +165,6 @@
 		171385A81DF6AA9200CD4833 /* 冰箱.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713858C1DF6AA9200CD4833 /* 冰箱.png */; };
 		171385A91DF6AA9200CD4833 /* 咖啡机.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713858D1DF6AA9200CD4833 /* 咖啡机.png */; };
 		171385AA1DF6AA9200CD4833 /* 天气.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713858E1DF6AA9200CD4833 /* 天气.png */; };
-		171385AB1DF6AA9200CD4833 /* 按钮阴影.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1713858F1DF6AA9200CD4833 /* 按钮阴影.jpg */; };
 		171385AC1DF6AA9200CD4833 /* 插座.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385901DF6AA9200CD4833 /* 插座.png */; };
 		171385AD1DF6AA9200CD4833 /* 播放.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385911DF6AA9200CD4833 /* 播放.png */; };
 		171385AE1DF6AA9200CD4833 /* 灯.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385921DF6AA9200CD4833 /* 灯.png */; };
@@ -293,6 +292,33 @@
 		17CEB34C1DF56DB600DE65FC /* ConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB34B1DF56DB600DE65FC /* ConversationListViewController.m */; };
 		17CEB34F1DF56DF500DE65FC /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB34E1DF56DF500DE65FC /* ConversationViewController.m */; };
 		17CEB3521DF56F6700DE65FC /* LoginViewController+RongCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CEB3511DF56F6700DE65FC /* LoginViewController+RongCloud.m */; };
+		17D068641E1396DE0004E9A0 /* 管理英文.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17D068611E1396DE0004E9A0 /* 管理英文.jpg */; };
+		17D068651E1396DE0004E9A0 /* 远程连接英文.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17D068621E1396DE0004E9A0 /* 远程连接英文.jpg */; };
+		17D068661E1396DE0004E9A0 /* 连接网关英文.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17D068631E1396DE0004E9A0 /* 连接网关英文.jpg */; };
+		17D0687A1E139B700004E9A0 /* 卡片形式.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068681E139B700004E9A0 /* 卡片形式.png */; };
+		17D0687B1E139B700004E9A0 /* 卡片形式@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068691E139B700004E9A0 /* 卡片形式@2x.png */; };
+		17D0687C1E139B700004E9A0 /* 卡片形式@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686A1E139B700004E9A0 /* 卡片形式@3x.png */; };
+		17D0687D1E139B700004E9A0 /* 工具.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686B1E139B700004E9A0 /* 工具.png */; };
+		17D0687E1E139B700004E9A0 /* 工具@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686C1E139B700004E9A0 /* 工具@2x.png */; };
+		17D0687F1E139B700004E9A0 /* 工具@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686D1E139B700004E9A0 /* 工具@3x.png */; };
+		17D068801E139B700004E9A0 /* 帮助.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686E1E139B700004E9A0 /* 帮助.png */; };
+		17D068811E139B700004E9A0 /* 帮助@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D0686F1E139B700004E9A0 /* 帮助@2x.png */; };
+		17D068821E139B700004E9A0 /* 帮助@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068701E139B700004E9A0 /* 帮助@3x.png */; };
+		17D068831E139B700004E9A0 /* 资料.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068711E139B700004E9A0 /* 资料.png */; };
+		17D068841E139B700004E9A0 /* 资料@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068721E139B700004E9A0 /* 资料@2x.png */; };
+		17D068851E139B700004E9A0 /* 资料@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068731E139B700004E9A0 /* 资料@3x.png */; };
+		17D068861E139B700004E9A0 /* 远程连接.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068741E139B700004E9A0 /* 远程连接.png */; };
+		17D068871E139B700004E9A0 /* 远程连接@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068751E139B700004E9A0 /* 远程连接@2x.png */; };
+		17D068881E139B700004E9A0 /* 远程连接@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068761E139B700004E9A0 /* 远程连接@3x.png */; };
+		17D068891E139B700004E9A0 /* 连接网关.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068771E139B700004E9A0 /* 连接网关.png */; };
+		17D0688A1E139B700004E9A0 /* 连接网关@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068781E139B700004E9A0 /* 连接网关@2x.png */; };
+		17D0688B1E139B700004E9A0 /* 连接网关@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D068791E139B700004E9A0 /* 连接网关@3x.png */; };
+		17D0688E1E139D8F0004E9A0 /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0688D1E139D8F0004E9A0 /* MineTableViewCell.m */; };
+		17D068911E13A1A10004E9A0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D068901E13A1A10004E9A0 /* ProfileViewController.m */; };
+		17D068941E13A1BB0004E9A0 /* ConnectGateWayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D068931E13A1BB0004E9A0 /* ConnectGateWayViewController.m */; };
+		17D068971E13A1D00004E9A0 /* RemoteConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D068961E13A1D00004E9A0 /* RemoteConnectionViewController.m */; };
+		17D0689A1E13A2010004E9A0 /* ManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D068991E13A2010004E9A0 /* ManagementViewController.m */; };
+		17D0689D1E13A20E0004E9A0 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0689C1E13A20E0004E9A0 /* HelpViewController.m */; };
 		17DBA03E1DC3383100FB05F2 /* StretchyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DBA03D1DC3383100FB05F2 /* StretchyHeaderView.m */; };
 		17DBA0411DC33C2F00FB05F2 /* HomeSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DBA0401DC33C2F00FB05F2 /* HomeSettingsCell.m */; };
 		17F71A751DF7AFBC0062046A /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F71A741DF7AFBC0062046A /* QRCodeViewController.m */; };
@@ -302,6 +328,7 @@
 		17F71A931DF7EC190062046A /* GroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F71A921DF7EC190062046A /* GroupChatViewController.m */; };
 		17F71A961DF7EC290062046A /* MomentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F71A951DF7EC290062046A /* MomentsViewController.m */; };
 		17F71A9A1DF7EF6D0062046A /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F71A991DF7EF6D0062046A /* MineViewController.m */; };
+		17FCA8141E134424002567C2 /* SceneScorllViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FCA8131E134424002567C2 /* SceneScorllViewContainer.m */; };
 		17FCCD351E00D6ED006BA06B /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FCCD341E00D6ED006BA06B /* ContactViewController.m */; };
 		17FCCD3B1E00EB49006BA06B /* HomeDataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FCCD3A1E00EB49006BA06B /* HomeDataSourceManager.m */; };
 		17FCCD3E1E00EB72006BA06B /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FCCD3D1E00EB72006BA06B /* EditViewController.m */; };
@@ -485,7 +512,6 @@
 		1713858C1DF6AA9200CD4833 /* 冰箱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冰箱.png"; sourceTree = "<group>"; };
 		1713858D1DF6AA9200CD4833 /* 咖啡机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "咖啡机.png"; sourceTree = "<group>"; };
 		1713858E1DF6AA9200CD4833 /* 天气.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天气.png"; sourceTree = "<group>"; };
-		1713858F1DF6AA9200CD4833 /* 按钮阴影.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "按钮阴影.jpg"; sourceTree = "<group>"; };
 		171385901DF6AA9200CD4833 /* 插座.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "插座.png"; sourceTree = "<group>"; };
 		171385911DF6AA9200CD4833 /* 播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "播放.png"; sourceTree = "<group>"; };
 		171385921DF6AA9200CD4833 /* 灯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯.png"; sourceTree = "<group>"; };
@@ -647,6 +673,39 @@
 		17CEB3501DF56F6700DE65FC /* LoginViewController+RongCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoginViewController+RongCloud.h"; sourceTree = "<group>"; };
 		17CEB3511DF56F6700DE65FC /* LoginViewController+RongCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+RongCloud.m"; sourceTree = "<group>"; };
 		17CEB3531DF5708B00DE65FC /* SCdemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCdemo.entitlements; sourceTree = "<group>"; };
+		17D068611E1396DE0004E9A0 /* 管理英文.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "管理英文.jpg"; sourceTree = "<group>"; };
+		17D068621E1396DE0004E9A0 /* 远程连接英文.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "远程连接英文.jpg"; sourceTree = "<group>"; };
+		17D068631E1396DE0004E9A0 /* 连接网关英文.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "连接网关英文.jpg"; sourceTree = "<group>"; };
+		17D068681E139B700004E9A0 /* 卡片形式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卡片形式.png"; sourceTree = "<group>"; };
+		17D068691E139B700004E9A0 /* 卡片形式@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卡片形式@2x.png"; sourceTree = "<group>"; };
+		17D0686A1E139B700004E9A0 /* 卡片形式@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卡片形式@3x.png"; sourceTree = "<group>"; };
+		17D0686B1E139B700004E9A0 /* 工具.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "工具.png"; sourceTree = "<group>"; };
+		17D0686C1E139B700004E9A0 /* 工具@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "工具@2x.png"; sourceTree = "<group>"; };
+		17D0686D1E139B700004E9A0 /* 工具@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "工具@3x.png"; sourceTree = "<group>"; };
+		17D0686E1E139B700004E9A0 /* 帮助.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助.png"; sourceTree = "<group>"; };
+		17D0686F1E139B700004E9A0 /* 帮助@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助@2x.png"; sourceTree = "<group>"; };
+		17D068701E139B700004E9A0 /* 帮助@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助@3x.png"; sourceTree = "<group>"; };
+		17D068711E139B700004E9A0 /* 资料.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "资料.png"; sourceTree = "<group>"; };
+		17D068721E139B700004E9A0 /* 资料@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "资料@2x.png"; sourceTree = "<group>"; };
+		17D068731E139B700004E9A0 /* 资料@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "资料@3x.png"; sourceTree = "<group>"; };
+		17D068741E139B700004E9A0 /* 远程连接.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "远程连接.png"; sourceTree = "<group>"; };
+		17D068751E139B700004E9A0 /* 远程连接@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "远程连接@2x.png"; sourceTree = "<group>"; };
+		17D068761E139B700004E9A0 /* 远程连接@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "远程连接@3x.png"; sourceTree = "<group>"; };
+		17D068771E139B700004E9A0 /* 连接网关.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "连接网关.png"; sourceTree = "<group>"; };
+		17D068781E139B700004E9A0 /* 连接网关@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "连接网关@2x.png"; sourceTree = "<group>"; };
+		17D068791E139B700004E9A0 /* 连接网关@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "连接网关@3x.png"; sourceTree = "<group>"; };
+		17D0688C1E139D8F0004E9A0 /* MineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
+		17D0688D1E139D8F0004E9A0 /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
+		17D0688F1E13A1A10004E9A0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		17D068901E13A1A10004E9A0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		17D068921E13A1BB0004E9A0 /* ConnectGateWayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectGateWayViewController.h; sourceTree = "<group>"; };
+		17D068931E13A1BB0004E9A0 /* ConnectGateWayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectGateWayViewController.m; sourceTree = "<group>"; };
+		17D068951E13A1D00004E9A0 /* RemoteConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteConnectionViewController.h; sourceTree = "<group>"; };
+		17D068961E13A1D00004E9A0 /* RemoteConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteConnectionViewController.m; sourceTree = "<group>"; };
+		17D068981E13A2010004E9A0 /* ManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagementViewController.h; sourceTree = "<group>"; };
+		17D068991E13A2010004E9A0 /* ManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagementViewController.m; sourceTree = "<group>"; };
+		17D0689B1E13A20E0004E9A0 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		17D0689C1E13A20E0004E9A0 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		17DBA03C1DC3383100FB05F2 /* StretchyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchyHeaderView.h; sourceTree = "<group>"; };
 		17DBA03D1DC3383100FB05F2 /* StretchyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchyHeaderView.m; sourceTree = "<group>"; };
 		17DBA03F1DC33C2F00FB05F2 /* HomeSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSettingsCell.h; sourceTree = "<group>"; };
@@ -665,6 +724,8 @@
 		17F71A951DF7EC290062046A /* MomentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentsViewController.m; sourceTree = "<group>"; };
 		17F71A981DF7EF6D0062046A /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		17F71A991DF7EF6D0062046A /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		17FCA8121E134424002567C2 /* SceneScorllViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneScorllViewContainer.h; sourceTree = "<group>"; };
+		17FCA8131E134424002567C2 /* SceneScorllViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneScorllViewContainer.m; sourceTree = "<group>"; };
 		17FCCD331E00D6ED006BA06B /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		17FCCD341E00D6ED006BA06B /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		17FCCD391E00EB49006BA06B /* HomeDataSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDataSourceManager.h; sourceTree = "<group>"; };
@@ -981,7 +1042,6 @@
 				1713858C1DF6AA9200CD4833 /* 冰箱.png */,
 				1713858D1DF6AA9200CD4833 /* 咖啡机.png */,
 				1713858E1DF6AA9200CD4833 /* 天气.png */,
-				1713858F1DF6AA9200CD4833 /* 按钮阴影.jpg */,
 				171385901DF6AA9200CD4833 /* 插座.png */,
 				171385911DF6AA9200CD4833 /* 播放.png */,
 				171385921DF6AA9200CD4833 /* 灯.png */,
@@ -1048,6 +1108,8 @@
 				1706F2C91DFF94080029AE7C /* ScrollView.m */,
 				170FD1531E07ADFF0031A3ED /* ScrollViewContainer.h */,
 				170FD1541E07ADFF0031A3ED /* ScrollViewContainer.m */,
+				17FCA8121E134424002567C2 /* SceneScorllViewContainer.h */,
+				17FCA8131E134424002567C2 /* SceneScorllViewContainer.m */,
 				17DBA03C1DC3383100FB05F2 /* StretchyHeaderView.h */,
 				17DBA03D1DC3383100FB05F2 /* StretchyHeaderView.m */,
 				17DBA03F1DC33C2F00FB05F2 /* HomeSettingsCell.h */,
@@ -1210,6 +1272,8 @@
 		17CEB3251DF54C6100DE65FC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				17D068671E139B700004E9A0 /* mineIcons */,
+				17D068601E1396DE0004E9A0 /* fake */,
 				17AECEC81E125437003B1979 /* scene */,
 				17AECE7C1E12390F003B1979 /* 空调 */,
 				179FF2141E10FCDE00F6D880 /* 1x2x3x */,
@@ -1266,6 +1330,41 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		17D068601E1396DE0004E9A0 /* fake */ = {
+			isa = PBXGroup;
+			children = (
+				17D068611E1396DE0004E9A0 /* 管理英文.jpg */,
+				17D068621E1396DE0004E9A0 /* 远程连接英文.jpg */,
+				17D068631E1396DE0004E9A0 /* 连接网关英文.jpg */,
+			);
+			path = fake;
+			sourceTree = "<group>";
+		};
+		17D068671E139B700004E9A0 /* mineIcons */ = {
+			isa = PBXGroup;
+			children = (
+				17D068681E139B700004E9A0 /* 卡片形式.png */,
+				17D068691E139B700004E9A0 /* 卡片形式@2x.png */,
+				17D0686A1E139B700004E9A0 /* 卡片形式@3x.png */,
+				17D0686B1E139B700004E9A0 /* 工具.png */,
+				17D0686C1E139B700004E9A0 /* 工具@2x.png */,
+				17D0686D1E139B700004E9A0 /* 工具@3x.png */,
+				17D0686E1E139B700004E9A0 /* 帮助.png */,
+				17D0686F1E139B700004E9A0 /* 帮助@2x.png */,
+				17D068701E139B700004E9A0 /* 帮助@3x.png */,
+				17D068711E139B700004E9A0 /* 资料.png */,
+				17D068721E139B700004E9A0 /* 资料@2x.png */,
+				17D068731E139B700004E9A0 /* 资料@3x.png */,
+				17D068741E139B700004E9A0 /* 远程连接.png */,
+				17D068751E139B700004E9A0 /* 远程连接@2x.png */,
+				17D068761E139B700004E9A0 /* 远程连接@3x.png */,
+				17D068771E139B700004E9A0 /* 连接网关.png */,
+				17D068781E139B700004E9A0 /* 连接网关@2x.png */,
+				17D068791E139B700004E9A0 /* 连接网关@3x.png */,
+			);
+			path = mineIcons;
+			sourceTree = "<group>";
+		};
 		17F71A8A1DF7DDBF0062046A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1294,6 +1393,8 @@
 				175CA5101DFA9D9C0084056E /* MineStretchyHeaderView.m */,
 				17FCCD421E01148D006BA06B /* HeaderView.h */,
 				17FCCD431E01148D006BA06B /* HeaderView.m */,
+				17D0688C1E139D8F0004E9A0 /* MineTableViewCell.h */,
+				17D0688D1E139D8F0004E9A0 /* MineTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1303,6 +1404,16 @@
 			children = (
 				17F71A981DF7EF6D0062046A /* MineViewController.h */,
 				17F71A991DF7EF6D0062046A /* MineViewController.m */,
+				17D0688F1E13A1A10004E9A0 /* ProfileViewController.h */,
+				17D068901E13A1A10004E9A0 /* ProfileViewController.m */,
+				17D068921E13A1BB0004E9A0 /* ConnectGateWayViewController.h */,
+				17D068931E13A1BB0004E9A0 /* ConnectGateWayViewController.m */,
+				17D068951E13A1D00004E9A0 /* RemoteConnectionViewController.h */,
+				17D068961E13A1D00004E9A0 /* RemoteConnectionViewController.m */,
+				17D068981E13A2010004E9A0 /* ManagementViewController.h */,
+				17D068991E13A2010004E9A0 /* ManagementViewController.m */,
+				17D0689B1E13A20E0004E9A0 /* HelpViewController.h */,
+				17D0689C1E13A20E0004E9A0 /* HelpViewController.m */,
 				17FCCD3C1E00EB72006BA06B /* EditViewController.h */,
 				17FCCD3D1E00EB72006BA06B /* EditViewController.m */,
 				17FCCD551E014EA3006BA06B /* GroupManagerViewController.h */,
@@ -1414,6 +1525,7 @@
 				179FF23D1E10FCDE00F6D880 /* 通讯@2x.png in Resources */,
 				171385B11DF6AA9200CD4833 /* 监控相机.png in Resources */,
 				1713859F1DF6AA9200CD4833 /* disarmed-xiao.png in Resources */,
+				17D068871E139B700004E9A0 /* 远程连接@2x.png in Resources */,
 				1713853B1DF682F100CD4833 /* 评论.png in Resources */,
 				17AECEB31E12390F003B1979 /* 开关-(1).png in Resources */,
 				17033DEF1DC32AA400AA1848 /* LaunchScreen.storyboard in Resources */,
@@ -1430,12 +1542,14 @@
 				171385B81DF6AA9200CD4833 /* 风扇.png in Resources */,
 				17AECEA81E12390F003B1979 /* 制热1.png in Resources */,
 				17AECEB01E12390F003B1979 /* 加湿1@3x.png in Resources */,
+				17D068641E1396DE0004E9A0 /* 管理英文.jpg in Resources */,
 				17AECEB61E12390F003B1979 /* 开关1.png in Resources */,
 				17C073D11E0BAA7500E57EDE /* 加热.gif in Resources */,
 				170FD1161E0789080031A3ED /* Red bee APP iCon-38.png in Resources */,
 				171385391DF682F100CD4833 /* 视频.png in Resources */,
 				170FD10A1E0789080031A3ED /* Red bee APP iCon-27.png in Resources */,
 				1713853F1DF682F100CD4833 /* 选中.png in Resources */,
+				17D068891E139B700004E9A0 /* 连接网关.png in Resources */,
 				171385251DF682F100CD4833 /* 填写.png in Resources */,
 				170FD13E1E0789080031A3ED /* Red bee APP iCon-74.png in Resources */,
 				17AECEBE1E12390F003B1979 /* 自动@3x.png in Resources */,
@@ -1449,6 +1563,7 @@
 				17C073D41E0BAA7500E57EDE /* 提示.gif in Resources */,
 				17AECEAC1E12390F003B1979 /* 制热@3x.png in Resources */,
 				1713857B1DF6A5F500CD4833 /* 男.png in Resources */,
+				17D0687B1E139B700004E9A0 /* 卡片形式@2x.png in Resources */,
 				179FF2381E10FCDE00F6D880 /* 消息@3x.png in Resources */,
 				17AECEBA1E12390F003B1979 /* 自动1.png in Resources */,
 				171385291DF682F100CD4833 /* 扫一扫.png in Resources */,
@@ -1464,8 +1579,10 @@
 				170FD1031E0789080031A3ED /* Red bee APP iCon-20.png in Resources */,
 				171385271DF682F100CD4833 /* 展开.png in Resources */,
 				171385A11DF6AA9200CD4833 /* stay-小.png in Resources */,
+				17D0687C1E139B700004E9A0 /* 卡片形式@3x.png in Resources */,
 				179FF2391E10FCDE00F6D880 /* 通讯.png in Resources */,
 				171385B01DF6AA9200CD4833 /* 监控放大.png in Resources */,
+				17D0688B1E139B700004E9A0 /* 连接网关@3x.png in Resources */,
 				17AECEA11E12390F003B1979 /* 制冷.png in Resources */,
 				170FD11A1E0789080031A3ED /* Red bee APP iCon-41.png in Resources */,
 				170FD14D1E0789080031A3ED /* 底4.png in Resources */,
@@ -1475,14 +1592,17 @@
 				17FCCD471E011656006BA06B /* brand_expand@2x.png in Resources */,
 				179FF2341E10FCDE00F6D880 /* 消息1.png in Resources */,
 				17AECEB81E12390F003B1979 /* 开关1@3x.png in Resources */,
+				17D0687F1E139B700004E9A0 /* 工具@3x.png in Resources */,
 				171385301DF682F100CD4833 /* 朋友圈.png in Resources */,
 				17AECED41E125437003B1979 /* sleep_mode@3x.png in Resources */,
 				171385371DF682F100CD4833 /* 群聊.png in Resources */,
 				170FD14E1E0789080031A3ED /* 底5.png in Resources */,
 				170FD1261E0789080031A3ED /* Red bee APP iCon-52.png in Resources */,
+				17D068801E139B700004E9A0 /* 帮助.png in Resources */,
 				179FF23B1E10FCDE00F6D880 /* 通讯1@2x.png in Resources */,
 				171385781DF6A5F500CD4833 /* 女.png in Resources */,
 				171385B41DF6AA9200CD4833 /* 秒表.png in Resources */,
+				17D068821E139B700004E9A0 /* 帮助@3x.png in Resources */,
 				179FF23A1E10FCDE00F6D880 /* 通讯1.png in Resources */,
 				170FD11F1E0789080031A3ED /* Red bee APP iCon-46.png in Resources */,
 				171385771DF6A5F500CD4833 /* 头像.png in Resources */,
@@ -1502,6 +1622,7 @@
 				170FD10B1E0789080031A3ED /* Red bee APP iCon-28.png in Resources */,
 				170FD10F1E0789080031A3ED /* Red bee APP iCon-31.png in Resources */,
 				17C073D21E0BAA7500E57EDE /* 定时.gif in Resources */,
+				17D068651E1396DE0004E9A0 /* 远程连接英文.jpg in Resources */,
 				170FD13A1E0789080031A3ED /* Red bee APP iCon-70.png in Resources */,
 				171385A71DF6AA9200CD4833 /* tv.png in Resources */,
 				170FD1041E0789080031A3ED /* Red bee APP iCon-21.png in Resources */,
@@ -1513,8 +1634,10 @@
 				1713852C1DF682F100CD4833 /* 摇一摇.png in Resources */,
 				170FD12C1E0789080031A3ED /* Red bee APP iCon-58.png in Resources */,
 				170FD1491E0789080031A3ED /* 客厅.png in Resources */,
+				17D068831E139B700004E9A0 /* 资料.png in Resources */,
 				170FD1061E0789080031A3ED /* Red bee APP iCon-23.png in Resources */,
 				170FD1051E0789080031A3ED /* Red bee APP iCon-22.png in Resources */,
+				17D068841E139B700004E9A0 /* 资料@2x.png in Resources */,
 				17AECED31E125437003B1979 /* sleep_mode@2x.png in Resources */,
 				170FD1111E0789080031A3ED /* Red bee APP iCon-33.png in Resources */,
 				170FD11B1E0789080031A3ED /* Red bee APP iCon-42.png in Resources */,
@@ -1522,6 +1645,7 @@
 				179FF23C1E10FCDE00F6D880 /* 通讯1@3x.png in Resources */,
 				17AECEBB1E12390F003B1979 /* 自动1@2x.png in Resources */,
 				179FF23F1E10FCDE00F6D880 /* 首页.png in Resources */,
+				17D0687A1E139B700004E9A0 /* 卡片形式.png in Resources */,
 				171385AA1DF6AA9200CD4833 /* 天气.png in Resources */,
 				170FD13B1E0789080031A3ED /* Red bee APP iCon-71.png in Resources */,
 				17AECEC41E12390F003B1979 /* 风速@3x.png in Resources */,
@@ -1530,6 +1654,7 @@
 				170FD1221E0789080031A3ED /* Red bee APP iCon-49.png in Resources */,
 				179FF2441E10FCDE00F6D880 /* 首页@3x.png in Resources */,
 				17AECEA21E12390F003B1979 /* 制冷1.png in Resources */,
+				17D068811E139B700004E9A0 /* 帮助@2x.png in Resources */,
 				17AECEB21E12390F003B1979 /* 加湿@3x.png in Resources */,
 				170FD14C1E0789080031A3ED /* 底3.png in Resources */,
 				170FD12E1E0789080031A3ED /* Red bee APP iCon-6.png in Resources */,
@@ -1540,6 +1665,7 @@
 				171385361DF682F100CD4833 /* 红包.png in Resources */,
 				170FD1351E0789080031A3ED /* Red bee APP iCon-66.png in Resources */,
 				170FD0F91E0789080031A3ED /* Red bee APP iCon-11.png in Resources */,
+				17D0688A1E139B700004E9A0 /* 连接网关@2x.png in Resources */,
 				17AECEBD1E12390F003B1979 /* 自动@2x.png in Resources */,
 				17AECED01E125437003B1979 /* music_mode@2x.png in Resources */,
 				170FD1071E0789080031A3ED /* Red bee APP iCon-24.png in Resources */,
@@ -1557,6 +1683,7 @@
 				170FD12F1E0789080031A3ED /* Red bee APP iCon-60.png in Resources */,
 				170FD1341E0789080031A3ED /* Red bee APP iCon-65.png in Resources */,
 				1713857D1DF6A5F500CD4833 /* 眼睛睁开.png in Resources */,
+				17D068851E139B700004E9A0 /* 资料@3x.png in Resources */,
 				170FD1411E0789080031A3ED /* Red bee APP iCon.png in Resources */,
 				171385281DF682F100CD4833 /* 建立群聊.png in Resources */,
 				17AECEAE1E12390F003B1979 /* 加湿1.png in Resources */,
@@ -1573,6 +1700,7 @@
 				1713859E1DF6AA9200CD4833 /* away.png in Resources */,
 				170FD1131E0789080031A3ED /* Red bee APP iCon-35.png in Resources */,
 				1713857A1DF6A5F500CD4833 /* 指纹.png in Resources */,
+				17D0687E1E139B700004E9A0 /* 工具@2x.png in Resources */,
 				170FD14B1E0789080031A3ED /* 底2.png in Resources */,
 				1713852B1DF682F100CD4833 /* 搜索.png in Resources */,
 				171385A41DF6AA9200CD4833 /* tv-返回.png in Resources */,
@@ -1591,11 +1719,11 @@
 				171385351DF682F100CD4833 /* 点赞.png in Resources */,
 				170FD1461E0789080031A3ED /* 卧室.png in Resources */,
 				17C073CE1E0BAA7500E57EDE /* 制冷.gif in Resources */,
-				171385AB1DF6AA9200CD4833 /* 按钮阴影.jpg in Resources */,
 				171385A31DF6AA9200CD4833 /* tv-菜单.png in Resources */,
 				170FD0F81E0789080031A3ED /* Red bee APP iCon-10.png in Resources */,
 				171385B51DF6AA9200CD4833 /* 空调.png in Resources */,
 				170FD10E1E0789080031A3ED /* Red bee APP iCon-30.png in Resources */,
+				17D068661E1396DE0004E9A0 /* 连接网关英文.jpg in Resources */,
 				171385221DF682F100CD4833 /* 二维码.png in Resources */,
 				179FF2351E10FCDE00F6D880 /* 消息1@2x.png in Resources */,
 				170FD1181E0789080031A3ED /* Red bee APP iCon-4.png in Resources */,
@@ -1632,7 +1760,9 @@
 				179FF2321E10FCDE00F6D880 /* 我的@3x.png in Resources */,
 				170FD13C1E0789080031A3ED /* Red bee APP iCon-72.png in Resources */,
 				17AECECF1E125437003B1979 /* music_mode.png in Resources */,
+				17D068881E139B700004E9A0 /* 远程连接@3x.png in Resources */,
 				170FD1231E0789080031A3ED /* Red bee APP iCon-5.png in Resources */,
+				17D068861E139B700004E9A0 /* 远程连接.png in Resources */,
 				1713853A1DF682F100CD4833 /* 设置.png in Resources */,
 				171385AC1DF6AA9200CD4833 /* 插座.png in Resources */,
 				170FD0FA1E0789080031A3ED /* Red bee APP iCon-12.png in Resources */,
@@ -1649,6 +1779,7 @@
 				179FF2311E10FCDE00F6D880 /* 我的@2x.png in Resources */,
 				17478CE51DC87F5D004B3997 /* ball_16.png in Resources */,
 				179FF22E1E10FCDE00F6D880 /* 我的1.png in Resources */,
+				17D0687D1E139B700004E9A0 /* 工具.png in Resources */,
 				170FD11D1E0789080031A3ED /* Red bee APP iCon-44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1714,6 +1845,7 @@
 				17CEB34F1DF56DF500DE65FC /* ConversationViewController.m in Sources */,
 				17033DE71DC32AA400AA1848 /* ViewController.m in Sources */,
 				17CEB3451DF56C4500DE65FC /* UserInfoDataSource.m in Sources */,
+				17D068941E13A1BB0004E9A0 /* ConnectGateWayViewController.m in Sources */,
 				1750B1C91DF94BF300FAC1B3 /* ScanView.m in Sources */,
 				17C560ED1E0CC1ED0098EF90 /* PasswordView.m in Sources */,
 				17DBA0411DC33C2F00FB05F2 /* HomeSettingsCell.m in Sources */,
@@ -1730,6 +1862,7 @@
 				17FCCD4E1E013049006BA06B /* AddDeviceViewController.m in Sources */,
 				1720E3D01DF797CF00533D86 /* SegSlider.m in Sources */,
 				17C560F61E0D0DFA0098EF90 /* HomeFooterView.m in Sources */,
+				17D0688E1E139D8F0004E9A0 /* MineTableViewCell.m in Sources */,
 				17CEB33D1DF55A0600DE65FC /* LoginTextField.m in Sources */,
 				17C560EA1E0CBDE40098EF90 /* NSArray+Sudoku.m in Sources */,
 				1750B1C01DF9028F00FAC1B3 /* WelcomeViewController.m in Sources */,
@@ -1741,6 +1874,7 @@
 				17F71A891DF7BD980062046A /* AddContactViewController.m in Sources */,
 				170FD0991E07875B0031A3ED /* ZoneTableViewCell.m in Sources */,
 				17FCCD571E014EA3006BA06B /* GroupManagerViewController.m in Sources */,
+				17D0689D1E13A20E0004E9A0 /* HelpViewController.m in Sources */,
 				179FF24D1E1119AF00F6D880 /* UIView+RoundedCorners.m in Sources */,
 				1705AE8C1DF64A67000A7743 /* SecurityViewController.m in Sources */,
 				175CA5111DFA9D9C0084056E /* MineStretchyHeaderView.m in Sources */,
@@ -1751,12 +1885,16 @@
 				17033DE11DC32AA400AA1848 /* main.m in Sources */,
 				17FCCD3E1E00EB72006BA06B /* EditViewController.m in Sources */,
 				1750B1C61DF9366900FAC1B3 /* ForgetPasswordViewController.m in Sources */,
+				17D068911E13A1A10004E9A0 /* ProfileViewController.m in Sources */,
+				17D068971E13A1D00004E9A0 /* RemoteConnectionViewController.m in Sources */,
 				17F71A9A1DF7EF6D0062046A /* MineViewController.m in Sources */,
 				1792B2701DC72C59004EB935 /* VideoPlayerView.m in Sources */,
+				17D0689A1E13A2010004E9A0 /* ManagementViewController.m in Sources */,
 				1705AEBE1DF65814000A7743 /* LeftImageButton.m in Sources */,
 				17FCCD351E00D6ED006BA06B /* ContactViewController.m in Sources */,
 				17CEB3211DF541B100DE65FC /* LoginViewController.m in Sources */,
 				17F71A901DF7E67E0062046A /* ShakeViewController.m in Sources */,
+				17FCA8141E134424002567C2 /* SceneScorllViewContainer.m in Sources */,
 				17F71A8D1DF7DE060062046A /* AddContactTableViewCell.m in Sources */,
 				1751A5621DFA462700B26A3E /* HomeSettingModel.m in Sources */,
 				179FF2471E11029C00F6D880 /* EFCircularSlider.m in Sources */,

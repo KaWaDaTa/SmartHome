@@ -35,7 +35,6 @@
 - (void)setupUI
 {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.image = [UIImage imageNamed:self.model.imgName];
     [self addSubview:imageView];
     [imageView makeConstraints:^(MASConstraintMaker *make) {

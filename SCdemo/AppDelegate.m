@@ -23,17 +23,6 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *dic;
-    dic = @{
-            //                    @"token" : responseDic[@"Msg"],
-            @"token" : @"dafdasdfasdf",
-            @"username" : @"88",
-            @"password" : @"1"
-            };
-    [defaults setObject:dic forKey:@"user"];
-    [defaults synchronize];
-    
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#008ea2"]} forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, -4)];
     

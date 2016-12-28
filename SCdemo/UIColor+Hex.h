@@ -32,4 +32,6 @@
  */
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
 
++ (UIColor *)randomColor;
+
 @end

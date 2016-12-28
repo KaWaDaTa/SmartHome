@@ -54,17 +54,6 @@
     maskLayer.path = maskPath.CGPath;
     self.contentView.layer.mask = maskLayer;
     
-    UIButton *voice = [UIButton buttonWithType:UIButtonTypeCustom];
-    [voice setImage:[UIImage imageNamed:@"语音"] forState:UIControlStateNormal];
-    voice.backgroundColor = [UIColor lightTextColor];
-    [self.contentView addSubview:voice];
-    [voice makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@40);
-        make.left.equalTo(@10);
-        make.top.equalTo(@22);
-    }];
-    voice.layer.cornerRadius = 20;
-    
     UIImageView *portrait = [[UIImageView alloc] init];
     portrait.layer.cornerRadius = 40;
     portrait.layer.masksToBounds = YES;

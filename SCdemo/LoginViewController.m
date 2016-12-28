@@ -10,9 +10,11 @@
 #import "LoginViewController+RongCloud.h"
 #import "ForgetPasswordViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton *fingerprintBtn;
+@property (nonatomic, strong) UILabel *fingerprintLabel;
 @end
 
 @implementation LoginViewController
@@ -78,6 +80,7 @@
     
     self.userNameField = ({
         LoginTextField *textField = [[LoginTextField alloc] init];
+        textField.delegate = self;
         textField.layer.cornerRadius = 22;
         textField.textAlignment = NSTextAlignmentCenter;
         textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"please input username", nil) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#00c8e3"]}];
@@ -170,32 +173,58 @@
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
     if ([[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
-        UIButton *fingerprintBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [fingerprintBtn addTarget:self action:@selector(touchIDauthenticate) forControlEvents:UIControlEventTouchUpInside];
-        [fingerprintBtn setBackgroundImage:[UIImage imageNamed:@"指纹"] forState:UIControlStateNormal];
-        [self.view addSubview:fingerprintBtn];
-        [fingerprintBtn makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.view).offset(35);
-            make.centerX.equalTo(self.view);
-            make.width.height.equalTo(100);
-        }];
+        self.fingerprintBtn = ({
+            UIButton *fingerprintBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [fingerprintBtn addTarget:self action:@selector(touchIDauthenticate) forControlEvents:UIControlEventTouchUpInside];
+            [fingerprintBtn setBackgroundImage:[UIImage imageNamed:@"指纹"] forState:UIControlStateNormal];
+            [self.view addSubview:fingerprintBtn];
+            [fingerprintBtn makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.view).offset(35);
+                make.centerX.equalTo(self.view);
+                make.width.height.equalTo(100);
+            }];
+            
+            fingerprintBtn;
+        });
         
-        UILabel *fingerprintLabel = [[UILabel alloc] init];
-        fingerprintLabel.textAlignment = NSTextAlignmentCenter;
-        fingerprintLabel.text = NSLocalizedString(@"fingerprint", nil);
-        fingerprintLabel.textColor = [UIColor whiteColor];
-        [self.view addSubview:fingerprintLabel];
-        [fingerprintLabel makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(fingerprintBtn.top);
-            make.centerX.equalTo(self.view);
-            make.width.equalTo(100);
-            make.height.equalTo(30);
-        }];
+        self.fingerprintLabel = ({
+            UILabel *fingerprintLabel = [[UILabel alloc] init];
+            fingerprintLabel.textAlignment = NSTextAlignmentCenter;
+            fingerprintLabel.text = NSLocalizedString(@"fingerprint", nil);
+            fingerprintLabel.textColor = [UIColor whiteColor];
+            [self.view addSubview:fingerprintLabel];
+            [fingerprintLabel makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.fingerprintBtn.top);
+                make.centerX.equalTo(self.view);
+                make.width.equalTo(100);
+                make.height.equalTo(30);
+            }];
+            
+            fingerprintLabel;
+        });
     }
     
 }
 
-#pragma buttonActions
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSString *currentUserName = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"username"];
+    if (self.fingerprintBtn && self.fingerprintLabel) {
+        if ([textField.text isEqualToString:currentUserName]) {
+            self.fingerprintBtn.hidden = NO;
+            self.fingerprintLabel.hidden = NO;
+        } else {
+            self.fingerprintBtn.hidden = YES;
+            self.fingerprintLabel.hidden = YES;
+        }
+    }
+}
+
 - (void)registerBtnClick:(UIButton *)sender
 {
     RegisterViewController *vc = [[RegisterViewController alloc] init];
@@ -229,7 +258,6 @@
         return;
     }
     [self login433WithUserName:userName password:password];
-    [self RCIMregisterWithUserName:userName password:password];
 }
 
 - (void)login433WithUserName:(NSString *)userName password:(NSString *)password
@@ -252,15 +280,20 @@
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         NSLog(@"%@",responseDic);
         if ([(NSNumber *)responseDic[@"Result"] intValue] == 1) {
+            NSString *token = [responseDic[@"Msg"] componentsSeparatedByString:@","][0];
+            NSString *gatewayId = [responseDic[@"Msg"] componentsSeparatedByString:@","][1];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSDictionary *dic;
             dic = @{
-//                    @"token" : responseDic[@"Msg"],
-                    @"token" : @"dafdasdfasdf",//fake
+                    @"token" : token,
+                    @"gatewayid" : gatewayId,
                     @"username" : userName,
                     @"password" : password};
             [defaults setObject:dic forKey:@"user"];
             [defaults synchronize];
+            
+            [self RCIMregisterWithUserName:userName password:password];
+            
         } else {
             [hud performSelectorOnMainThread:@selector(hide:) withObject:nil waitUntilDone:NO];
             [self showAlertWithTitle:NSLocalizedString(@"Fail to log in", nil) msg:responseDic[@"Msg"]];
