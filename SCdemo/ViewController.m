@@ -33,7 +33,9 @@
 @end
 
 @implementation ViewController
-
+{
+    dispatch_source_t _CountdownTimer;
+}
 - (NSMutableArray *)dataSource
 {
     if (!_dataSource) {
@@ -86,6 +88,10 @@
             self.stretchyHeader.userInteractionEnabled = YES;
         } else {
             self.stretchyHeader.userInteractionEnabled = NO;
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"panel offline", nil);
+            [hud hideAnimated:YES afterDelay:1.5];
         }
     }
 }
@@ -114,7 +120,7 @@
     _table.dataSource = self;
     [self.view addSubview:_table];
     [_table makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 49, 0));
     }];
     
     CGSize headerSize = CGSizeMake(_table.frame.size.width, 336);
@@ -140,6 +146,32 @@
     [super viewWillDisappear:animated];
     [_timer setFireDate:[NSDate distantFuture]];
     [_onlineTimer setFireDate:[NSDate distantFuture]];
+}
+
+-(void)openCountdown {
+    __block NSInteger time = 59;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _CountdownTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_CountdownTimer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_CountdownTimer, ^{
+        if(time <= 0){ //倒计时结束，关闭
+            dispatch_source_cancel(_CountdownTimer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+            });
+        }else{
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // %.2d seconds
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_CountdownTimer);
+}
+
+- (void)closeCountdown {
+    dispatch_source_cancel(_CountdownTimer);
 }
 
 - (void)tapSecurity

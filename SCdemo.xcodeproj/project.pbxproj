@@ -2025,7 +2025,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "557b7d7a-ac41-4287-a10c-092c5205f28e";
+				PROVISIONING_PROFILE = "8095c5ac-93ef-4a22-ba18-024fe4cf1801";
 				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Debug;
@@ -2044,7 +2044,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.colinliu.imtest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "557b7d7a-ac41-4287-a10c-092c5205f28e";
+				PROVISIONING_PROFILE = "8095c5ac-93ef-4a22-ba18-024fe4cf1801";
 				PROVISIONING_PROFILE_SPECIFIER = colinliuimtest;
 			};
 			name = Release;

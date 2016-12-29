@@ -25,6 +25,7 @@
         self.homeSettingModels = models;
         if (models[0].type == LayoutTypeScene) {
             SceneScorllViewContainer *scrollContainer = [[SceneScorllViewContainer alloc] initWithModels:models];
+            scrollContainer.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
             [self.contentView addSubview:scrollContainer];
             [scrollContainer makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.equalTo(self.contentView);

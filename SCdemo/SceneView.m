@@ -34,6 +34,11 @@
 
 - (void)setupUI
 {
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOpacity = 0.2;
+    self.layer.shadowRadius = 4;
+    
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage imageNamed:self.model.imgName];
     [self addSubview:imageView];

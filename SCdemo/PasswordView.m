@@ -159,6 +159,9 @@
 - (void)btnClick:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqualToString:@"Clear"]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(passwordView:dismissByCancelled:)]) {
+            [self.delegate passwordView:self dismissByCancelled:YES];
+        }
         [[self class] dismiss];
     } else if ([sender.titleLabel.text isEqualToString:@"Delete"]) {
         [self.inputNumers removeLastObject];
@@ -176,6 +179,16 @@
         }
     }
     
+    _currentValue = [NSMutableString stringWithString:@""];
+    for (NSInteger i=0; i<self.inputNumers.count; i++) {
+        [_currentValue appendString:self.inputNumers[i]];
+    }
+//    if (self.inputNumers.count == 4) {
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(passwordView:dismissByCancelled:)]) {
+//            [self.delegate passwordView:self dismissByCancelled:NO];
+//        }
+//        [[self class] dismiss];
+//    }
 }
 
 @end
