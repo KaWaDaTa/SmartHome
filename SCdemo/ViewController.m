@@ -86,12 +86,16 @@
         _onlineState = [onlineState copy];
         if ([_onlineState isEqualToString:@"online"]) {
             self.stretchyHeader.userInteractionEnabled = YES;
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"panel online", nil);
+            [hud hideAnimated:YES afterDelay:1];
         } else {
             self.stretchyHeader.userInteractionEnabled = NO;
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = NSLocalizedString(@"panel offline", nil);
-            [hud hideAnimated:YES afterDelay:1.5];
+            [hud hideAnimated:YES afterDelay:1];
         }
     }
 }
@@ -147,7 +151,7 @@
     [_timer setFireDate:[NSDate distantFuture]];
     [_onlineTimer setFireDate:[NSDate distantFuture]];
 }
-
+//尚未使用倒计时
 -(void)openCountdown {
     __block NSInteger time = 59;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -179,6 +183,11 @@
     if (self.zoneArr) {
         ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
         [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(@"Zone is empty!", nil);
+        [hud hideAnimated:YES afterDelay:1];
     }
 }
 
@@ -252,7 +261,7 @@
     [manager GET:@"http://120.77.13.77:8080/AppInterface/appCheckPanelState" parameters:paras progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"%@",responseObject);
+        NSLog(@"online:%@",responseObject);
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {
             NSString *msg = responseDic[@"Msg"];
@@ -289,8 +298,8 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDic = (NSDictionary *)responseObject;
+        NSLog(@"%@",responseDic);
         if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
-//            NSLog(@"%@",responseDic);
             NSString *panel = responseDic[@"Panel"];
             if (panel && ![panel isEqualToString:@""]) {
                 NSArray *panelArr = [panel componentsSeparatedByString:@","];
@@ -307,10 +316,12 @@
                 _zoneArr = nil;
             }
         } else {
+            NSLog(@"result fail");
             NSString *errorStr = responseDic[@"Msg"];
             _zoneArr = nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"fail");
         _zoneArr = nil;
     }];
 }

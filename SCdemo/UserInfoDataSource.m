@@ -24,7 +24,7 @@
 {
     if (self = [super init]) {
         _userInfoList = [[NSMutableArray alloc] init];
-        for (NSInteger i = 0; i < 100 ; i++) {
+        for (NSInteger i = 0; i < 1000 ; i++) {
             RCUserInfo *user = [[RCUserInfo alloc] init];
             user.userId = [NSString stringWithFormat:@"%ld",(long)i];
             user.name = [NSString stringWithFormat:@"%ld",i];
