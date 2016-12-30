@@ -10,6 +10,9 @@
 
 @interface ZoneViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *zoneArr;
+@property (nonatomic, strong) UITableView *table;
+
 - (instancetype)initWithZoneArr:(NSArray *)zoneArr;
 
 @end

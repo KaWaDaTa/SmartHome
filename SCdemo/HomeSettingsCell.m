@@ -31,7 +31,6 @@
                 make.edges.equalTo(self.contentView);
             }];
         } else {
-            //        ScrollView *scroll = [[ScrollView alloc] init];
             ScrollViewContainer *scrollContainer = [[ScrollViewContainer alloc] init];
             scrollContainer.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
             [self.contentView addSubview:scrollContainer];
@@ -43,11 +42,6 @@
             self.scroll.delegate = self;
             self.scroll.pagingEnabled = YES;
             self.scroll.showsHorizontalScrollIndicator = NO;
-            //        [self.contentView addSubview:scroll];
-            //        [scroll makeConstraints:^(MASConstraintMaker *make) {
-            //            make.edges.equalTo(self.contentView).offset(UIEdgeInsetsMake(10, 0, 0, 0));
-            //            make.height.equalTo(@200);
-            //        }];
             
             UIView* contentView = [[UIView alloc] init];
             [self.scroll addSubview:contentView];

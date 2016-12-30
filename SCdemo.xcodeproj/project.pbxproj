@@ -139,7 +139,7 @@
 		1713853C1DF682F100CD4833 /* 详细信息.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713851D1DF682F100CD4833 /* 详细信息.png */; };
 		1713853D1DF682F100CD4833 /* voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713851E1DF682F100CD4833 /* voice.png */; };
 		1713853E1DF682F100CD4833 /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713851F1DF682F100CD4833 /* 返回.png */; };
-		1713853F1DF682F100CD4833 /* 选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385201DF682F100CD4833 /* 选中.png */; };
+		1713853F1DF682F100CD4833 /* 选中_.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385201DF682F100CD4833 /* 选中_.png */; };
 		171385401DF682F100CD4833 /* 首页添加.png in Resources */ = {isa = PBXBuildFile; fileRef = 171385211DF682F100CD4833 /* 首页添加.png */; };
 		171385761DF6A5F500CD4833 /* 取消.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713856C1DF6A5F500CD4833 /* 取消.png */; };
 		171385771DF6A5F500CD4833 /* 头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 1713856D1DF6A5F500CD4833 /* 头像.png */; };
@@ -486,7 +486,7 @@
 		1713851D1DF682F100CD4833 /* 详细信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "详细信息.png"; sourceTree = "<group>"; };
 		1713851E1DF682F100CD4833 /* voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice.png; sourceTree = "<group>"; };
 		1713851F1DF682F100CD4833 /* 返回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回.png"; sourceTree = "<group>"; };
-		171385201DF682F100CD4833 /* 选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中.png"; sourceTree = "<group>"; };
+		171385201DF682F100CD4833 /* 选中_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中_.png"; sourceTree = "<group>"; };
 		171385211DF682F100CD4833 /* 首页添加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页添加.png"; sourceTree = "<group>"; };
 		1713856C1DF6A5F500CD4833 /* 取消.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "取消.png"; sourceTree = "<group>"; };
 		1713856D1DF6A5F500CD4833 /* 头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像.png"; sourceTree = "<group>"; };
@@ -1002,7 +1002,7 @@
 				1713851D1DF682F100CD4833 /* 详细信息.png */,
 				1713851E1DF682F100CD4833 /* voice.png */,
 				1713851F1DF682F100CD4833 /* 返回.png */,
-				171385201DF682F100CD4833 /* 选中.png */,
+				171385201DF682F100CD4833 /* 选中_.png */,
 				171385211DF682F100CD4833 /* 首页添加.png */,
 			);
 			path = "聊天界面";
@@ -1548,7 +1548,7 @@
 				170FD1161E0789080031A3ED /* Red bee APP iCon-38.png in Resources */,
 				171385391DF682F100CD4833 /* 视频.png in Resources */,
 				170FD10A1E0789080031A3ED /* Red bee APP iCon-27.png in Resources */,
-				1713853F1DF682F100CD4833 /* 选中.png in Resources */,
+				1713853F1DF682F100CD4833 /* 选中_.png in Resources */,
 				17D068891E139B700004E9A0 /* 连接网关.png in Resources */,
 				171385251DF682F100CD4833 /* 填写.png in Resources */,
 				170FD13E1E0789080031A3ED /* Red bee APP iCon-74.png in Resources */,
@@ -2019,6 +2019,7 @@
 				CODE_SIGN_ENTITLEMENTS = SCdemo/SCdemo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7G2868MDGZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SCdemo/PrefixHeader.pch";
 				INFOPLIST_FILE = SCdemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2038,6 +2039,7 @@
 				CODE_SIGN_ENTITLEMENTS = SCdemo/SCdemo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7G2868MDGZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SCdemo/PrefixHeader.pch";
 				INFOPLIST_FILE = SCdemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -63,6 +63,7 @@
             
             ViewController *vc = [[ViewController alloc] init];
             UINavigationController *homeNavc = [[UINavigationController alloc] initWithRootViewController:vc];
+            homeNavc.view.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
             homeNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Home", nil) image:[[UIImage imageNamed:@"首页"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"首页1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             
             ConversationListViewController *chatVC1 = [[ConversationListViewController alloc] init];
@@ -78,6 +79,7 @@
             mineNavc.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil) image:[[UIImage imageNamed:@"我的"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             
             UITabBarController *tabVC = [[UITabBarController alloc] init];
+            tabVC.delegate = vc;
             tabVC.tabBar.backgroundColor = [UIColor whiteColor];
             tabVC.viewControllers = @[homeNavc,naVC1,contactNavc,mineNavc];
             

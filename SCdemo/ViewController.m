@@ -18,26 +18,30 @@
 #import "HomeHeaderView.h"
 #import "HomeFooterView.h"
 
-@interface ViewController ()<GSKStretchyHeaderViewStretchDelegate,StretchyHeaderDelegate,UITableViewDelegate,UITableViewDataSource,VideoPlayDelegate>
+@interface ViewController ()<GSKStretchyHeaderViewStretchDelegate,StretchyHeaderDelegate,UITableViewDelegate,UITableViewDataSource,VideoPlayDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) StretchyHeaderView *stretchyHeader;
 @property (nonatomic, strong) NSMutableArray<HomeSectionModel *> *dataSource;
-@property (nonatomic, copy) NSArray *zoneArr;
-@property (nonatomic, retain) NSTimer *timer;
-@property (nonatomic, retain) NSTimer *onlineTimer;
+@property (nonatomic, copy) NSArray *zoneArr;//zone信息数组
+@property (nonatomic, retain) NSTimer *timer;//获取Panel信息的Timer
+@property (nonatomic, retain) NSTimer *onlineTimer;//检测在线状态的Timer
 @property (nonatomic, copy) NSString *in_alarm;
-@property (nonatomic, copy) NSString *alarm_level;
-@property (nonatomic, copy) NSString *onlineState;
+@property (nonatomic, copy) NSString *alarm_level;//报警状态
+@property (nonatomic, copy) NSString *onlineState;//在线状态
+
+@property (nonatomic, strong) MBProgressHUD *mHUD;//setArm是否成功time out HUD
+@property (nonatomic, assign) BOOL succeed;//setArm是否成功，time out 10s
+
+@property (nonatomic, strong) ZoneViewController *zoneVC;
 
 @end
 
-@implementation ViewController
-{
-    dispatch_source_t _CountdownTimer;
+@implementation ViewController {
+//    dispatch_source_t _countdownTimer;
 }
-- (NSMutableArray *)dataSource
-{
+
+- (NSMutableArray *)dataSource {
     if (!_dataSource) {
         _dataSource = [[NSMutableArray alloc] init];
     }
@@ -54,6 +58,14 @@
     return _dataSource;
 }
 
+- (void)setZoneArr:(NSArray *)zoneArr {
+    if (_zoneArr != zoneArr) {
+        _zoneArr = zoneArr;
+        self.zoneVC.zoneArr = zoneArr;
+        [self.zoneVC.table reloadData];
+    }
+}
+
 //- (void)setIn_alarm:(NSString *)in_alarm
 //{
 //    if (_in_alarm != in_alarm) {
@@ -66,9 +78,30 @@
 //    }
 //}
 
-- (void)setAlarm_level:(NSString *)alarm_level
-{
+- (void)setOnlineState:(NSString *)onlineState {
+    if (_onlineState != onlineState) {
+        _onlineState = [onlineState copy];
+        if ([_onlineState isEqualToString:@"online"]) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"panel online", nil);
+            [hud hideAnimated:YES afterDelay:1];
+        } else {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"panel offline", nil);
+            [hud hideAnimated:YES afterDelay:1];
+        }
+    }
+}
+
+- (void)setAlarm_level:(NSString *)alarm_level {
     if (_alarm_level != alarm_level) {
+        self.succeed = YES;
+        if (self.mHUD) {//收到反馈,设置成功
+            [self.mHUD hideAnimated:YES];
+            self.mHUD = nil;
+        }
         _alarm_level = [alarm_level copy];
         if ([_alarm_level isEqualToString:@"01"]) {
             [self.stretchyHeader setCurrentArmStyle:ArmStyleDisarmed];
@@ -80,23 +113,13 @@
     }
 }
 
-- (void)setOnlineState:(NSString *)onlineState
-{
-    if (_onlineState != onlineState) {
-        _onlineState = [onlineState copy];
-        if ([_onlineState isEqualToString:@"online"]) {
-            self.stretchyHeader.userInteractionEnabled = YES;
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = NSLocalizedString(@"panel online", nil);
-            [hud hideAnimated:YES afterDelay:1];
-        } else {
-            self.stretchyHeader.userInteractionEnabled = NO;
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = NSLocalizedString(@"panel offline", nil);
-            [hud hideAnimated:YES afterDelay:1];
-        }
+//time out HUD隐藏,如果是10s计时自动隐藏，说明time out,如果是我们强制隐藏的,说明成功
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    if (!self.succeed) {//10s还没有收到反馈
+        MBProgressHUD *mhud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        mhud.mode = MBProgressHUDModeText;
+        mhud.label.text = NSLocalizedString(@"Time out!", nil);
+        [mhud hideAnimated:YES afterDelay:1];
     }
 }
 
@@ -119,12 +142,11 @@
     [_table registerClass:[VideoPlayCell class] forCellReuseIdentifier:@"VideoCell"];
     _table.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
     _table.separatorColor = [UIColor colorWithHexString:@"#f6f6f6"];
-//    _table.bounces = NO;
     _table.delegate = self;
     _table.dataSource = self;
     [self.view addSubview:_table];
     [_table makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 49, 0));
+        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
     CGSize headerSize = CGSizeMake(_table.frame.size.width, 336);
@@ -135,8 +157,7 @@
     [_table setContentOffset:CGPointMake(0, -336)];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
@@ -145,21 +166,37 @@
     [_onlineTimer setFireDate:[NSDate distantPast]];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [_timer setFireDate:[NSDate distantFuture]];
-    [_onlineTimer setFireDate:[NSDate distantFuture]];
+//    [_timer setFireDate:[NSDate distantFuture]];
+//    [_onlineTimer setFireDate:[NSDate distantFuture]];
 }
+
+-(UIRectEdge)edgesForExtendedLayout {
+    return UIRectEdgeNone;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    UIViewController *vc = ((UINavigationController *)viewController).viewControllers[0];
+    if ([vc isKindOfClass:[self class]]) {
+        [_timer setFireDate:[NSDate distantPast]];
+        [_onlineTimer setFireDate:[NSDate distantPast]];
+    } else {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [_onlineTimer setFireDate:[NSDate distantFuture]];
+    }
+}
+
+/*
 //尚未使用倒计时
 -(void)openCountdown {
     __block NSInteger time = 59;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    _CountdownTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(_CountdownTimer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
-    dispatch_source_set_event_handler(_CountdownTimer, ^{
+    _countdownTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_countdownTimer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_countdownTimer, ^{
         if(time <= 0){ //倒计时结束，关闭
-            dispatch_source_cancel(_CountdownTimer);
+            dispatch_source_cancel(_countdownTimer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 
             });
@@ -171,18 +208,32 @@
             time--;
         }
     });
-    dispatch_resume(_CountdownTimer);
+    dispatch_resume(_countdownTimer);
 }
 
 - (void)closeCountdown {
-    dispatch_source_cancel(_CountdownTimer);
+    dispatch_source_cancel(_countdownTimer);
 }
-
-- (void)tapSecurity
-{
+*/
+//点击Zone信息
+- (void)tapSecurity {
+    if (![self.onlineState isEqualToString:@"online"]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(@"panel offline", nil);
+        [hud hideAnimated:YES afterDelay:1];
+        return;
+    }
     if (self.zoneArr) {
-        ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
-        [self.navigationController pushViewController:vc animated:YES];
+        if (!self.zoneVC) {
+            self.zoneVC = ({
+                ZoneViewController *vc = [[ZoneViewController alloc] initWithZoneArr:self.zoneArr];
+                
+                vc;
+            });
+        }
+        
+        [self.navigationController pushViewController:self.zoneVC animated:YES];
     } else {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
@@ -191,8 +242,16 @@
     }
 }
 
-- (void)tapSetArm:(UIButton *)sender
-{
+//设置报警状态
+- (void)tapSetArm:(UIButton *)sender {
+    self.succeed = NO;
+    if (![self.onlineState isEqualToString:@"online"]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NSLocalizedString(@"panel offline", nil);
+        [hud hideAnimated:YES afterDelay:1];
+        return;
+    }
     if ((sender.tag == ArmStyleStay && [_alarm_level isEqualToString:@"04"]) || (sender.tag == ArmStyleAway && [_alarm_level isEqualToString:@"02"])) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
@@ -230,11 +289,16 @@
         sender.enabled = YES;
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         NSLog(@"alarm response:%@",responseDic);
-        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = responseDic[@"Msg"];
-            [hud hideAnimated:YES afterDelay:1];
+        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//设置成功但还需要接收到反馈，time out 10s
+            self.mHUD = ({
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+                hud.delegate = self;
+                hud.mode = MBProgressHUDModeIndeterminate;
+                hud.label.text = NSLocalizedString(@"Setting up...", nil);
+                [hud hideAnimated:YES afterDelay:10];
+                
+                hud;
+            });
         } else {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
@@ -251,17 +315,17 @@
     }];
 }
 
-- (void)checkPanelOnline
-{
+//检查Panel在线状态
+- (void)checkPanelOnline {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *paras = @{
-                            @"gatewayId" : [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"gatewayid"],
-                            @"access_token" : [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"] objectForKey:@"token"]
+                            @"gatewayId" : [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"gatewayid"],
+                            @"access_token" : [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"token"]
                             };
     [manager GET:@"http://120.77.13.77:8080/AppInterface/appCheckPanelState" parameters:paras progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"online:%@",responseObject);
+        NSLog(@"onlineState:%@",responseObject);
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {
             NSString *msg = responseDic[@"Msg"];
@@ -280,8 +344,8 @@
     }];
 }
 
-- (void)requestInfo
-{
+//获取panel信息，处于什么报警状态
+- (void)requestInfo {
     if (![self.onlineState isEqualToString:@"online"]) {
         return;
     }
@@ -299,7 +363,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDic = (NSDictionary *)responseObject;
         NSLog(@"%@",responseDic);
-        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//success
+        if ([(NSNumber *)responseDic[@"Result"] integerValue] == 1) {//成功
             NSString *panel = responseDic[@"Panel"];
             if (panel && ![panel isEqualToString:@""]) {
                 NSArray *panelArr = [panel componentsSeparatedByString:@","];
@@ -311,23 +375,22 @@
             NSString *zone = responseDic[@"Zone"];
             if (zone && ![zone isEqualToString:@""]) {
                 zone = [zone substringToIndex:zone.length - 1];
-                _zoneArr = [zone componentsSeparatedByString:@","];
+                self.zoneArr = [zone componentsSeparatedByString:@","];
             } else {
-                _zoneArr = nil;
+                self.zoneArr = nil;
             }
         } else {
-            NSLog(@"result fail");
+            NSLog(@"request info result fail");
             NSString *errorStr = responseDic[@"Msg"];
-            _zoneArr = nil;
+            self.zoneArr = nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"fail");
-        _zoneArr = nil;
+        NSLog(@"request info fail");
+        self.zoneArr = nil;
     }];
 }
 
-- (void)stretchyHeaderView:(GSKStretchyHeaderView *)headerView didChangeStretchFactor:(CGFloat)stretchFactor
-{
+- (void)stretchyHeaderView:(GSKStretchyHeaderView *)headerView didChangeStretchFactor:(CGFloat)stretchFactor {
     UIView *info = ((StretchyHeaderView *)headerView).info;
     UILabel *infoLabel = ((StretchyHeaderView *)headerView).infoLabel;
     UIButton *leftBtn = ((StretchyHeaderView *)headerView).leftBtn;
@@ -354,8 +417,7 @@
     }
 }
 
-- (void)doubleTapWithVideoPlayView:(VideoPlayerView *)videoPlayView andSuperView:(UIView *)superView
-{
+- (void)doubleTapWithVideoPlayView:(VideoPlayerView *)videoPlayView andSuperView:(UIView *)superView {
     videoPlayView.isFullScreen = !videoPlayView.isFullScreen;
     if (videoPlayView.isFullScreen) {
         self.tabBarController.tabBar.hidden = YES;
@@ -374,13 +436,11 @@
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (indexPath.section == 4) {
 //        NSString *cellId = @"VideoCell";
 //        VideoPlayCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -399,16 +459,14 @@
 //    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[HomeDataSourceManager sharedInstance].dataSource[indexPath.section].sectionTitle isEqualToString:NSLocalizedString(@"Scene", nil)]) {
         return kSceneHeight;
     }
     return 200;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     HomeHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HomeHeaderId"];
     if (!view) {
         view = [[HomeHeaderView alloc] initWithReuseIdentifier:@"HomeHeaderId"];
@@ -418,13 +476,11 @@
     return view;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 100;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 3) {
         HomeFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HomeFooterId"];
         if (!view) {
@@ -435,21 +491,18 @@
     return nil;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 3) {
         return 95.5 + 44;
     }
     return 0.000001f;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
 
