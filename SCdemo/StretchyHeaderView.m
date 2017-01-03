@@ -158,14 +158,17 @@
     maskLayer.path = maskPath.CGPath;
     self.contentView.layer.mask = maskLayer;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [_info addGestureRecognizer:tapGesture];
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//    [_info addGestureRecognizer:tapGesture];
     
     UITapGestureRecognizer *securityGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSecurity:)];
     [self.contentView addGestureRecognizer:securityGesture];
     
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [_info addGestureRecognizer:panGesture];
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//    [_info addGestureRecognizer:panGesture];
+    
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [_info addGestureRecognizer:longGesture];
     
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_leftBtn addTarget:self action:@selector(leftRightClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -312,6 +315,52 @@ CGFloat distanceBetweenPoint(CGPoint point0,CGPoint point1)
             }
         }];
     }
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender
+{
+    if (_checkPoint) {
+        _startPoint = sender.view.center;
+        _checkPoint = NO;
+    }
+    CGPoint point = [sender locationInView:self.contentView];
+    CGPoint infoPoint = [sender locationInView:sender.view];
+    CGPoint anchorPoint;
+    anchorPoint.x = infoPoint.x / sender.view.bounds.size.width;
+    anchorPoint.y = infoPoint.y / sender.view.bounds.size.height;
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        self.hideLeftRight = NO;
+        [self setAnchorPoint:anchorPoint forView:sender.view];
+        sender.view.center = point;
+    } else if (sender.state == UIGestureRecognizerStateChanged) {
+        sender.view.center = point;
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        if (distanceBetweenPoint(point, self.leftBtn.center) < 85) {
+            [self leftRightClick:self.leftBtn];
+        } else if (distanceBetweenPoint(point, self.rightBtn.center) < 85) {
+            [self leftRightClick:self.rightBtn];
+        }
+        [self setAnchorPoint:CGPointMake(0.5, 0.5) forView:sender.view];
+        [UIView animateWithDuration:0.25 animations:^{
+            sender.view.center = _startPoint;
+            self.hideLeftRight = YES;
+        }];
+    } else if (sender.state == UIGestureRecognizerStateFailed || sender.state == UIGestureRecognizerStateCancelled) {
+        [self setAnchorPoint:CGPointMake(0.5, 0.5) forView:sender.view];
+    }
+}
+
+- (void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
+{
+    CGPoint oldOrigin = view.frame.origin;
+    view.layer.anchorPoint = anchorPoint;
+    CGPoint newOrigin = view.frame.origin;
+    
+    CGPoint transition;
+    transition.x = newOrigin.x - oldOrigin.x;
+    transition.y = newOrigin.y - oldOrigin.y;
+    
+    view.center = CGPointMake (view.center.x - transition.x, view.center.y - transition.y);
 }
 
 //- (void)updateConstraints
