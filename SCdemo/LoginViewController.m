@@ -172,7 +172,7 @@
     
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
-    if ([[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+    if ([[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
         self.fingerprintBtn = ({
             UIButton *fingerprintBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [fingerprintBtn addTarget:self action:@selector(touchIDauthenticate) forControlEvents:UIControlEventTouchUpInside];
@@ -314,21 +314,38 @@
 {
     __weak typeof(self) weakSelf = self;
     LAContext *context = [[LAContext alloc] init];
+//    context.localizedFallbackTitle = NSLocalizedString(@"input password", nil);
     NSError *error = nil;
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"verification" reply:^(BOOL success, NSError * _Nullable error) {
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"verification" reply:^(BOOL success, NSError * _Nullable error) {
             if (success) {
                 [weakSelf loginWithUserName:[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"username"] password:[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"user"][@"password"]];
             } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"error:%@",error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                [self.navigationController presentViewController:alert animated:YES completion:nil];
+                if (error.code == kLAErrorUserFallback) {
+                    NSLog(@"Fallback按钮被点击");
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        if ([weakSelf.passwordField canBecomeFirstResponder]) {
+                            [weakSelf.passwordField becomeFirstResponder];
+                        }
+                    });
+                } else if (error.code == kLAErrorUserCancel) {
+                    NSLog(@"取消按钮被点击");
+                } else {
+                    NSLog(@"指纹识别失败");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"error:%@",error.localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                        [weakSelf.navigationController presentViewController:alert animated:YES completion:nil];
+                    });
+                }
             }
         }];
     } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title" message:@"not support" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self.navigationController presentViewController:alert animated:YES completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title" message:@"not support" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [weakSelf.navigationController presentViewController:alert animated:YES completion:nil];
+        });
     }
 }
 
